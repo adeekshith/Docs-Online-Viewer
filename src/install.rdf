@@ -4,7 +4,7 @@
         <em:type>2</em:type>
         <em:id>{bfb54675-2fd9-4e22-949d-c36333aff6b5}</em:id>
         <em:name>Docs Online Viewer</em:name>
-        <em:version>4.2.8</em:version>
+        <em:version>4.2.9</em:version>
         <em:unpack></em:unpack>
         <em:bootstrap>true</em:bootstrap>
         <em:creator>Deekshith Allamaneni</em:creator>
