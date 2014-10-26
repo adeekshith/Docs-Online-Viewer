@@ -49,9 +49,7 @@ Developers and Contributors:
  		http://blog.arpitnext.com/
 	6. Abkeeper
  		Abkeeper has packaged this script as an addon for Maxthon browser. http://userscripts.org/users/462160
-	7. Yashwanth Goud Durgapathi
-	8. Naveen Reddy Bobbala
-	9. Why not you?
+	7. Why not you?
  		You are welcome and encourages to work on the code. It is neatly structured and open for you to hack on it. You can customize it to your needs or improve it. I will be very thankful to you if you can contribute the changes you've made to it.
 ___________________________________________________________
  Version 4.2.8 Release Notes
@@ -562,7 +560,7 @@ function setupListener()
 function create_help_button() {
 if(document.body){
 	var a = document.createElement('span');
-	a.innerHTML = "<a style=\"font-weight:bold;color:#333333\" href=\"http://www.deekshith.in/p/docs-online-viewer.html?dovver=405\" target='_blank'>Help?</a>";
+	a.innerHTML = "<a style=\"font-weight:bold;color:#333333\" href=\"http://www.deekshith.in/p/docs-online-viewer.html?dovver=405\" target='_blank'>?</a>";
 	var c = "opacity:0.7;position:fixed;text-align:right;right:10px;bottom:0px;z-index:50000;";
 	c+="border: 2px solid;-moz-border-top-colors: ThreeDLightShadow ThreeDHighlight;-moz-border-right-colors: ThreeDDarkShadow ThreeDShadow;-moz-border-bottom-colors: ThreeDDarkShadow ThreeDShadow;-moz-border-left-colors: ThreeDLightShadow ThreeDHighlight;padding: 3px;color: MenuText;background-color: Menu;font-size:9pt;font-family:arial,sans-serif;cursor:pointer;";
 	a.style.cssText = c;
