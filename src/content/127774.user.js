@@ -635,7 +635,7 @@ function create_help_button() {
 		help.style.cssText = c;
 		help.addEventListener('mouseover', function(){ a.style.opacity = 1; }, false);
 		help.addEventListener('mouseout', function(){ a.style.opacity = 0.5; }, false);
-		help.addEventListener('click', function(){ solarizeDark(); }, false);
+		help.addEventListener('click', function(){ }, false);
 		document.body.appendChild(help);
 	}
 };
