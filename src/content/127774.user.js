@@ -251,6 +251,8 @@ function changeLink(link, fileTypeCategory, fileExtension) {
 	//"data:image/png;base64,iVBORw0K...." This is a Data URI. This approach is better than using external URL.
 	// Adjusts the margin of the icon to the given number of pixels (3 to 5px is advisable)
 	ico.style.marginLeft = "3px";
+	ico.style.width = "16px";
+	ico.style.height = "16px";
 	viewLink.appendChild(ico);
 	// Sets the icon link to open in new tab
     viewLink.setAttribute("target", "_blank");    
