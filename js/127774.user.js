@@ -86,7 +86,6 @@ ___________________________________________________________
 (function(){
 var docLinks = document.links;
 var fileTypes1 = ["doc","pdf","docx","xls","xlsx","ppt","pps","pptx","eps","ps","tif","tiff","ai","psd","pages","dxf","ttf","xps","odt","odp","rtf","csv","ods","wpd","sxi","sxc","sxw"];
-var fileTypes2 = ["zip","rar"];
 var doCheck = true;
 var dov_host =/(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/
 
@@ -129,19 +128,6 @@ function checkLinks()
 				   break;
 				}
 			}
-			if (supportedFileFormat == 0)
-			{
-				for (var i2 = 0; i2 < fileTypes2.length; i2++)
-				{
-					var url = stripQuery(docLinks[i]);
-					url=url.toLowerCase();
-					if (endsWith(url, '.' + fileTypes2[i2]))
-					{
-						changeLink(docLinks[i], 2, fileTypes2[i2]);
-						break;
-					}
-				}
-			}
        }
     // The link which is checked is flagged so that it is not repeatedly checked again.
 	docLinks[i].docView=true;
@@ -178,12 +164,6 @@ function changeLink(link, fileTypeCategory, fileExtension) {
 			But no information of any kind is collected or transmitted either by the script or the author or contributors regarding the users. It is just to improve usability.
 			Any better approach than this? May be using cookies is better? Please tell me if you find a better approach than using custom parameters.
 			
-		*/
-	}else if(fileTypeCategory == 2){
-		viewLink.href = "https://docs.google.com/viewer?url="+encodeURI(stripQuery(link))+"&embedded=false&chrome=false&dov=2";
-		/* 
-			This seems to be a redundant category but not. Notice that "mouseoverpanels=false" is set to false.
-			mover over panels are not necessary for zip or rar files. Especially because it does not have a preview pane. Also it is found to be slightly unstable for these file types.
 		*/
 	}
 	//viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
