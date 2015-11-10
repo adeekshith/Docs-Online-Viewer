@@ -25,47 +25,8 @@ ___________________________________________________________
 
  Author:          Deekshith Allamaneni
  Support Website: <http://www.deekshith.in>
- Support Email:   dkh <dot> hyd <at> gmail <dot> com
  For quick support visit: <http://www.facebook.com/adeekshith>
- Userscripts.org URL: <http://userscripts.org/scripts/show/127774>
-
-___________________________________________________________
- 
-Developers and Contributors:
-	1. Deekshith Allamaneni
-		Author and maintainer of this project.
-	2. Supriyo Biswas
-		Made many tweaks to the script including New icon, replacing external icon URL with DATA URI, Improved readability ogf the script and helped remove redundancies, and many more small but significant and important usability and developer friendly changes. Also, implemented regex based site blocking for faulty domains.
-	3. Rohit Mewada
-		Implemented neatly designed floating help button.
-		http://userscripts.org/users/rohitmewada
-	3. Cytochrome
-		Contributed code for mouse-over-panels for google docs viewer. This has improved the usability of the script.
-	4. Mike Cupcake
- 		Mike has re-written this script based on Docs Online Viewer 2.0.1 and improved its performance. Mike's contribution to the script not only improved its performance but also made the code easy to debug and maintain.
- 		http://userscripts.org/users/mikecupcake
-	5. Arpit Kumar
- 		Arpit's code was the idea on which Docs Online Viewer was originally based. Although most part of the code by Arpit is now replaced with a more efficient code, his contribution to this project has helped a lot.
- 		http://blog.arpitnext.com/
-	6. Abkeeper
- 		Abkeeper has packaged this script as an addon for Maxthon browser. http://userscripts.org/users/462160
-	7. Why not you?
- 		You are welcome and encourages to work on the code. It is neatly structured and open for you to hack on it. You can customize it to your needs or improve it. I will be very thankful to you if you can contribute the changes you've made to it.
-___________________________________________________________
- Version 4.2.8 Release Notes
-  1. Minor bug fix for Tampermonkey to include docs.google.com and add the help button.
-  2. Mouse over icon Title tweaked. Shortened.
- 
- Version 4.2.5 Release Notes
-  1. Implemented Blocking of Unsupported Links.
-  2. Fixed recognizing extensions irrespective of case.
-  3. Added a small Help Button for quick support.
-
- Version 4.1.3 Release Notes
-  1. New link icon with Data URI.
-  2. Mouse Over Panels for Google Docs Viewer.
-  3. Mouse over title tweak.
-  4. Removed support for Zoho Viewer as Zoho is soon dropping Zoho Viewer service.
+ Source Code: <https://github.com/adeekshith/Docs-Online-Viewer>
 ___________________________________________________________
 
  Docs Online Viewer - Opens all the supported files publicly available online using online services.
