@@ -195,8 +195,8 @@ function changeLink(link, fileTypeCategory, fileExtension) {
 	ico.style.width = "16px";
 	ico.style.height = "16px";
 	viewLink.appendChild(ico);
-	// Sets the icon link to open in new tab
-    viewLink.setAttribute("target", "_blank");    
+	// Disabled opening link in new tab by default.
+    // viewLink.setAttribute("target", "_blank");
     // Append the icon beside the link
 	link.parentNode.insertBefore(viewLink , link.nextSibling);
 }
