@@ -362,10 +362,8 @@ function create_theme_toggle_button() {
 function create_help_button() {
 	if(document.body){
 		var help = document.createElement('span');
-		help.innerHTML = "<a style=\"font-weight:bold;color:#333333\" href=\"http://www.deekshith.in/p/docs-online-viewer.html?dovver=405\" 	target='_blank'>?</a>";
-		//help.innerHTML = "<a style=\"font-weight:bold;color:#000000\" href=\"#\" alt=\"Solarized Dark\">?</a>";
-		var c = "opacity:0.7;position:fixed;text-align:right;right:10px;bottom:0px;z-index:50000;";
-		c+="border: 2px solid;-moz-border-top-colors: ThreeDLightShadow ThreeDHighlight;-moz-border-right-colors: ThreeDDarkShadow 	ThreeDShadow;-moz-border-bottom-colors: ThreeDDarkShadow ThreeDShadow;-moz-border-left-colors: ThreeDLightShadow 	ThreeDHighlight;padding: 3px;color: MenuText;background-color: Menu;font-size:9pt;font-family:arial,sans-serif;cursor:pointer;";
+		help.innerHTML = "<a style=\"text-decoration: none;\" href=\"http://www.deekshith.in/p/docs-online-viewer.html?dovver=405\" 	target='_blank'>?</a>";
+		var c = "opacity:0.7;position:fixed;text-align:right;right:30px;bottom:0px;z-index:50000;-webkit-border-radius: 28;-moz-border-radius: 28;border-radius: 28px;font-family: Arial;color: #ffffff;font-size: 12px;background: #404040;padding: 6px 10px 6px 10px;text-decoration: none;";
 		help.style.cssText = c;
 		help.addEventListener('mouseover', function(){ a.style.opacity = 1; }, false);
 		help.addEventListener('mouseout', function(){ a.style.opacity = 0.5; }, false);
