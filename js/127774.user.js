@@ -84,12 +84,7 @@ function changeLink(link, fileTypeCategory, fileExtension) {
 					true: It opens the document in embedded mode
 					false: It opens the document in standard mode
 				dov=1
-					This is a custom parameter added by the script to tell that this URL is opened by Docs Online Viewer. This avoids conflicts while using any similar scripts or when opening links with google docs by other scripts or directly. (esp in the case of mouseover).
-						
-			Also, some users have expressed their concern that if custom parameters (dov) are used for tracking. These parameters are used to identify that the link is opened using this script. This avoids a few conflicts between scripts, etc. 
-			But no information of any kind is collected or transmitted either by the script or the author or contributors regarding the users. It is just to improve usability.
-			Any better approach than this? May be using cookies is better? Please tell me if you find a better approach than using custom parameters.
-			
+					This is a custom parameter added by the script to tell that this URL is opened by Docs Online Viewer.
 		*/
 	}
 	//viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
