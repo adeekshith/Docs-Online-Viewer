@@ -1,6 +1,6 @@
 {
   "name": "Docs Online Viewer",
-  "version": "5.0.2",
+  "version": "5.1.1",
   "manifest_version": 2,
   "description": "Open documents and files online directly in your browser using online services like Google Docs Viewer, etc.",
   "homepage_url": "http://www.deekshith.in/p/docs-online-viewer.html",
@@ -11,17 +11,17 @@
   },
   "applications": {
     "gecko": {
-      "id": "docs-online-viewer@deekshith.in"
+      "id": "{bfb54675-2fd9-4e22-949d-c36333aff6b5}"
     }
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "exclude_globs": ["*.pdf",
-                        "http*://*.facebook.com/*",
-                        "http*://www.messenger.com/*",
-                        "http*://mail.google.com/*",
-                        "http*://www.mediafire.com/*"],
+      "exclude_matches": ["*://*/*.pdf",
+                          "*://*.facebook.com/*",
+                          "*://www.messenger.com/*",
+                          "*://mail.google.com/*",
+                          "*://www.mediafire.com/*"],
       "js": ["js/127774.user.js"]
     }
   ],
