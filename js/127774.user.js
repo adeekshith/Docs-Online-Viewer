@@ -1,49 +1,12 @@
-// ==UserScript==
-// @name           Docs Online Viewer
-// @version        4.2.9
-// @author         Deekshith Allamaneni
-// @namespace      http://adeekshith.blogspot.com
-// @description    Open documents and files online directly in your browser using online services like Google Docs Viewer, etc.
-// @include        *
-// @include        https://docs.google.com/*
-// @exclude        http://www.mediafire.com/*
-// @exclude        https://mail.google.com/*
-// @exclude        *.pdf
-// @copyright 2012, Deekshith Allamaneni (http://www.deekshith.in)
-// @license GPL version 3 or any later version; http://www.gnu.org/copyleft/gpl.html
-// @contributor Supriyo Biswas
-// @contributor Rohit Mewada (http://userscripts.org/users/471739)
-// @contributor Cytochrome (http://userscripts.org/users/cytochrome)
-// @contributor Mike Cupcake (http://userscripts.org/users/mikecupcake)
-// ==/UserScript==+
-
-
 /*
+	Appends icon to Docs Online Viewer supported links and improves the interface 
+	of the google docs interface opened using Docs Online Viewer.
 
-___________________________________________________________
-
-
- Author:          Deekshith Allamaneni
- Support Website: <http://www.deekshith.in>
- For quick support visit: <http://www.facebook.com/adeekshith>
- Source Code: <https://github.com/adeekshith/Docs-Online-Viewer>
-___________________________________________________________
-
- Docs Online Viewer - Opens all the supported files publicly available online using online services.
- 
- Copyright (C) 2012 Deekshith Allamaneni
- 
- This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-
- This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
- 
- Icon used is derived from the Crystal Clear icon set <http://www.everaldo.com/crystal/>, under the GNU General Public License, as stated here <http://www.everaldo.com/crystal/?action=license>
-
-___________________________________________________________
-	
+	Author:          Deekshith Allamaneni
+ 	Support Website: <http://www.deekshith.in>
 */
+
+
 (function(){
 var docLinks = document.links;
 var fileTypes1 = ["doc","pdf","docx","xls","xlsx","ppt","pps","pptx","eps","ps","tif","tiff","ai","psd","pages","dxf","ttf","xps","odt","odp","rtf","csv","ods","wpd","sxi","sxc","sxw"];
