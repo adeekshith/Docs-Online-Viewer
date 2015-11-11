@@ -25,5 +25,8 @@
       "js": ["js/127774.user.js"]
     }
   ],
+  "web_accessible_resources": [
+    "images/*.png"
+  ],
   "default_locale": "en"
 }

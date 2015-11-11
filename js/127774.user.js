@@ -95,17 +95,7 @@ function changeLink(link, fileTypeCategory, fileExtension) {
 	//viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
 	viewLink.title="View this \""+fileExtension+"\" file";
 	var ico = document.createElement("img");
-	ico.src =  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8' +
-				'/9hAAAA1ElEQVQ4y2NgoBYQq' +
-				'/3tL1r7uwEdC9f9iSbKAJG635Oxitf+Pi5a8yeOoAEg23CJi9b9Khep' +
-				'/WVLlgFAl3UyMPxnBBqyUqTmhyrJBqCHDckGEK2GNgbU' +
-				'/2cRrfvdDMX9QDVNJBkAij5g6BtDeMCArP2VI1r385d4' +
-				'/T8xggYI1fzQBMbAdJBGZHH++v8CQNecE6n' +
-				'/oYbXAKDNVeLF' +
-				'/7ixuVa49B8vKG3gNUC4' +
-				'/ocGKHViJO+6342iNb+vi9Z' +
-				'/V6FyLNT8/I0tM8EwME9ME6n' +
-				'/7cNAbQAAkE+TQSL7LkoAAAAASUVORK5CYII=';
+	ico.src =  chrome.extension.getURL("images/beside-link-icon.png");
 	//"data:image/png;base64,iVBORw0K...." This is a Data URI. This approach is better than using external URL.
 	// Adjusts the margin of the icon to the given number of pixels (3 to 5px is advisable)
 	ico.style.marginLeft = "3px";
