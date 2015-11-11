@@ -11,7 +11,9 @@
 var docLinks = document.links;
 var fileTypes1 = ["doc","pdf","docx","xls","xlsx","ppt","pps","pptx","eps","ps","tif","tiff","ai","psd","pages","dxf","ttf","xps","odt","odp","rtf","csv","ods","wpd","sxi","sxc","sxw"];
 var doCheck = true;
-var dov_host =/(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/
+var dov_host_exclude =/(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/
+// Include paths to exclude showing icon
+var dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*)/ 
 
 if(!checkIfDOV()){
 	checkLinks();
@@ -42,7 +44,7 @@ function checkLinks()
 	for (var i = 0; i < docLinks.length; ++i) 
 	{
 		supportedFileFormat=0;
-		if (!((docLinks[i].host).match(dov_host)) && !docLinks[i].docView){
+		if (!((docLinks[i].host).match(dov_host_exclude)) && !((docLinks[i].href).match(dov_href_exclude)) && !docLinks[i].docView){
 			for (var i2 = 0; i2 < fileTypes1.length; i2++) {
 				var url = stripQuery(docLinks[i]);
 				url=url.toLowerCase();
