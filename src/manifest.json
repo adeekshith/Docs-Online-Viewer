@@ -5,9 +5,9 @@
   "description": "Open documents and files online directly in your browser using online services like Google Docs Viewer, etc.",
   "homepage_url": "http://www.deekshith.in/p/docs-online-viewer.html",
   "icons": {
-    "32": "icons/icon32.png",
-    "48": "icons/icon48.png",
-    "64": "icons/icon64.png"
+    "32": "images/brand/dov-brand-32.png",
+    "48": "images/brand/dov-brand-48.png",
+    "64": "images/brand/dov-brand-64.png"
   },
   "applications": {
     "gecko": {
@@ -22,7 +22,7 @@
                           "*://www.messenger.com/*",
                           "*://mail.google.com/*",
                           "*://www.mediafire.com/*"],
-      "js": ["js/127774.user.js"]
+      "js": ["js/content/insert-link-icons.js"]
     }
   ],
   "web_accessible_resources": [
