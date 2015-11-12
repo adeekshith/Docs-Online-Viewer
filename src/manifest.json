@@ -21,8 +21,13 @@
                           "*://*.facebook.com/*",
                           "*://www.messenger.com/*",
                           "*://mail.google.com/*",
+                          "*://docs.google.com/*",
                           "*://www.mediafire.com/*"],
       "js": ["js/content/insert-link-icons.js"]
+    },
+    {
+      "matches": ["*://docs.google.com/viewer?*"],
+      "js": ["js/content/google-docs-viewer-ui.js"]
     }
   ],
   "web_accessible_resources": [
