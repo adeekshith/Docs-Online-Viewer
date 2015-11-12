@@ -16,3 +16,10 @@ done;
 for f in $(find ../build/uncompressed -name '*.js'); do
 	uglifyjs $f -o $f -c
 done
+
+# Zip all source files
+cd ../build/uncompressed
+zip -r -9 ../dov-current.zip *
+
+# Create copy of zip file with .xpi extension
+cp ../dov-current.zip ../dov-current.xpi
