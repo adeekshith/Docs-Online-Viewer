@@ -71,14 +71,19 @@ function changeLink(link, fileTypeCategory, fileExtension) {
 	viewLink.title="View this \""+fileExtension+"\" file";
 	var ico = document.createElement("img");
 	ico.src =  chrome.extension.getURL("images/beside-link-icon.png");
-	//"data:image/png;base64,iVBORw0K...." This is a Data URI. This approach is better than using external URL.
 	// Adjusts the margin of the icon to the given number of pixels (3 to 5px is advisable)
 	ico.style.marginLeft = "3px";
 	ico.style.width = "16px";
 	ico.style.height = "16px";
 	viewLink.appendChild(ico);
 	// Disabled opening link in new tab by default.
-    // viewLink.setAttribute("target", "_blank");
+    chrome.storage.sync.get({
+        dovIconNewtab: false
+        }, function(items) {
+            if (items.dovIconNewtab) {
+                viewLink.setAttribute("target", "_blank");
+            }
+    });
     // Append the icon beside the link
 	link.parentNode.insertBefore(viewLink , link.nextSibling);
 }
