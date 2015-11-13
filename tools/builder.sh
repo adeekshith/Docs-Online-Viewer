@@ -11,6 +11,11 @@ for f in $(find ../src -name '*.*' -not -name '.*'); do
 	cp -f $f $dest
 done;
 
+# Remove all files starting with period (OS tmp files)
+for f in $(find ../build/uncompressed -name '.*'); do
+	rm $f
+done
+
 # Compress JS files
 # NOTE: uglifyjs 2 should be installed for this to work
 for f in $(find ../build/uncompressed -name '*.js'); do
