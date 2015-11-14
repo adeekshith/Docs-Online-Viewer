@@ -28,7 +28,7 @@ function checkLinks()
 			for (var i2 = 0; i2 < fileTypes1.length; i2++) {
 				var url = stripQuery(docLinks[i]);
 				url=url.toLowerCase();
-				if (endsWith(url, '.' + fileTypes1[i2]))
+				if (url.endsWith('.' + fileTypes1[i2]))
 				{
 				   changeLink(docLinks[i], 1, fileTypes1[i2]);
 				   break;
@@ -47,11 +47,6 @@ function stripQuery(link)
 	return link.protocol + '//' + link.hostname + link.pathname; 
 }
 
-
-function endsWith(str, suffix) 
-{  //  check if string has suffix 
-	return str.indexOf(suffix, str.length - suffix.length) !== -1;
-}
 
 function changeLink(link, fileTypeCategory, fileExtension) { 
 	var viewLink = document.createElement('a');
