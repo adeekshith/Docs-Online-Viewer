@@ -11,11 +11,11 @@
 
 (function(){
 var docLinks = document.links;
-var fileTypes1 = ["doc","pdf","docx","xls","xlsx","ppt","pps","pptx","eps","ps","tif","tiff","ai","psd","pages","dxf","ttf","xps","odt","odp","rtf","csv","ods","wpd","sxi","sxc","sxw"];
+const fileTypes1 = ["doc","pdf","docx","xls","xlsx","ppt","pps","pptx","eps","ps","tif","tiff","ai","psd","pages","dxf","ttf","xps","odt","odp","rtf","csv","ods","wpd","sxi","sxc","sxw"];
 var doCheck = true;
-var dov_host_exclude =/(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/
+const dov_host_exclude =/(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/
 // Include paths to exclude showing icon
-var dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*)/ 
+const dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*)/ 
 
 
 function hasSupportedExtension(docLink) {
