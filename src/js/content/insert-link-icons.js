@@ -18,13 +18,25 @@ var dov_host_exclude =/(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.co
 var dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*)/ 
 
 
-function hasSupportedExtension(thisUrl) {
+function hasSupportedExtension(docLink) {
     return fileTypes1.some( thisFileType => {
-        var url = thisUrl.pathname;
+        var url = docLink.pathname;
         url=url.toLowerCase();
         if (url.endsWith('.' + thisFileType))
             return true;
     });
+}
+
+
+function isSupportedLink(docLink) {
+    return (!((docLink.host).match(dov_host_exclude)) 
+        && !((docLink.href).match(dov_href_exclude)) 
+        && hasSupportedExtension(docLink));
+}
+
+
+function isProcessedLink(docLink){
+    return docLink.docView;
 }
 
 
@@ -34,10 +46,8 @@ function checkLinks()
 	for (var i = 0; i < docLinks.length; ++i) 
 	{
 		supportedFileFormat=0;
-		if (!((docLinks[i].host).match(dov_host_exclude)) && !((docLinks[i].href).match(dov_href_exclude)) && !docLinks[i].docView){
-            if (hasSupportedExtension(docLinks[i])){
-                changeLink(docLinks[i], 1, "fileExtension");
-            }     
+		if (isSupportedLink(docLinks[i]) && !isProcessedLink(docLinks[i])) {
+            changeLink(docLinks[i], 1, "fileExtension");
         }
     // The link which is checked is flagged so that it is not repeatedly checked again.
 	docLinks[i].docView=true;
