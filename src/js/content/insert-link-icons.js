@@ -47,7 +47,7 @@ function checkLinks()
 	{
 		supportedFileFormat=0;
 		if (isSupportedLink(docLinks[i]) && !isProcessedLink(docLinks[i])) {
-            changeLink(docLinks[i], 1, "fileExtension");
+            changeLink(docLinks[i], "fileExtension");
         }
     // The link which is checked is flagged so that it is not repeatedly checked again.
 	docLinks[i].docView=true;
@@ -61,20 +61,18 @@ function stripQuery(link)
 }
 
 
-function changeLink(link, fileTypeCategory, fileExtension) { 
+function changeLink(link, fileExtension) { 
 	var viewLink = document.createElement('a');
-	if(fileTypeCategory == 1){
-		viewLink.href = "https://docs.google.com/viewer?url="+encodeURI(stripQuery(link))+"&embedded=false&chrome=false&dov=1";
-		/*
-			Parameter description:
-				embedded= <true> or <false>
-					This is a standard google docs parameter
-					true: It opens the document in embedded mode
-					false: It opens the document in standard mode
-				dov=1
-					This is a custom parameter added by the script to tell that this URL is opened by Docs Online Viewer.
-		*/
-	}
+	viewLink.href = "https://docs.google.com/viewer?url="+encodeURI(stripQuery(link))+"&embedded=false&chrome=false&dov=1";
+	/*
+		Parameter description:
+			embedded= <true> or <false>
+				This is a standard google docs parameter
+				true: It opens the document in embedded mode
+				false: It opens the document in standard mode
+			dov=1
+				This is a custom parameter added by the script to tell that this URL is opened by Docs Online Viewer.
+	*/
 	//viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
 	viewLink.title="View this \""+fileExtension+"\" file";
 	var ico = document.createElement("img");
