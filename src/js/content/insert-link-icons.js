@@ -40,6 +40,15 @@ function isProcessedLink(docLink){
 }
 
 
+function getFileExtension(docLink) {
+    var fUrl = docLink.pathname;
+    fUrl=fUrl.toUpperCase();
+    // Returns file extension. Returns "" if no valid extension
+    // Ref: http://stackoverflow.com/a/1203361/3439460
+    return fUrl.substr((~-fUrl.lastIndexOf(".") >>> 0) + 2);
+}
+
+
 function checkLinks()
 {
 	var supportedFileFormat=0;
@@ -47,7 +56,7 @@ function checkLinks()
 	{
 		supportedFileFormat=0;
 		if (isSupportedLink(docLinks[i]) && !isProcessedLink(docLinks[i])) {
-            changeLink(docLinks[i], "fileExtension");
+            changeLink(docLinks[i]);
         }
     // The link which is checked is flagged so that it is not repeatedly checked again.
 	docLinks[i].docView=true;
@@ -61,7 +70,7 @@ function stripQuery(link)
 }
 
 
-function changeLink(link, fileExtension) { 
+function changeLink(link) { 
 	var viewLink = document.createElement('a');
 	viewLink.href = "https://docs.google.com/viewer?url="+encodeURI(stripQuery(link))+"&embedded=false&chrome=false&dov=1";
 	/*
@@ -74,7 +83,7 @@ function changeLink(link, fileExtension) {
 				This is a custom parameter added by the script to tell that this URL is opened by Docs Online Viewer.
 	*/
 	//viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
-	viewLink.title="View this \""+fileExtension+"\" file";
+	viewLink.title="View this "+getFileExtension(link)+" file";
 	var ico = document.createElement("img");
 	ico.src =  chrome.extension.getURL("images/beside-link-icon.png");
 	// Adjusts the margin of the icon to the given number of pixels (3 to 5px is advisable)
