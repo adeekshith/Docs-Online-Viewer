@@ -65,13 +65,13 @@ function checkLinks()
 
 function stripQuery(link) 
 {	// remove any ?query in the URL	    
-	return link.protocol + '//' + link.hostname + link.pathname; 
+	return `${link.protocol}${'//'}${link.hostname}${link.pathname}`;
 }
 
 
 function changeLink(link) { 
 	var viewLink = document.createElement('a');
-	viewLink.href = "https://docs.google.com/viewer?url="+encodeURI(stripQuery(link))+"&embedded=false&chrome=false&dov=1";
+	viewLink.href = `https://docs.google.com/viewer?url=${encodeURI(stripQuery(link))}&embedded=false&chrome=false&dov=1`;
 	/*
 		Parameter description:
 			embedded= <true> or <false>
@@ -82,7 +82,7 @@ function changeLink(link) {
 				This is a custom parameter added by the script to tell that this URL is opened by Docs Online Viewer.
 	*/
 	//viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
-	viewLink.title="View this "+getFileExtension(link)+" file";
+	viewLink.title=`View this ${getFileExtension(link)} file`;
 	var ico = document.createElement("img");
 	ico.src =  chrome.extension.getURL("images/beside-link-icon.png");
 	// Adjusts the margin of the icon to the given number of pixels (3 to 5px is advisable)
