@@ -18,84 +18,79 @@ const dov_host_exclude =/(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.
 const dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*)/ 
 
 
-function hasSupportedExtension(docLink) {
-    return fileTypes1.some( thisFileType => {
-        var url = docLink.pathname.toLowerCase();
-        if (url.endsWith('.' + thisFileType))
-            return true;
-    });
-}
+var DocLink = function (docLink) {
+    this._docLink = docLink;
+};
+DocLink.prototype = {
+    get hasSupportedExtension () {
+        return fileTypes1.some( thisFileType => {
+            var url = this._docLink.pathname.toLowerCase();
+            if (url.endsWith('.' + thisFileType))
+                return true;
+        });
+    },
+    get isSupportedLink () {
+        return (!((this._docLink.host).match(dov_host_exclude)) 
+            && !((this._docLink.href).match(dov_href_exclude)) 
+            && this.hasSupportedExtension);
+    },
+    get isProcessedLink () {
+        return this._docLink.docView;
+    },
+    get getChangedLink () { 
+        var viewLink = document.createElement('a');
+        viewLink.href = `https://docs.google.com/viewer?url=${encodeURI(this.stripQuery)}&embedded=false&chrome=false&dov=1`;
+        /*
+            Parameter description:
+                embedded= <true>: to open google docs in embedded mode
+                dov=1: If opened by Docs Online Viewer. Set by this script.
+        */
+        //viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
+        viewLink.title=`View this ${this.getFileExtension} file`;
+        var ico = document.createElement("img");
+        ico.src =  chrome.extension.getURL("images/beside-link-icon.png");
+        // Adjusts the margin of the icon to the given number of pixels (3 to 5px is advisable)
+        ico.style.marginLeft = "3px";
+        ico.style.width = "16px";
+        ico.style.height = "16px";
+        viewLink.appendChild(ico);
+        // Disabled opening link in new tab by default.
+        chrome.storage.sync.get({
+            dovIconNewtab: false
+            }, function(items) {
+                if (items.dovIconNewtab) {
+                    viewLink.setAttribute("target", "_blank");
+                }
+        });
+        return viewLink;
+    },
+    get getFileExtension () {
+        var fUrl = this._docLink.pathname;
+        fUrl=fUrl.toUpperCase();
+        // Returns file extension. Returns "" if no valid extension
+        // Ref: http://stackoverflow.com/a/1203361/3439460
+        return fUrl.substr((~-fUrl.lastIndexOf(".") >>> 0) + 2);
+    },
+    get stripQuery() {
+        // remove any ?query in the URL     
+        return `${this._docLink.protocol}${'//'}${this._docLink.hostname}${this._docLink.pathname}`;
+    }
 
-
-function isSupportedLink(docLink) {
-    return (!((docLink.host).match(dov_host_exclude)) 
-        && !((docLink.href).match(dov_href_exclude)) 
-        && hasSupportedExtension(docLink));
-}
-
-
-function isProcessedLink(docLink){
-    return docLink.docView;
-}
-
-
-function getFileExtension(docLink) {
-    var fUrl = docLink.pathname;
-    fUrl=fUrl.toUpperCase();
-    // Returns file extension. Returns "" if no valid extension
-    // Ref: http://stackoverflow.com/a/1203361/3439460
-    return fUrl.substr((~-fUrl.lastIndexOf(".") >>> 0) + 2);
 }
 
 
 function checkLinks()
 {
-	var supportedFileFormat=0;
 	for (var i = 0; i < docLinks.length; ++i) 
 	{
-		supportedFileFormat=0;
-		if (isSupportedLink(docLinks[i]) && !isProcessedLink(docLinks[i])) {
+        var thisDocLink = new DocLink(docLinks[i]);
+		if ( thisDocLink.isSupportedLink && !thisDocLink.isProcessedLink) {
             // Append the icon beside the link
-            docLinks[i].parentNode.insertBefore(getChangedLink(docLinks[i]) , docLinks[i].nextSibling);
+            docLinks[i].parentNode.insertBefore(thisDocLink.getChangedLink , docLinks[i].nextSibling);
         }
     // The link which is checked is flagged so that it is not repeatedly checked again.
 	docLinks[i].docView=true;
    }
-}
-
-
-function stripQuery(link) 
-{	// remove any ?query in the URL	    
-	return `${link.protocol}${'//'}${link.hostname}${link.pathname}`;
-}
-
-
-function getChangedLink(docLink) { 
-	var viewLink = document.createElement('a');
-	viewLink.href = `https://docs.google.com/viewer?url=${encodeURI(stripQuery(docLink))}&embedded=false&chrome=false&dov=1`;
-	/*
-		Parameter description:
-			embedded= <true>: to open google docs in embedded mode
-			dov=1: If opened by Docs Online Viewer. Set by this script.
-	*/
-	//viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
-	viewLink.title=`View this ${getFileExtension(docLink)} file`;
-	var ico = document.createElement("img");
-	ico.src =  chrome.extension.getURL("images/beside-link-icon.png");
-	// Adjusts the margin of the icon to the given number of pixels (3 to 5px is advisable)
-	ico.style.marginLeft = "3px";
-	ico.style.width = "16px";
-	ico.style.height = "16px";
-	viewLink.appendChild(ico);
-	// Disabled opening link in new tab by default.
-    chrome.storage.sync.get({
-        dovIconNewtab: false
-        }, function(items) {
-            if (items.dovIconNewtab) {
-                viewLink.setAttribute("target", "_blank");
-            }
-    });
-    return viewLink;
 }
 
 
