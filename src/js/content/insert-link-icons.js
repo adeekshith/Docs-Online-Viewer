@@ -69,20 +69,16 @@ function stripQuery(link)
 }
 
 
-function changeLink(link) { 
+function changeLink(docLink) { 
 	var viewLink = document.createElement('a');
-	viewLink.href = `https://docs.google.com/viewer?url=${encodeURI(stripQuery(link))}&embedded=false&chrome=false&dov=1`;
+	viewLink.href = `https://docs.google.com/viewer?url=${encodeURI(stripQuery(docLink))}&embedded=false&chrome=false&dov=1`;
 	/*
 		Parameter description:
-			embedded= <true> or <false>
-				This is a standard google docs parameter
-				true: It opens the document in embedded mode
-				false: It opens the document in standard mode
-			dov=1
-				This is a custom parameter added by the script to tell that this URL is opened by Docs Online Viewer.
+			embedded= <true>: to open google docs in embedded mode
+			dov=1: If opened by Docs Online Viewer. Set by this script.
 	*/
 	//viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
-	viewLink.title=`View this ${getFileExtension(link)} file`;
+	viewLink.title=`View this ${getFileExtension(docLink)} file`;
 	var ico = document.createElement("img");
 	ico.src =  chrome.extension.getURL("images/beside-link-icon.png");
 	// Adjusts the margin of the icon to the given number of pixels (3 to 5px is advisable)
@@ -99,7 +95,7 @@ function changeLink(link) {
             }
     });
     // Append the icon beside the link
-	link.parentNode.insertBefore(viewLink , link.nextSibling);
+	docLink.parentNode.insertBefore(viewLink , docLink.nextSibling);
 }
 
 
