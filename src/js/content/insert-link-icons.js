@@ -18,7 +18,7 @@ var dov_host_exclude =/(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.co
 var dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*)/ 
 
 
-function isSupportedExtension(thisUrl) {
+function hasSupportedExtension(thisUrl) {
     return fileTypes1.some( thisFileType => {
         var url = thisUrl.pathname;
         url=url.toLowerCase();
@@ -35,7 +35,7 @@ function checkLinks()
 	{
 		supportedFileFormat=0;
 		if (!((docLinks[i].host).match(dov_host_exclude)) && !((docLinks[i].href).match(dov_href_exclude)) && !docLinks[i].docView){
-            if (isSupportedExtension(docLinks[i])){
+            if (hasSupportedExtension(docLinks[i])){
                 changeLink(docLinks[i], 1, "fileExtension");
             }     
         }
