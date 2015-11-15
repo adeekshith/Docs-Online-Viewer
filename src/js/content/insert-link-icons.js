@@ -18,6 +18,16 @@ var dov_host_exclude =/(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.co
 var dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*)/ 
 
 
+function isSupportedExtension(thisUrl) {
+    return fileTypes1.some( thisFileType => {
+        var url = stripQuery(thisUrl);
+        url=url.toLowerCase();
+        if (url.endsWith('.' + thisFileType))
+            return true;
+    });
+}
+
+
 function checkLinks()
 {
 	var supportedFileFormat=0;
@@ -25,20 +35,13 @@ function checkLinks()
 	{
 		supportedFileFormat=0;
 		if (!((docLinks[i].host).match(dov_host_exclude)) && !((docLinks[i].href).match(dov_href_exclude)) && !docLinks[i].docView){
-			for (var i2 = 0; i2 < fileTypes1.length; i2++) {
-				var url = stripQuery(docLinks[i]);
-				url=url.toLowerCase();
-				if (url.endsWith('.' + fileTypes1[i2]))
-				{
-				   changeLink(docLinks[i], 1, fileTypes1[i2]);
-				   break;
-				}
-			}
-       }
+            if (isSupportedExtension(docLinks[i])){
+                changeLink(docLinks[i], 1, "fileExtension");
+            }     
+        }
     // The link which is checked is flagged so that it is not repeatedly checked again.
 	docLinks[i].docView=true;
    }
-// console.log("...............................................................................");
 }
 
 
