@@ -29,24 +29,24 @@ DocLink.prototype = {
                 return true;
         });
     },
-    get isSupportedLink () {
+    get isSupported () {
         return (!((this._docLink.host).match(dov_host_exclude)) 
             && !((this._docLink.href).match(dov_href_exclude)) 
             && this.hasSupportedExtension);
     },
-    get isProcessedLink () {
+    get isProcessed () {
         return this._docLink.docView;
     },
-    get getChangedLink () { 
+    get iconLink () { 
         var viewLink = document.createElement('a');
-        viewLink.href = `https://docs.google.com/viewer?url=${encodeURI(this.stripQuery)}&embedded=false&chrome=false&dov=1`;
+        viewLink.href = `https://docs.google.com/viewer?url=${encodeURI(this.queryStripped)}&embedded=false&chrome=false&dov=1`;
         /*
             Parameter description:
                 embedded= <true>: to open google docs in embedded mode
                 dov=1: If opened by Docs Online Viewer. Set by this script.
         */
         //viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
-        viewLink.title=`View this ${this.getFileExtension} file`;
+        viewLink.title=`View this ${this.fileExtension} file`;
         var ico = document.createElement("img");
         ico.src =  chrome.extension.getURL("images/beside-link-icon.png");
         // Adjusts the margin of the icon to the given number of pixels (3 to 5px is advisable)
@@ -64,14 +64,14 @@ DocLink.prototype = {
         });
         return viewLink;
     },
-    get getFileExtension () {
+    get fileExtension () {
         var fUrl = this._docLink.pathname;
         fUrl=fUrl.toUpperCase();
         // Returns file extension. Returns "" if no valid extension
         // Ref: http://stackoverflow.com/a/1203361/3439460
         return fUrl.substr((~-fUrl.lastIndexOf(".") >>> 0) + 2);
     },
-    get stripQuery() {
+    get queryStripped() {
         // remove any ?query in the URL     
         return `${this._docLink.protocol}${'//'}${this._docLink.hostname}${this._docLink.pathname}`;
     }
@@ -84,9 +84,9 @@ function checkLinks()
 	for (var i = 0; i < docLinks.length; ++i) 
 	{
         var thisDocLink = new DocLink(docLinks[i]);
-		if ( thisDocLink.isSupportedLink && !thisDocLink.isProcessedLink) {
+		if ( thisDocLink.isSupported && !thisDocLink.isProcessed) {
             // Append the icon beside the link
-            docLinks[i].parentNode.insertBefore(thisDocLink.getChangedLink , docLinks[i].nextSibling);
+            docLinks[i].parentNode.insertBefore(thisDocLink.iconLink , docLinks[i].nextSibling);
         }
     // The link which is checked is flagged so that it is not repeatedly checked again.
 	docLinks[i].docView=true;
