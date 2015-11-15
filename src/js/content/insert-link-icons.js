@@ -55,7 +55,8 @@ function checkLinks()
 	{
 		supportedFileFormat=0;
 		if (isSupportedLink(docLinks[i]) && !isProcessedLink(docLinks[i])) {
-            changeLink(docLinks[i]);
+            // Append the icon beside the link
+            docLinks[i].parentNode.insertBefore(getChangedLink(docLinks[i]) , docLinks[i].nextSibling);
         }
     // The link which is checked is flagged so that it is not repeatedly checked again.
 	docLinks[i].docView=true;
@@ -69,7 +70,7 @@ function stripQuery(link)
 }
 
 
-function changeLink(docLink) { 
+function getChangedLink(docLink) { 
 	var viewLink = document.createElement('a');
 	viewLink.href = `https://docs.google.com/viewer?url=${encodeURI(stripQuery(docLink))}&embedded=false&chrome=false&dov=1`;
 	/*
@@ -94,8 +95,7 @@ function changeLink(docLink) {
                 viewLink.setAttribute("target", "_blank");
             }
     });
-    // Append the icon beside the link
-	docLink.parentNode.insertBefore(viewLink , docLink.nextSibling);
+    return viewLink;
 }
 
 
