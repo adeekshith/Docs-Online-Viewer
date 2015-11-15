@@ -20,7 +20,7 @@ var dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*)/
 
 function isSupportedExtension(thisUrl) {
     return fileTypes1.some( thisFileType => {
-        var url = stripQuery(thisUrl);
+        var url = thisUrl.pathname;
         url=url.toLowerCase();
         if (url.endsWith('.' + thisFileType))
             return true;
