@@ -15,7 +15,7 @@ const fileTypes1 = ["doc","pdf","docx","xls","xlsx","ppt","pps","pptx","eps","ps
 var doCheck = true;
 const dov_host_exclude =/(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/
 // Include paths to exclude showing icon
-const dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*)/ 
+const dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*|file:\/\/\/.*)/ 
 const dovIconImgPath = "images/beside-link-icon.png";
 
 
