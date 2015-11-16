@@ -16,6 +16,7 @@ var doCheck = true;
 const dov_host_exclude =/(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/
 // Include paths to exclude showing icon
 const dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*)/ 
+const dovIconImgPath = "images/beside-link-icon.png";
 
 
 var DocLink = function (docLink) {
@@ -49,7 +50,7 @@ DocLink.prototype = {
         //viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
         viewLink.title=`View this ${this.fileExtension} file`;
         var ico = document.createElement("img");
-        ico.src =  chrome.extension.getURL("images/beside-link-icon.png");
+        ico.src =  chrome.extension.getURL(dovIconImgPath);
         // Adjusts the margin of the icon to the given number of pixels (3 to 5px is advisable)
         ico.style.marginLeft = "3px";
         ico.style.width = "16px";
