@@ -11,81 +11,88 @@
 
 (function(){
 var docLinks = document.links;
-var fileTypes1 = ["doc","pdf","docx","xls","xlsx","ppt","pps","pptx","eps","ps","tif","tiff","ai","psd","pages","dxf","ttf","xps","odt","odp","rtf","csv","ods","wpd","sxi","sxc","sxw"];
+const supportedFileExtList = ["doc","pdf","docx","xls","xlsx","ppt","pps","pptx","eps","ps","tif","tiff","ai","psd","pages","dxf","ttf","xps","odt","odp","rtf","csv","ods","wpd","sxi","sxc","sxw"];
 var doCheck = true;
-var dov_host_exclude =/(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/
+const dov_host_exclude =/(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/
 // Include paths to exclude showing icon
-var dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*)/ 
+const dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*|file:\/\/\/.*)/ 
+const dovIconImgPath = "images/beside-link-icon.png";
+
+
+var DocLink = function (docLink) {
+    this._docLink = docLink;
+};
+DocLink.prototype = {
+    get hasSupportedExtension () {
+        return supportedFileExtList.some( thisFileType => {
+            var url = this._docLink.pathname.toLowerCase();
+            if (url.endsWith('.' + thisFileType))
+                return true;
+        });
+    },
+    get isSupported () {
+        return (!((this._docLink.host).match(dov_host_exclude)) 
+            && !((this._docLink.href).match(dov_href_exclude)) 
+            && this.hasSupportedExtension
+            && this._docLink.innerText.length > 0); // Issue #6: No blank innerText
+    },
+    get isProcessed () {
+        return this._docLink.docView;
+    },
+    get iconLink () { 
+        var viewLink = document.createElement('a');
+        viewLink.href = `https://docs.google.com/viewer?url=${encodeURI(this.queryStripped)}&embedded=false&chrome=false&dov=1`;
+        /*
+            Parameter description:
+                embedded= <true>: to open google docs in embedded mode
+                dov=1: If opened by Docs Online Viewer. Set by this script.
+        */
+        //viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
+        viewLink.title=`View this ${this.fileExtension} file`;
+        var ico = document.createElement("img");
+        ico.src =  chrome.extension.getURL(dovIconImgPath);
+        // Adjusts the margin of the icon to the given number of pixels (3 to 5px is advisable)
+        ico.style.marginLeft = "3px";
+        ico.style.width = "16px";
+        ico.style.height = "16px";
+        viewLink.appendChild(ico);
+        // Disabled opening link in new tab by default.
+        chrome.storage.sync.get({
+            dovIconNewtab: false
+            }, function(items) {
+                if (items.dovIconNewtab) {
+                    viewLink.setAttribute("target", "_blank");
+                }
+        });
+        return viewLink;
+    },
+    get fileExtension () {
+        var fUrl = this._docLink.pathname;
+        fUrl=fUrl.toUpperCase();
+        // Returns file extension. Returns "" if no valid extension
+        // Ref: http://stackoverflow.com/a/1203361/3439460
+        return fUrl.substr((~-fUrl.lastIndexOf(".") >>> 0) + 2);
+    },
+    get queryStripped() {
+        // remove any ?query in the URL     
+        return `${this._docLink.protocol}${'//'}${this._docLink.hostname}${this._docLink.pathname}`;
+    }
+
+}
 
 
 function checkLinks()
 {
-	var supportedFileFormat=0;
 	for (var i = 0; i < docLinks.length; ++i) 
 	{
-		supportedFileFormat=0;
-		if (!((docLinks[i].host).match(dov_host_exclude)) && !((docLinks[i].href).match(dov_href_exclude)) && !docLinks[i].docView){
-			for (var i2 = 0; i2 < fileTypes1.length; i2++) {
-				var url = stripQuery(docLinks[i]);
-				url=url.toLowerCase();
-				if (endsWith(url, '.' + fileTypes1[i2]))
-				{
-				   changeLink(docLinks[i], 1, fileTypes1[i2]);
-				   break;
-				}
-			}
-       }
+        var thisDocLink = new DocLink(docLinks[i]);
+		if ( thisDocLink.isSupported && !thisDocLink.isProcessed) {
+            // Append the icon beside the link
+            docLinks[i].parentNode.insertBefore(thisDocLink.iconLink , docLinks[i].nextSibling);
+        }
     // The link which is checked is flagged so that it is not repeatedly checked again.
 	docLinks[i].docView=true;
    }
-// console.log("...............................................................................");
-}
-
-
-function stripQuery(link) 
-{	// remove any ?query in the URL	    
-	return link.protocol + '//' + link.hostname + link.pathname; 
-}
-
-
-function endsWith(str, suffix) 
-{  //  check if string has suffix 
-	return str.indexOf(suffix, str.length - suffix.length) !== -1;
-}
-
-function changeLink(link, fileTypeCategory, fileExtension) { 
-	var viewLink = document.createElement('a');
-	if(fileTypeCategory == 1){
-		viewLink.href = "https://docs.google.com/viewer?url="+encodeURI(stripQuery(link))+"&embedded=false&chrome=false&dov=1";
-		/*
-			Parameter description:
-				embedded= <true> or <false>
-					This is a standard google docs parameter
-					true: It opens the document in embedded mode
-					false: It opens the document in standard mode
-				dov=1
-					This is a custom parameter added by the script to tell that this URL is opened by Docs Online Viewer.
-		*/
-	}
-	//viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
-	viewLink.title="View this \""+fileExtension+"\" file";
-	var ico = document.createElement("img");
-	ico.src =  chrome.extension.getURL("images/beside-link-icon.png");
-	// Adjusts the margin of the icon to the given number of pixels (3 to 5px is advisable)
-	ico.style.marginLeft = "3px";
-	ico.style.width = "16px";
-	ico.style.height = "16px";
-	viewLink.appendChild(ico);
-	// Disabled opening link in new tab by default.
-    chrome.storage.sync.get({
-        dovIconNewtab: false
-        }, function(items) {
-            if (items.dovIconNewtab) {
-                viewLink.setAttribute("target", "_blank");
-            }
-    });
-    // Append the icon beside the link
-	link.parentNode.insertBefore(viewLink , link.nextSibling);
 }
 
 

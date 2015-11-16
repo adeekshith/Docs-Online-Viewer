@@ -58,7 +58,7 @@ function getVar(name)
 }
 
 
-if(getVar('dov')==1) {
+if(Number.isNaN(getVar('dov')) === false) { // 'dov' url param should be a number
 	// This block is entered only if the link is opened by Docs Online Viewer
 	create_help_button();
 }
