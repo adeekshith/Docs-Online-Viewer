@@ -11,7 +11,7 @@
 
 (function(){
 var docLinks = document.links;
-const fileTypes1 = ["doc","pdf","docx","xls","xlsx","ppt","pps","pptx","eps","ps","tif","tiff","ai","psd","pages","dxf","ttf","xps","odt","odp","rtf","csv","ods","wpd","sxi","sxc","sxw"];
+const supportedFileExtList = ["doc","pdf","docx","xls","xlsx","ppt","pps","pptx","eps","ps","tif","tiff","ai","psd","pages","dxf","ttf","xps","odt","odp","rtf","csv","ods","wpd","sxi","sxc","sxw"];
 var doCheck = true;
 const dov_host_exclude =/(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/
 // Include paths to exclude showing icon
@@ -24,7 +24,7 @@ var DocLink = function (docLink) {
 };
 DocLink.prototype = {
     get hasSupportedExtension () {
-        return fileTypes1.some( thisFileType => {
+        return supportedFileExtList.some( thisFileType => {
             var url = this._docLink.pathname.toLowerCase();
             if (url.endsWith('.' + thisFileType))
                 return true;
