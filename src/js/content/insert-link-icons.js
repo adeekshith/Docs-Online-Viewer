@@ -34,7 +34,7 @@ DocLink.prototype = {
         return (!((this._docLink.host).match(dov_host_exclude)) 
             && !((this._docLink.href).match(dov_href_exclude)) 
             && this.hasSupportedExtension
-            && this._docLink.innerText.length > 0); // Issue #6: No blank innerText
+            && this._docLink.textContent.trim().length); // Issue #6: No blank innerText
     },
     get isProcessed () {
         return this._docLink.docView;
@@ -57,13 +57,7 @@ DocLink.prototype = {
         ico.style.height = "16px";
         viewLink.appendChild(ico);
         // Disabled opening link in new tab by default.
-        chrome.storage.sync.get({
-            dovIconNewtab: false
-            }, function(items) {
-                if (items.dovIconNewtab) {
-                    viewLink.setAttribute("target", "_blank");
-                }
-        });
+        // viewLink.setAttribute("target", "_blank");
         return viewLink;
     },
     get fileExtension () {
@@ -83,28 +77,28 @@ DocLink.prototype = {
 
 function checkLinks()
 {
-	for (var i = 0; i < docLinks.length; ++i) 
-	{
+    for (var i = 0; i < docLinks.length; ++i) 
+    {
         var thisDocLink = new DocLink(docLinks[i]);
-		if ( thisDocLink.isSupported && !thisDocLink.isProcessed) {
+        if ( thisDocLink.isSupported && !thisDocLink.isProcessed) {
             // Append the icon beside the link
             docLinks[i].parentNode.insertBefore(thisDocLink.iconLink , docLinks[i].nextSibling);
         }
     // The link which is checked is flagged so that it is not repeatedly checked again.
-	docLinks[i].docView=true;
+    docLinks[i].docView=true;
    }
 }
 
 
 function setupListener()
 {
-	document.addEventListener('DOMNodeInserted',function(e)
-	{
-		if (doCheck)
-		{
-			doCheck = false;
-			setTimeout(function(){checkLinks();doCheck = true;}, 1000);
-		} 
+    document.addEventListener('DOMNodeInserted',function(e)
+    {
+        if (doCheck)
+        {
+            doCheck = false;
+            setTimeout(function(){checkLinks();doCheck = true;}, 1000);
+        } 
   },false);
 }
 
