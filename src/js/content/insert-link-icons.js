@@ -34,7 +34,7 @@ DocLink.prototype = {
         return (!((this._docLink.host).match(dov_host_exclude)) 
             && !((this._docLink.href).match(dov_href_exclude)) 
             && this.hasSupportedExtension
-            && this._docLink.innerText.length > 0); // Issue #6: No blank innerText
+            && this._docLink.textContent.trim().length); // Issue #6: No blank innerText
     },
     get isProcessed () {
         return this._docLink.docView;
