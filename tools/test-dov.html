@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Docs Online Viewer Test Page</title>
+  <meta name="description" content="Links and other use cases to test Docs Online Viewer browser extension.">
+  <meta name="author" content="Deekshith Allamaneni">
+
+</head>
+
+<body>
+  <header>
+  		<h1>Docs Online Viewer Test Page</h1>
+  </header>
+  <p>
+  	View this page with Docs Online Viewer installed. All the below test cases should be satisfied for proper functioning of the extension.
+  </p>
+  <article>
+  	<header>
+  		<h2>A. Icon beside each link</h2>
+  	</header>
+  	<p>
+  		DOV link icon should be shown to the right of each link
+  		<ol>
+  			<li>
+  				<a href="http://docs.oracle.com/javase/specs/jls/se8/jls8.pdf">Sample PDF Link</a>
+  			</li>
+  			<li>
+  				<a href="http://www.snee.com/xml/xslt/sample.doc">Sample .doc link</a>
+  			</li>
+  		</ol>
+  	</p>
+  </article>
+
+  <article>
+  	<header>
+  		<h2>B. No icon beside link</h2>
+  	</header>
+  	<p>
+  		DOV link icon should NOT be shown to the right of these link(s)
+  		<ol>
+  			<li>
+  				<a href="https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf">Github blob</a>
+  			</li>
+  			<li>
+  				<a href="file:///Users/deekshith/test.pdf">File URL</a>
+  			</li>
+  			<li>
+  				No Inner HTML<a href="http://www.snee.com/xml/xslt/sample.doc"></a>
+  			</li>
+  		</ol>
+  	</p>
+  </article>
+</body>
+</html>
