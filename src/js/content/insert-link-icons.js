@@ -36,7 +36,7 @@ DocLink.prototype = {
         return (!((this._docLink.host).match(dov_host_exclude))
             && !((this._docLink.href).match(dov_href_exclude))
             && this.hasSupportedExtension
-            && this._docLink.textContent.trim().length > 0); // Issue #6: No blank innerText
+            && this._docLink.innerText.trim().length > 0); // GitHub Issue #6: No blank innerText. Does not work on Firefox
     },
     get isProcessed () {
         return this._docLink.docView;
