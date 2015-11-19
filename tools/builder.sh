@@ -24,9 +24,11 @@ done
 
 # Compress JS files
 # NOTE: uglifyjs 2 should be installed for this to work
-for f in $(find ../build/uncompressed -name '*.js'); do
-	uglifyjs $f -o $f -c
-done
+# uglifyjs is not yet compatible with ES6
+# Disabled compression
+# for f in $(find ../build/uncompressed -name '*.js'); do
+# 	uglifyjs $f -o $f -c
+# done
 
 # Zip all source files
 cd ../build/uncompressed
