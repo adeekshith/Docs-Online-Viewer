@@ -24,9 +24,7 @@ function create_help_button() {
         }, false);
         document.body.appendChild(help);
     }
-};
-
-
+}
 function getVar(name) {
     get_string = document.location.search;
     return_value = '';
