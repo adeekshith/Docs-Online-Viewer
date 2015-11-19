@@ -20,23 +20,21 @@ var dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*|file:\/\/\/.*)/;
 var dovIconImgPath = "images/beside-link-icon.png";
 
 
-var DocLink = function (docLink) {
-    this._docLink = docLink;
+var DocLink = function (docLink_param) {
+    this._docLink = docLink_param;
 };
 DocLink.prototype = {
     get hasSupportedExtension () {
         var thisLocalDocLink = this._docLink;
         return supportedFileExtList.some( function(thisFileType) {
             var url = thisLocalDocLink.pathname.toLowerCase();
-            if (url.endsWith('.' + thisFileType))
+            if (url.endsWith('.' + thisFileType)) {
                 return true;
+            }
         });
     },
     get isSupported () {
-        return (!((this._docLink.host).match(dov_host_exclude))
-            && !((this._docLink.href).match(dov_href_exclude))
-            && this.hasSupportedExtension
-            && this._docLink.innerText.trim().length > 0); // GitHub Issue #6: No blank innerText. Does not work on Firefox
+        return (!((this._docLink.host).match(dov_host_exclude)) && !((this._docLink.href).match(dov_href_exclude)) && this.hasSupportedExtension && this._docLink.innerText.trim().length > 0); // GitHub Issue #6: No blank innerText. Does not work on Firefox
     },
     get isProcessed () {
         return this._docLink.docView;
