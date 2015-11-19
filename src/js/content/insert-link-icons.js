@@ -9,109 +9,108 @@
  */
 
 
-(function(){
-// "use strict";
-var docLinks = document.links;
-var supportedFileExtList = ["doc","pdf","docx","xls","xlsx","ppt","pps","pptx","eps","ps","tif","tiff","ai","psd","pages","dxf","ttf","xps","odt","odp","rtf","csv","ods","wpd","sxi","sxc","sxw"];
-var doCheck = true;
-var dov_host_exclude =/(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;
-// Include paths to exclude showing icon
-var dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*|file:\/\/\/.*)/;
-var dovIconImgPath = "images/beside-link-icon.png";
+(function () {
+    // "use strict";
+    var docLinks = document.links;
+    var supportedFileExtList = ["doc", "pdf", "docx", "xls", "xlsx", "ppt", "pps", "pptx", "eps", "ps", "tif", "tiff", "ai", "psd", "pages", "dxf", "ttf", "xps", "odt", "odp", "rtf", "csv", "ods", "wpd", "sxi", "sxc", "sxw"];
+    var doCheck = true;
+    var dov_host_exclude = /(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;
+    // Include paths to exclude showing icon
+    var dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*|file:\/\/\/.*)/;
+    var dovIconImgPath = "images/beside-link-icon.png";
 
 
-var DocLink = function (docLink_param) {
-    this._docLink = docLink_param;
-};
-DocLink.prototype = {
-    get hasSupportedExtension () {
-        var thisLocalDocLink = this._docLink;
-        return supportedFileExtList.some( function(thisFileType) {
-            var url = thisLocalDocLink.pathname.toLowerCase();
-            var thisFileTypeWithDot = "."+thisFileType;
-            if (((url.length - url.lastIndexOf(thisFileTypeWithDot))-thisFileTypeWithDot.length) === 0) {
-                return true;
-            }
-        });
-    },
-    get isSupported () {
-        return (!((this._docLink.host).match(dov_host_exclude)) && !((this._docLink.href).match(dov_href_exclude)) && this.hasSupportedExtension && this._docLink.innerText.trim().length > 0); // GitHub Issue #6: No blank innerText. Does not work on Firefox
-    },
-    get isProcessed () {
-        return this._docLink.docView;
-    },
-    get iconLink () {
-        var viewLink = document.createElement('a');
-        viewLink.href = "https://docs.google.com/viewer?url="+encodeURI(this.queryStripped)+"&embedded=false&chrome=false&dov=1";
-        /*
-            Parameter description:
-                embedded= <true>: to open google docs in embedded mode
-                dov=1: If opened by Docs Online Viewer. Set by this script.
-        */
-        //viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
-        viewLink.title="View this "+this.fileExtension+" file";
-        var ico = document.createElement("img");
-        ico.src =  chrome.extension.getURL(dovIconImgPath);
-        // Adjusts the margin of the icon to the given number of pixels (3 to 5px is advisable)
-        ico.style.marginLeft = "3px";
-        ico.style.width = "16px";
-        ico.style.height = "16px";
-        viewLink.appendChild(ico);
-        // Disabled opening link in new tab by default.
-        chrome.storage.sync.get({
-            dovIconNewtab: false
-            }, function(items) {
+    var DocLink = function (docLink_param) {
+        this._docLink = docLink_param;
+    };
+    DocLink.prototype = {
+        get hasSupportedExtension() {
+            var thisLocalDocLink = this._docLink;
+            return supportedFileExtList.some(function (thisFileType) {
+                var url = thisLocalDocLink.pathname.toLowerCase();
+                var thisFileTypeWithDot = "." + thisFileType;
+                if (((url.length - url.lastIndexOf(thisFileTypeWithDot)) - thisFileTypeWithDot.length) === 0) {
+                    return true;
+                }
+            });
+        },
+        get isSupported() {
+            return (!((this._docLink.host).match(dov_host_exclude)) && !((this._docLink.href).match(dov_href_exclude)) && this.hasSupportedExtension && this._docLink.innerText.trim().length > 0); // GitHub Issue #6: No blank innerText. Does not work on Firefox
+        },
+        get isProcessed() {
+            return this._docLink.docView;
+        },
+        get iconLink() {
+            var viewLink = document.createElement('a');
+            viewLink.href = "https://docs.google.com/viewer?url=" + encodeURI(this.queryStripped) + "&embedded=false&chrome=false&dov=1";
+            /*
+             Parameter description:
+             embedded= <true>: to open google docs in embedded mode
+             dov=1: If opened by Docs Online Viewer. Set by this script.
+             */
+            //viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
+            viewLink.title = "View this " + this.fileExtension + " file";
+            var ico = document.createElement("img");
+            ico.src = chrome.extension.getURL(dovIconImgPath);
+            // Adjusts the margin of the icon to the given number of pixels (3 to 5px is advisable)
+            ico.style.marginLeft = "3px";
+            ico.style.width = "16px";
+            ico.style.height = "16px";
+            viewLink.appendChild(ico);
+            // Disabled opening link in new tab by default.
+            chrome.storage.sync.get({
+                dovIconNewtab: false
+            }, function (items) {
                 if (items.dovIconNewtab) {
                     viewLink.setAttribute("target", "_blank");
                 }
-        });
-        return viewLink;
-    },
-    get fileExtension () {
-        var fUrl = this._docLink.pathname;
-        fUrl=fUrl.toUpperCase();
-        // Returns file extension. Returns "" if no valid extension
-        // Ref: http://stackoverflow.com/a/1203361/3439460
-        return fUrl.substr((~-fUrl.lastIndexOf(".") >>> 0) + 2);
-    },
-    get queryStripped() {
-        // remove any ?query in the URL
-        return this._docLink.protocol+"//"+this._docLink.hostname+this._docLink.pathname;
+            });
+            return viewLink;
+        },
+        get fileExtension() {
+            var fUrl = this._docLink.pathname;
+            fUrl = fUrl.toUpperCase();
+            // Returns file extension. Returns "" if no valid extension
+            // Ref: http://stackoverflow.com/a/1203361/3439460
+            return fUrl.substr((~-fUrl.lastIndexOf(".") >>> 0) + 2);
+        },
+        get queryStripped() {
+            // remove any ?query in the URL
+            return this._docLink.protocol + "//" + this._docLink.hostname + this._docLink.pathname;
+        }
+
+    };
+
+
+    function checkLinks() {
+        for (var i = 0; i < docLinks.length; ++i) {
+            var thisDocLink = new DocLink(docLinks[i]);
+            if (thisDocLink.isSupported && !thisDocLink.isProcessed) {
+                // Append the icon beside the link
+                docLinks[i].parentNode.insertBefore(thisDocLink.iconLink, docLinks[i].nextSibling);
+            }
+            // The link which is checked is flagged so that it is not repeatedly checked again.
+            docLinks[i].docView = true;
+        }
     }
 
-};
 
-
-function checkLinks()
-{
-    for (var i = 0; i < docLinks.length; ++i) {
-        var thisDocLink = new DocLink(docLinks[i]);
-        if ( thisDocLink.isSupported && !thisDocLink.isProcessed) {
-            // Append the icon beside the link
-            docLinks[i].parentNode.insertBefore(thisDocLink.iconLink , docLinks[i].nextSibling);
-        }
-    // The link which is checked is flagged so that it is not repeatedly checked again.
-    docLinks[i].docView=true;
-   }
-}
-
-
-function setupListener()
-{
-    document.addEventListener('DOMNodeInserted',function(e)
-    {
-        if (doCheck)
-        {
-            doCheck = false;
-            setTimeout(function(){checkLinks();doCheck = true;}, 1000);
-        }
-    },false);
-}
+    function setupListener() {
+        document.addEventListener('DOMNodeInserted', function (e) {
+            if (doCheck) {
+                doCheck = false;
+                setTimeout(function () {
+                    checkLinks();
+                    doCheck = true;
+                }, 1000);
+            }
+        }, false);
+    }
 
 // Execute these functions
 // to append icon beside document links and
 // add listener for new nodes
-checkLinks();
-setupListener();
+    checkLinks();
+    setupListener();
 
 })();
