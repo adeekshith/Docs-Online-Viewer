@@ -1,19 +1,24 @@
 {
-  "name": "Docs Online Viewer",
-  "version": "5.5.3",
   "manifest_version": 2,
-  "description": "Open documents and files online directly in your browser using online services like Google Docs Viewer, etc.",
-  "homepage_url": "http://www.deekshith.in/p/docs-online-viewer.html",
-  "icons": {
-    "32": "images/brand/dov-brand-32.png",
-    "48": "images/brand/dov-brand-48.png",
-    "64": "images/brand/dov-brand-64.png"
-  },
+  "name": "Docs Online Viewer",
+  "short_name": "DOV",
+  "version": "5.5.3",
   "applications": {
     "gecko": {
       "id": "{bfb54675-2fd9-4e22-949d-c36333aff6b5}"
     }
   },
+
+  "default_locale": "en",
+  "description": "Open files online directly in your browser using online services like Google Docs Viewer without need for any additional software.",
+  "icons": {
+    "32": "images/brand/dov-brand-32.png",
+    "48": "images/brand/dov-brand-48.png",
+    "64": "images/brand/dov-brand-64.png"
+  },
+
+  "author": "Deekshith Allamaneni",
+  "homepage_url": "http://www.deekshith.in/p/docs-online-viewer.html",
   "options_ui": {
     "page": "html/options.html",
     "chrome_style": true
@@ -39,6 +44,5 @@
   ],
   "permissions": [
     "storage"
-  ],
-  "default_locale": "en"
+  ]
 }
