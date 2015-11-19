@@ -10,7 +10,7 @@
 
 
 (function(){
-"use strict";
+// "use strict";
 var docLinks = document.links;
 var supportedFileExtList = ["doc","pdf","docx","xls","xlsx","ppt","pps","pptx","eps","ps","tif","tiff","ai","psd","pages","dxf","ttf","xps","odt","odp","rtf","csv","ods","wpd","sxi","sxc","sxw"];
 var doCheck = true;
@@ -28,7 +28,8 @@ DocLink.prototype = {
         var thisLocalDocLink = this._docLink;
         return supportedFileExtList.some( function(thisFileType) {
             var url = thisLocalDocLink.pathname.toLowerCase();
-            if (url.endsWith('.' + thisFileType)) {
+            var thisFileTypeWithDot = "."+thisFileType;
+            if (((url.length - url.lastIndexOf(thisFileTypeWithDot))-thisFileTypeWithDot.length) === 0) {
                 return true;
             }
         });
