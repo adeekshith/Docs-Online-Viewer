@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Docs Online Viewer",
   "short_name": "DOV",
-  "version": "5.5.3",
+  "version": "5.5.5",
   "applications": {
     "gecko": {
       "id": "{bfb54675-2fd9-4e22-949d-c36333aff6b5}"
