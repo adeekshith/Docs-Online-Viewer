@@ -20,16 +20,23 @@
     var dovIconImgPath = "images/beside-link-icon.png";
 
 
+    function fileExtension(path) {
+        var fUrl = path;
+        fUrl = fUrl.toLowerCase();
+        // Returns file extension. Returns "" if no valid extension
+        // Ref: http://stackoverflow.com/a/1203361/3439460
+        return fUrl.substr((~-fUrl.lastIndexOf(".") >>> 0) + 2);
+    }
+
+
     var DocLink = function (docLink_param) {
         this._docLink = docLink_param;
     };
     DocLink.prototype = {
         get hasSupportedExtension() {
-            var thisLocalDocLink = this._docLink;
+            var thisPath = this._docLink.pathname;
             return supportedFileExtList.some(function (thisFileType) {
-                var url = thisLocalDocLink.pathname.toLowerCase();
-                var thisFileTypeWithDot = "." + thisFileType;
-                if (((url.length - url.lastIndexOf(thisFileTypeWithDot)) - thisFileTypeWithDot.length) === 0) {
+                if (thisFileType.toLowerCase() == fileExtension(thisPath)) {
                     return true;
                 }
             });
@@ -49,7 +56,7 @@
              dov=1: If opened by Docs Online Viewer. Set by this script.
              */
             //viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
-            viewLink.title = "View this " + this.fileExtension + " file";
+            viewLink.title = "View this " + fileExtension(this._docLink.pathname) + " file";
             var ico = document.createElement("img");
             ico.src = chrome.extension.getURL(dovIconImgPath);
             // Adjusts the margin of the icon to the given number of pixels (3 to 5px is advisable)
@@ -66,13 +73,6 @@
                 }
             });
             return viewLink;
-        },
-        get fileExtension() {
-            var fUrl = this._docLink.pathname;
-            fUrl = fUrl.toUpperCase();
-            // Returns file extension. Returns "" if no valid extension
-            // Ref: http://stackoverflow.com/a/1203361/3439460
-            return fUrl.substr((~-fUrl.lastIndexOf(".") >>> 0) + 2);
         },
         get queryStripped() {
             // remove any ?query in the URL
