@@ -2,8 +2,20 @@
 <html>
 <head>
   <title>My Test Extension Options</title>
+  <!--
+  <link rel="stylesheet" href="../css/bootstrap/3.3.5/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap/3.3.5/bootstrap-theme.min.css">
+  -->
   <style type="text/css">
     body: { padding: 10px; }
+    hr {
+      display: block;
+      height: 1px;
+      border: 0;
+      border-top: 1px solid #f6f6f6;
+      margin: 1em 0;
+      padding: 0;
+    }
   </style>
 </head>
 
@@ -11,12 +23,24 @@
 
   <label>
     <input type="checkbox" id="dov-icon-newtab">
-    Open documents in new tab.
+    Open documents in new tab on icon click.
+  </label>
+  <br/>
+  <hr>
+  <header>
+    <h3>Preferred service when supported</h3>
+  </header>
+  <label>
+    <input type="radio" name="preferred-service" value="dov-preferred-gdocs-all" id="dov-preferred-gdocs-all" checked> Google Docs
+    <input type="radio" name="preferred-service" value="dov-preferred-mso-all" id="dov-preferred-mso-all"> Microsoft Office Online
   </label>
   <div id="status"></div>
   <br/>
-  <button id="save">Save</button>
+  <button type="button" id="save">Save</button>
 
   <script type="text/javascript" src="../js/core/options.js"></script>
+  <!--
+  <script type="text/javascript" src="../js/lib/bootstrap/3.3.5/bootstrap.js"></script>
+  -->
 </body>
 </html>
