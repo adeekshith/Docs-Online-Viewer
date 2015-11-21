@@ -21,7 +21,7 @@
   "homepage_url": "http://www.deekshith.in/p/docs-online-viewer.html",
   "options_ui": {
     "page": "html/options.html",
-    "chrome_style": true
+    "chrome_style": false
   },
   "content_scripts": [
     {
