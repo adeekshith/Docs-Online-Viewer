@@ -4,6 +4,7 @@
     <title>Docs Online Viewer Options</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/bootstrap/3.3.5/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap/3.3.5/bootstrap-theme.min.css">
     <script type="text/javascript" src="../js/libs/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="../js/libs/bootstrap/3.3.5/bootstrap.min.js"></script>
 </head>
@@ -11,16 +12,43 @@
 
 <div class="container">
     <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-        <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+        <li class="active"><a data-toggle="tab" href="#home">General</a></li>
+        <li><a data-toggle="tab" href="#menu1">File Types</a></li>
         <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
         <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
     </ul>
 
     <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
-            <h3>HOME</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <form>
+                <fieldset>
+                    <legend>Icon Behavior</legend>
+                    <div class="row">
+                        <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label> <input type="checkbox" id="dov-icon-newtab"> Open documents in new tab on icon click.
+                            </label>
+                        </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <!--<hr>-->
+                <fieldset>
+                    <legend>Preferred Service</legend>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-default">
+                                    <input type="radio" id="q156" name="quality[25]" value="1" /> Google Docs Viewer
+                                </label>
+                                <label class="btn btn-default active">
+                                    <input type="radio" id="q160" name="quality[25]" checked="checked" value="5" /> Microsoft Office Online
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
         </div>
         <div id="menu1" class="tab-pane fade">
             <h3>Menu 1</h3>
@@ -35,6 +63,10 @@
             <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
         </div>
     </div>
+    <br/>
+    <input class="btn btn-default" type="submit">
+    <br/>
+    <br/>
 </div>
 
 </body>
