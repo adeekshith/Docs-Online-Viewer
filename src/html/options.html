@@ -21,18 +21,17 @@
 
     <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
-            <form>
-                <fieldset>
-                    <legend>Icon Behavior</legend>
-                    <label class="checkbox-inline"><input type="checkbox" value="">Open in new tab</label>
-                </fieldset>
-                <hr>
-                <fieldset>
-                    <legend>Preferred Service</legend>
-                    <label class="radio-inline"><input type="radio" name="optradio">Google Docs</label>
-                    <label class="radio-inline"><input type="radio" name="optradio">Microsoft Office Online</label>
-                </fieldset>
-            </form>
+            <fieldset>
+                <legend>Icon Behavior</legend>
+                <label class="checkbox-inline"><input type="checkbox" value="" id="pref-dov-icon-newtab">Open in new tab</label>
+            </fieldset>
+            <hr>
+            <fieldset>
+                <legend>Preferred Service</legend>
+                <label class="radio-inline"><input type="radio" name="glob-service-pref" id="pref-gdoc-global" checked>Google Docs</label>
+                <label class="radio-inline"><input type="radio" name="glob-service-pref" id="pref-mso-global">Microsoft Office Online</label>
+                <label class="radio-inline"><input type="radio" name="glob-service-pref" id="pref-mso-global2">rollApp</label>
+            </fieldset>
         </div>
         <div id="menu1" class="tab-pane fade">
             <fieldset>
@@ -42,49 +41,49 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-ai" value="">AI</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-csv" value="">CSV</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-doc" value="">DOC</label></td>
                         </tr>
                         <tr>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-docx" value="">DOCX</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-dxf" value="">DXF</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-eps" value="">EPS</label></td>
                         </tr>
                         <tr>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-odp" value="">ODP</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-ods" value="">ODS</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-odt" value="">ODT</label></td>
                         </tr>
                         <tr>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-pages" value="">PAGES</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-pdf" value="">PDF</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-pps" value="">PPS</label></td>
                         </tr>
                         <tr>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-ppt" value="">PPT</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-pptx" value="">PPTX</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-ps" value="">PS</label></td>
                         </tr>
                         <tr>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-psd" value="">PSD</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-rtf" value="">RTF</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-sxc" value="">SXC</label></td>
                         </tr>
                         <tr>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-sxi" value="">SXI</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-sxw" value="">SXW</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-tif" value="">TIF</label></td>
                         </tr>
                         <tr>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-tiff" value="">TIFF</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-ttf" value="">TTF</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-wpd" value="">WPD</label></td>
                         </tr>
                         <tr>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
-                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-xls" value="">XLS</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-xlsx" value="">XLSX</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" id="pref-enable-filetype-xps" value="">XPS</label></td>
                         </tr>
                         </tbody>
                     </table>
@@ -95,7 +94,7 @@
             <fieldset>
                 <legend>Choose to share</legend>
                 <label class="checkbox-inline"><input type="checkbox" value="">Allow collecting anonymous statistical data.
-                    <abbr title="We would only collect statistical information like which file extensions are mostly viewed using this extension, the maximum and average number of document links that appear on a webpage. None of your personally identifiable information is collected and uses minimum bandwith to share the information.">
+                    <abbr title="No personally identifiable information is collected and uses minimum bandwidth to share the information. Only statistical information like which file extensions are mostly viewed using this extension, the maximum and average number of document links that appear on a webpage is collected.">
                         <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
                     </abbr>
                 </label>
@@ -107,6 +106,7 @@
         </div>
     </div>
     <br/>
+    <div id="status"></div>
     <button class="btn btn-default" id="save">Save</button>
     <br/>
     <br/>
