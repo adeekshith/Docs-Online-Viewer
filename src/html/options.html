@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/bootstrap/3.3.5/bootstrap.min.css">
     <link rel="stylesheet" href="../css/bootstrap/3.3.5/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../css/options.css">
     <script type="text/javascript" src="../js/libs/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="../js/libs/bootstrap/3.3.5/bootstrap.min.js"></script>
 </head>
@@ -14,8 +15,8 @@
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#home">General</a></li>
         <li><a data-toggle="tab" href="#menu1">File Types</a></li>
-        <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-        <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+        <li><a data-toggle="tab" href="#menu2">Privacy</a></li>
+        <li><a data-toggle="tab" href="#menu3">About</a></li>
     </ul>
 
     <div class="tab-content">
@@ -23,40 +24,75 @@
             <form>
                 <fieldset>
                     <legend>Icon Behavior</legend>
-                    <div class="row">
-                        <div class="col-sm-12">
-                        <div class="checkbox">
-                            <label> <input type="checkbox" id="dov-icon-newtab"> Open documents in new tab on icon click.
-                            </label>
-                        </div>
-                        </div>
-                    </div>
+                    <label class="checkbox-inline"><input type="checkbox" value="">Open in new tab</label>
                 </fieldset>
-                <!--<hr>-->
+                <hr>
                 <fieldset>
                     <legend>Preferred Service</legend>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-default">
-                                    <input type="radio" id="q156" name="quality[25]" value="1" /> Google Docs Viewer
-                                </label>
-                                <label class="btn btn-default active">
-                                    <input type="radio" id="q160" name="quality[25]" checked="checked" value="5" /> Microsoft Office Online
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                    <label class="radio-inline"><input type="radio" name="optradio">Google Docs</label>
+                    <label class="radio-inline"><input type="radio" name="optradio">Microsoft Office Online</label>
                 </fieldset>
             </form>
         </div>
         <div id="menu1" class="tab-pane fade">
-            <h3>Menu 1</h3>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <fieldset>
+                <div>
+                    <table class="table borderless table-condensed">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                        </tr>
+                        <tr>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                        </tr>
+                        <tr>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                        </tr>
+                        <tr>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                        </tr>
+                        <tr>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                        </tr>
+                        <tr>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                        </tr>
+                        <tr>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                        </tr>
+                        <tr>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                        </tr>
+                        <tr>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                            <td><label class="checkbox-inline"><input type="checkbox" value="">Option</label></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
         </div>
         <div id="menu2" class="tab-pane fade">
-            <h3>Menu 2</h3>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+            <p>Share your data</p>
         </div>
         <div id="menu3" class="tab-pane fade">
             <h3>Menu 3</h3>
@@ -64,7 +100,7 @@
         </div>
     </div>
     <br/>
-    <input class="btn btn-default" type="submit">
+    <button class="btn btn-default" id="save">Save</button>
     <br/>
     <br/>
 </div>
