@@ -65,14 +65,9 @@ function main_content_script(thisUserConfig) {
             ico.style.width = "16px";
             ico.style.height = "16px";
             viewLink.appendChild(ico);
-            // Disabled opening link in new tab by default.
-            chrome.storage.sync.get({
-                dovIconNewtab: false
-            }, function (items) {
-                if (items.dovIconNewtab) {
-                    viewLink.setAttribute("target", "_blank");
-                }
-            });
+            if(thisUserConfig.isIconClickNewtab() === true) {
+                viewLink.setAttribute("target", "_blank");
+            }
             return viewLink;
         },
         get queryStripped() {
