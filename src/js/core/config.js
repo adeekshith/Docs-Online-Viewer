@@ -98,11 +98,22 @@ userConfig.prototype.isIconClickNewtab = function() {
     return this.userPreferencesJSON_.user_preferences.icon_beside_doc_links.newtab_on_click;
 };
 userConfig.prototype.isFiletypeEnabled = function (fileType) {
-    thisUserPrefJSON = this.userPreferencesJSON_;
+    var thisUserPrefJSON = this.userPreferencesJSON_;
     var thisFiletypeEnabled = thisUserPrefJSON.user_preferences.file_types.some( function (thisFileTypeObj) {
         if (thisFileTypeObj.extension === fileType) {
             return thisFileTypeObj.is_enabled;
         }
     });
     return thisFiletypeEnabled;
+};
+userConfig.prototype.setIconClickNewtab = function (userInput) {
+    if(typeof(userInput) === "boolean") {
+        this.userPreferencesJSON_.user_preferences.icon_beside_doc_links.newtab_on_click = userInput;
+        return true;
+    }else {
+        return false;
+    }
+};
+userConfig.prototype.getPreferences = function () {
+    return this.userPreferencesJSON_;
 };
