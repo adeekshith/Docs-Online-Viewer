@@ -1,8 +1,11 @@
 
 function flash_options_status(message, time) {
     var status = document.getElementById('status');
+    var saveButton = document.getElementById('dov_save');
+    saveButton.classList.add("disabled");
     status.textContent = message;
     setTimeout(function () {
+        saveButton.classList.remove("disabled");
         status.textContent = '';
     }, time);
 }
@@ -94,5 +97,5 @@ function restore_options() {
     });
 }
 document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('save').addEventListener('click',
+document.getElementById('dov_save').addEventListener('click',
     save_options);
