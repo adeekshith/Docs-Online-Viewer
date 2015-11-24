@@ -13,8 +13,8 @@ function save_options() {
     var thisUserPreferences = JSON.parse(userPrefJSON_default);
     var thisUserConfig = new userConfig(thisUserPreferences);
     // Loading General /  New tab option
-    thisUserPreferences.user_preferences.icon_beside_doc_links.newtab_on_click = document.getElementById('pref-dov-icon-newtab').checked;
-    var thisUserPreferencesStr = JSON.stringify(thisUserPreferences);
+    thisUserConfig.setIconClickNewtab(document.getElementById('pref-dov-icon-newtab').checked);
+    var thisUserPreferencesStr = JSON.stringify(thisUserConfig.getPreferences());
     chrome.storage.sync.set({
         user_config:thisUserPreferencesStr
     }, function () {
