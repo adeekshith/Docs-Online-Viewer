@@ -8,7 +8,7 @@ const userPrefJSON_default =
         "application" : {                                                                                   \
             "name" : "Docs Online Viewer",                                                                  \
             "app_id" : "docs-online-viewer@deekshith.in",                                                   \
-            "version" : "v5.5.6"                                                                            \
+            "version" : "v6.1.0"                                                                            \
         },                                                                                                  \
         "user_preferences" : {                                                                              \
             "version" : "0.1",                                                                              \
@@ -18,33 +18,33 @@ const userPrefJSON_default =
                 "newtab_on_click" : false                                                                   \
             },                                                                                              \
             "file_types" : [                                                                                \
-                {"extension" : "ai",    "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "csv",   "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "doc",   "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "docx",  "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "dxf",   "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "eps",   "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "odp",   "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "ods",   "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "odt",   "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "pages", "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "pdf",   "enabled" : false, "preferred_service" : "google_docs"},            \
-                {"extension" : "pps",   "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "ppt",   "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "pptx",  "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "ps",    "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "psd",   "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "rtf",   "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "sxc",   "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "sxi",   "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "sxw",   "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "tif",   "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "tiff",  "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "ttf",   "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "wpd",   "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "xls",   "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "xlsx",  "enabled" : true,  "preferred_service" : "google_docs"},            \
-                {"extension" : "xps",   "enabled" : true,  "preferred_service" : "google_docs"}             \
+                {"extension" : "ai",    "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "csv",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "doc",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "docx",  "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "dxf",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "eps",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "odp",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "ods",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "odt",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "pages", "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "pdf",   "is_enabled" : false, "preferred_service" : "google_docs"},         \
+                {"extension" : "pps",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "ppt",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "pptx",  "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "ps",    "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "psd",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "rtf",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "sxc",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "sxi",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "sxw",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "tif",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "tiff",  "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "ttf",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "wpd",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "xls",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "xlsx",  "is_enabled" : true,  "preferred_service" : "google_docs"},         \
+                {"extension" : "xps",   "is_enabled" : true,  "preferred_service" : "google_docs"}          \
             ],                                                                                              \
             "privacy" : {                                                                                   \
                 "collect_stats" : false                                                                     \
@@ -58,7 +58,7 @@ const coreInfoJSON =
         "application" : {                                                                                                       \
             "name" : "Docs Online Viewer",                                                                                      \
             "app_id" : "docs-online-viewer@deekshith.in",                                                                       \
-            "version" : "v5.5.6"                                                                                                \
+            "version" : "v6.1.0"                                                                                                \
         },                                                                                                                      \
         "data" : {                                                                                                              \
             "version" : 0.1,                                                                                                    \
@@ -67,7 +67,9 @@ const coreInfoJSON =
                     "name" : "Google Docs",                                                                                     \
                     "id" : "google_docs",                                                                                       \
                     "is_supported" : true,                                                                                      \
-                    "file_extensions" : ["ai", "csv", "doc", "docx", "dxf", "eps", "odp", "ods", "odt", "pages", "pdf", "pps", "ppt", "pptx", "ps", "psd", "rtf", "sxc", "sxi", "sxw", "tif", "tiff", "ttf", "wpd", "xls", "xlsx", "xps"],\
+                    "file_extensions" : ["ai", "csv", "doc", "docx", "dxf", "eps", "odp", "ods", "odt",                         \
+                                         "pages", "pdf", "pps", "ppt", "pptx", "ps", "psd", "rtf", "sxc",                       \
+                                         "sxi", "sxw", "tif", "tiff", "ttf", "wpd", "xls", "xlsx", "xps"],                      \
                     "file_open_API" : "https://docs.google.com/viewer?url={$file_url}&embedded=false&chrome=false&dov=1"        \
                 },                                                                                                              \
                 {                                                                                                               \
