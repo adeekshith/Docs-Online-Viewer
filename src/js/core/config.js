@@ -3,7 +3,7 @@
  */
 
 
-var userPrefJSON_default =
+const userPrefJSON_default =
     '{                                                                                                      \
         "application" : {                                                                                   \
             "name" : "Docs Online Viewer",                                                                  \
