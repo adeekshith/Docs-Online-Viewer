@@ -12,10 +12,11 @@ chrome.storage.sync.get({
     user_config: userPrefJSON_default
 }, function (items) {
     var thisUserPreferences = JSON.parse(items.user_config);
-    main_content_script(thisUserPreferences);
+    var thisUserConfig = new userConfig(thisUserPreferences);
+    main_content_script(thisUserConfig);
 });
 
-function main_content_script(thisUserPreferences) {
+function main_content_script(thisUserConfig) {
     // "use strict";
     var docLinks = document.links;
     var doCheck = true;
@@ -39,9 +40,7 @@ function main_content_script(thisUserPreferences) {
     };
     DocLink.prototype = {
         get hasSupportedExtension() {
-            var thisPath = this._docLink.pathname;
-            var thisUserConfig = new userConfig(thisUserPreferences);
-            return thisUserConfig.isFiletypeEnabled(fileExtension(thisPath));
+            return thisUserConfig.isFiletypeEnabled(fileExtension(this._docLink.pathname));
         },
         get isSupported() {
             return (!((this._docLink.host).match(dov_host_exclude)) && !((this._docLink.href).match(dov_href_exclude)) && this.hasSupportedExtension && this._docLink.innerText.trim().length > 0); // GitHub Issue #6: No blank innerText. Does not work on Firefox
