@@ -97,6 +97,14 @@ function userConfig (userPreferencesJSON) {
 userConfig.prototype.isIconClickNewtab = function() {
     return this.userPreferencesJSON_.user_preferences.icon_beside_doc_links.newtab_on_click;
 };
+userConfig.prototype.setIconClickNewtab = function (userInput) {
+    if(typeof(userInput) === "boolean") {
+        this.userPreferencesJSON_.user_preferences.icon_beside_doc_links.newtab_on_click = userInput;
+        return true;
+    }else {
+        return false;
+    }
+};
 userConfig.prototype.isFiletypeEnabled = function (fileType) {
     var thisUserPrefJSON = this.userPreferencesJSON_;
     var thisFiletypeEnabled = thisUserPrefJSON.user_preferences.file_types.some( function (thisFileTypeObj) {
@@ -106,10 +114,18 @@ userConfig.prototype.isFiletypeEnabled = function (fileType) {
     });
     return thisFiletypeEnabled;
 };
-userConfig.prototype.setIconClickNewtab = function (userInput) {
+userConfig.prototype.setFiletypeEnable = function (fileType, userInput) {
+    var thisUserPrefJSON = this.userPreferencesJSON_;
     if(typeof(userInput) === "boolean") {
-        this.userPreferencesJSON_.user_preferences.icon_beside_doc_links.newtab_on_click = userInput;
-        return true;
+        var indexFiletype = 0;
+        thisUserPrefJSON.user_preferences.file_types.some( function (thisFileTypeObj) {
+            if (thisFileTypeObj.extension === fileType) {
+                thisUserPrefJSON.user_preferences.file_types[indexFiletype].is_enabled = userInput;
+                return thisFileTypeObj.is_enabled;
+            }
+            indexFiletype += 1;
+        });
+        this.userPreferencesJSON_ = thisUserPrefJSON;
     }else {
         return false;
     }

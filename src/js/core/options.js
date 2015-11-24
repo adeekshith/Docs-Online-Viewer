@@ -12,8 +12,36 @@ function flash_options_status(message, time) {
 function save_options() {
     var thisUserPreferences = JSON.parse(userPrefJSON_default);
     var thisUserConfig = new userConfig(thisUserPreferences);
-    // Loading General /  New tab option
+    // Setting Options / General new tab preference.
     thisUserConfig.setIconClickNewtab(document.getElementById('pref-dov-icon-newtab').checked);
+    // Setting Options / Filetype preferences
+    thisUserConfig.setFiletypeEnable("ai", document.getElementById('pref-filetype-enable-ai').checked);
+    thisUserConfig.setFiletypeEnable("csv", document.getElementById('pref-filetype-enable-csv').checked);
+    thisUserConfig.setFiletypeEnable("doc", document.getElementById('pref-filetype-enable-doc').checked);
+    thisUserConfig.setFiletypeEnable("docx", document.getElementById('pref-filetype-enable-docx').checked);
+    thisUserConfig.setFiletypeEnable("dxf", document.getElementById('pref-filetype-enable-dxf').checked);
+    thisUserConfig.setFiletypeEnable("eps", document.getElementById('pref-filetype-enable-eps').checked);
+    thisUserConfig.setFiletypeEnable("odp", document.getElementById('pref-filetype-enable-odp').checked);
+    thisUserConfig.setFiletypeEnable("ods", document.getElementById('pref-filetype-enable-ods').checked);
+    thisUserConfig.setFiletypeEnable("odt", document.getElementById('pref-filetype-enable-odt').checked);
+    thisUserConfig.setFiletypeEnable("pages", document.getElementById('pref-filetype-enable-pages').checked);
+    thisUserConfig.setFiletypeEnable("pdf", document.getElementById('pref-filetype-enable-pdf').checked);
+    thisUserConfig.setFiletypeEnable("pps", document.getElementById('pref-filetype-enable-pps').checked);
+    thisUserConfig.setFiletypeEnable("ppt", document.getElementById('pref-filetype-enable-ppt').checked);
+    thisUserConfig.setFiletypeEnable("pptx", document.getElementById('pref-filetype-enable-pptx').checked);
+    thisUserConfig.setFiletypeEnable("ps", document.getElementById('pref-filetype-enable-ps').checked);
+    thisUserConfig.setFiletypeEnable("psd", document.getElementById('pref-filetype-enable-psd').checked);
+    thisUserConfig.setFiletypeEnable("rtf", document.getElementById('pref-filetype-enable-rtf').checked);
+    thisUserConfig.setFiletypeEnable("sxc", document.getElementById('pref-filetype-enable-sxc').checked);
+    thisUserConfig.setFiletypeEnable("sxi", document.getElementById('pref-filetype-enable-sxi').checked);
+    thisUserConfig.setFiletypeEnable("sxw", document.getElementById('pref-filetype-enable-sxw').checked);
+    thisUserConfig.setFiletypeEnable("tif", document.getElementById('pref-filetype-enable-tif').checked);
+    thisUserConfig.setFiletypeEnable("tiff", document.getElementById('pref-filetype-enable-tiff').checked);
+    thisUserConfig.setFiletypeEnable("ttf", document.getElementById('pref-filetype-enable-ttf').checked);
+    thisUserConfig.setFiletypeEnable("wpd", document.getElementById('pref-filetype-enable-wpd').checked);
+    thisUserConfig.setFiletypeEnable("xls", document.getElementById('pref-filetype-enable-xls').checked);
+    thisUserConfig.setFiletypeEnable("xlsx", document.getElementById('pref-filetype-enable-xlsx').checked);
+    thisUserConfig.setFiletypeEnable("xps", document.getElementById('pref-filetype-enable-xps').checked);
     var thisUserPreferencesStr = JSON.stringify(thisUserConfig.getPreferences());
     chrome.storage.sync.set({
         user_config:thisUserPreferencesStr
