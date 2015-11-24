@@ -8,8 +8,14 @@
  * @copyright 2015 Docs Online Viewer
  */
 
+chrome.storage.sync.get({
+    user_config: userPrefJSON_default
+}, function (items) {
+    var thisUserPreferences = JSON.parse(items.user_config);
+    main_content_script(thisUserPreferences);
+});
 
-(function () {
+function main_content_script(thisUserPreferences) {
     // "use strict";
     var docLinks = document.links;
     var doCheck = true;
@@ -34,7 +40,6 @@
     DocLink.prototype = {
         get hasSupportedExtension() {
             var thisPath = this._docLink.pathname;
-            var thisUserPreferences = JSON.parse(userPrefJSON_default);
             var thisUserConfig = new userConfig(thisUserPreferences);
             return thisUserConfig.isFiletypeEnabled(fileExtension(thisPath));
         },
@@ -110,4 +115,4 @@
     checkLinks();
     setupListener();
 
-})();
+}
