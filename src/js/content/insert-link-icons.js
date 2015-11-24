@@ -12,7 +12,6 @@
 (function () {
     // "use strict";
     var docLinks = document.links;
-    var supportedFileExtList = ["doc", "pdf", "docx", "xls", "xlsx", "ppt", "pps", "pptx", "eps", "ps", "tif", "tiff", "ai", "psd", "pages", "dxf", "ttf", "xps", "odt", "odp", "rtf", "csv", "ods", "wpd", "sxi", "sxc", "sxw"];
     var doCheck = true;
     var dov_host_exclude = /(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;
     // Include paths to exclude showing icon
@@ -35,11 +34,9 @@
     DocLink.prototype = {
         get hasSupportedExtension() {
             var thisPath = this._docLink.pathname;
-            return supportedFileExtList.some(function (thisFileType) {
-                if (thisFileType.toLowerCase() == fileExtension(thisPath)) {
-                    return true;
-                }
-            });
+            var thisUserPreferences = JSON.parse(userPrefJSON_default);
+            var thisUserConfig = new userConfig(thisUserPreferences);
+            return thisUserConfig.isFiletypeEnabled(fileExtension(thisPath));
         },
         get isSupported() {
             return (!((this._docLink.host).match(dov_host_exclude)) && !((this._docLink.href).match(dov_href_exclude)) && this.hasSupportedExtension && this._docLink.innerText.trim().length > 0); // GitHub Issue #6: No blank innerText. Does not work on Firefox

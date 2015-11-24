@@ -32,7 +32,7 @@
                           "*://mail.google.com/*",
                           "*://docs.google.com/*",
                           "*://www.mediafire.com/*"],
-      "js": ["js/content/insert-link-icons.js"]
+      "js": ["js/core/config.js", "js/content/insert-link-icons.js"]
     },
     {
       "matches": ["*://docs.google.com/viewer?*"],
