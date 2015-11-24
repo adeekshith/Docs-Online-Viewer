@@ -51,3 +51,39 @@ const userPrefJSON_default =
             }                                                                                               \
         }                                                                                                   \
      }';
+
+
+const coreInfoJSON =
+    '{                                                                                                                          \
+        "application" : {                                                                                                       \
+            "name" : "Docs Online Viewer",                                                                                      \
+            "app_id" : "docs-online-viewer@deekshith.in",                                                                       \
+            "version" : "v5.5.6"                                                                                                \
+        },                                                                                                                      \
+        "data" : {                                                                                                              \
+            "version" : 0.1,                                                                                                    \
+            "services":[                                                                                                        \
+                {                                                                                                               \
+                    "name" : "Google Docs",                                                                                     \
+                    "id" : "google_docs",                                                                                       \
+                    "is_supported" : true,                                                                                      \
+                    "file_extensions" : ["ai", "csv", "doc", "docx", "dxf", "eps", "odp", "ods", "odt", "pages", "pdf", "pps", "ppt", "pptx", "ps", "psd", "rtf", "sxc", "sxi", "sxw", "tif", "tiff", "ttf", "wpd", "xls", "xlsx", "xps"],\
+                    "file_open_API" : "https://docs.google.com/viewer?url={$file_url}&embedded=false&chrome=false&dov=1"        \
+                },                                                                                                              \
+                {                                                                                                               \
+                    "name" : "Microsoft Office Online",                                                                         \
+                    "id" : "mso_online",                                                                                        \
+                    "is_supported" : true,                                                                                      \
+                    "file_extensions" : ["doc", "docx", "ppt", "pptx", "xls", "xlsx"],                                          \
+                    "file_open_API" : "https://docs.google.com/viewer?url={$file_url}&embedded=false&chrome=false&dov=1"        \
+                },                                                                                                              \
+                {                                                                                                               \
+                    "name" : "rollApp",                                                                                         \
+                    "id" : "roll_app",                                                                                          \
+                    "is_supported" : true,                                                                                      \
+                    "file_extensions" : ["zip", "rar"],                                                                         \
+                    "file_open_API" : "https://www.rollapp.com/api/apps/open?file_url={$file_url}&open_with={$preferred_app}"   \
+                }                                                                                                               \
+            ]                                                                                                                   \
+        }                                                                                                                       \
+    }';
