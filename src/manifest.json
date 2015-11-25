@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Docs Online Viewer",
   "short_name": "DOV",
-  "version": "5.5.6",
+  "version": "6.1.0",
   "applications": {
     "gecko": {
       "id": "{bfb54675-2fd9-4e22-949d-c36333aff6b5}"
@@ -21,7 +21,7 @@
   "homepage_url": "http://www.deekshith.in/p/docs-online-viewer.html",
   "options_ui": {
     "page": "html/options.html",
-    "chrome_style": true
+    "chrome_style": false
   },
   "content_scripts": [
     {
@@ -32,7 +32,7 @@
                           "*://mail.google.com/*",
                           "*://docs.google.com/*",
                           "*://www.mediafire.com/*"],
-      "js": ["js/content/insert-link-icons.js"]
+      "js": ["js/core/config.js", "js/content/insert-link-icons.js"]
     },
     {
       "matches": ["*://docs.google.com/viewer?*"],

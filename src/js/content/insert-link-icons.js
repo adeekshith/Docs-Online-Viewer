@@ -8,11 +8,17 @@
  * @copyright 2015 Docs Online Viewer
  */
 
+chrome.storage.sync.get({
+    user_config: userPrefJSON_default
+}, function (items) {
+    var thisUserPreferences = JSON.parse(items.user_config);
+    var thisUserConfig = new userConfig(thisUserPreferences);
+    main_content_script(thisUserConfig);
+});
 
-(function () {
+function main_content_script(thisUserConfig) {
     // "use strict";
     var docLinks = document.links;
-    var supportedFileExtList = ["doc", "pdf", "docx", "xls", "xlsx", "ppt", "pps", "pptx", "eps", "ps", "tif", "tiff", "ai", "psd", "pages", "dxf", "ttf", "xps", "odt", "odp", "rtf", "csv", "ods", "wpd", "sxi", "sxc", "sxw"];
     var doCheck = true;
     var dov_host_exclude = /(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;
     // Include paths to exclude showing icon
@@ -34,12 +40,7 @@
     };
     DocLink.prototype = {
         get hasSupportedExtension() {
-            var thisPath = this._docLink.pathname;
-            return supportedFileExtList.some(function (thisFileType) {
-                if (thisFileType.toLowerCase() == fileExtension(thisPath)) {
-                    return true;
-                }
-            });
+            return thisUserConfig.isFiletypeEnabled(fileExtension(this._docLink.pathname));
         },
         get isSupported() {
             return (!((this._docLink.host).match(dov_host_exclude)) && !((this._docLink.href).match(dov_href_exclude)) && this.hasSupportedExtension && this._docLink.innerText.trim().length > 0); // GitHub Issue #6: No blank innerText. Does not work on Firefox
@@ -64,14 +65,9 @@
             ico.style.width = "16px";
             ico.style.height = "16px";
             viewLink.appendChild(ico);
-            // Disabled opening link in new tab by default.
-            chrome.storage.sync.get({
-                dovIconNewtab: false
-            }, function (items) {
-                if (items.dovIconNewtab) {
-                    viewLink.setAttribute("target", "_blank");
-                }
-            });
+            if(thisUserConfig.isIconClickNewtab() === true) {
+                viewLink.setAttribute("target", "_blank");
+            }
             return viewLink;
         },
         get queryStripped() {
@@ -113,4 +109,4 @@
     checkLinks();
     setupListener();
 
-})();
+}
