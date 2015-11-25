@@ -130,6 +130,14 @@ userConfig.prototype.setFiletypeEnable = function (fileType, userInput) {
         return false;
     }
 };
+userConfig.prototype.getPrivacyCollectStatsStatus = function () {
+    return this.userPreferencesJSON_.user_preferences.privacy.collect_stats;
+};
+userConfig.prototype.setPrivacyCollectStatsStatus = function (userInput) {
+    if(typeof(userInput) === "boolean") {
+        this.userPreferencesJSON_.user_preferences.privacy.collect_stats = userInput;
+    }
+};
 userConfig.prototype.getPreferences = function () {
     return this.userPreferencesJSON_;
 };
