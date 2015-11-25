@@ -14,7 +14,7 @@ function flash_options_status(message, time) {
 // Saves options to chrome.storage.sync.
 function save_options() {
     var thisUserPreferences = JSON.parse(userPrefJSON_default);
-    var thisUserConfig = new userConfig(thisUserPreferences);
+    var thisUserConfig = new UserConfig(thisUserPreferences);
     // Setting Options / General new tab preference.
     thisUserConfig.setIconClickNewtab(document.getElementById('pref-dov-icon-newtab').checked);
     // Setting Options / Filetype preferences
@@ -65,7 +65,7 @@ function restore_options() {
         user_config: userPrefJSON_default
     }, function (items) {
         var thisUserPreferences = JSON.parse(items.user_config);
-        var thisUserConfig = new userConfig(thisUserPreferences);
+        var thisUserConfig = new UserConfig(thisUserPreferences);
         // Restoring General / New tab option
         document.getElementById('pref-dov-icon-newtab').checked = thisUserConfig.isIconClickNewtab();
         // Restoring file extension options

@@ -91,13 +91,13 @@ const coreInfoJSON =
     }';
 
 
-function userConfig (userPreferencesJSON) {
+function UserConfig (userPreferencesJSON) {
     this.userPreferencesJSON_ = userPreferencesJSON;
 }
-userConfig.prototype.isIconClickNewtab = function() {
+UserConfig.prototype.isIconClickNewtab = function() {
     return this.userPreferencesJSON_.user_preferences.icon_beside_doc_links.newtab_on_click;
 };
-userConfig.prototype.setIconClickNewtab = function (userInput) {
+UserConfig.prototype.setIconClickNewtab = function (userInput) {
     if(typeof(userInput) === "boolean") {
         this.userPreferencesJSON_.user_preferences.icon_beside_doc_links.newtab_on_click = userInput;
         return true;
@@ -105,7 +105,7 @@ userConfig.prototype.setIconClickNewtab = function (userInput) {
         return false;
     }
 };
-userConfig.prototype.isFiletypeEnabled = function (fileType) {
+UserConfig.prototype.isFiletypeEnabled = function (fileType) {
     var thisUserPrefJSON = this.userPreferencesJSON_;
     var thisFiletypeEnabled = thisUserPrefJSON.user_preferences.file_types.some( function (thisFileTypeObj) {
         if (thisFileTypeObj.extension === fileType) {
@@ -114,7 +114,7 @@ userConfig.prototype.isFiletypeEnabled = function (fileType) {
     });
     return thisFiletypeEnabled;
 };
-userConfig.prototype.setFiletypeEnable = function (fileType, userInput) {
+UserConfig.prototype.setFiletypeEnable = function (fileType, userInput) {
     var thisUserPrefJSON = this.userPreferencesJSON_;
     if(typeof(userInput) === "boolean") {
         var indexFiletype = 0;
@@ -130,14 +130,14 @@ userConfig.prototype.setFiletypeEnable = function (fileType, userInput) {
         return false;
     }
 };
-userConfig.prototype.getPrivacyCollectStatsStatus = function () {
+UserConfig.prototype.getPrivacyCollectStatsStatus = function () {
     return this.userPreferencesJSON_.user_preferences.privacy.collect_stats;
 };
-userConfig.prototype.setPrivacyCollectStatsStatus = function (userInput) {
+UserConfig.prototype.setPrivacyCollectStatsStatus = function (userInput) {
     if(typeof(userInput) === "boolean") {
         this.userPreferencesJSON_.user_preferences.privacy.collect_stats = userInput;
     }
 };
-userConfig.prototype.getPreferences = function () {
+UserConfig.prototype.getPreferences = function () {
     return this.userPreferencesJSON_;
 };

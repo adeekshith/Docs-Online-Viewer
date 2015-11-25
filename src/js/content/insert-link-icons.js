@@ -12,7 +12,7 @@ chrome.storage.sync.get({
     user_config: userPrefJSON_default
 }, function (items) {
     var thisUserPreferences = JSON.parse(items.user_config);
-    var thisUserConfig = new userConfig(thisUserPreferences);
+    var thisUserConfig = new UserConfig(thisUserPreferences);
     main_content_script(thisUserConfig);
 });
 
