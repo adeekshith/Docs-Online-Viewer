@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/bootstrap/3.3.5/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="../css/bootstrap/3.3.5/bootstrap-theme.min.css">-->
+    <link rel="stylesheet" href="../css/bootstrap-toggle/bootstrap-toggle.min.css">
+    <!--<link rel="stylesheet" href="../css/bootcards/1.1.2/bootcards-desktop.min.css">-->
+    <script type="text/javascript" src="../js/libs/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../js/libs/bootstrap/3.3.5/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/libs/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+    <!--<script type="text/javascript" src="../js/libs/bootcards/bootcards.min.js"></script>-->
+    <style>
+        body {
+            font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+            font-size: 120%;
+            padding-bottom: 0px;
+            margin-bottom: 0px;
+        }
+        .status {
+            /* avoid an excessively wide status text */
+            /*
+            white-space: pre;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            */
+            max-width: 400px;
+            min-width: 300px;
+            padding-bottom: 0%;
+        }
+        .after-header { padding:50px 0px; }
+    </style>
+</head>
+<body>
+    <div class="list-group status" style="margin-bottom: 0px;">
+        <div class="list-group-item">
+            Docs Online Viewer
+            <input type="checkbox" checked data-toggle="toggle" data-on="Enabled" data-off="Disabled" data-size="small" data-onstyle="success" data-offstyle="warning">
+        </div>
+        <button type="button" class="list-group-item">Getting Started</button>
+        <button type="button" class="list-group-item">Preferences</button>
+        <button type="button" class="list-group-item">Morbi leo risus</button>
+        <button type="button" class="list-group-item">Porta ac consectetur ac</button>
+        <a href="#" class="list-group-item">About<span class="glyphicon glyphicon-menu-right pull-right" aria-hidden="true"></span></a>
+    </div>
+</body>
+</html>

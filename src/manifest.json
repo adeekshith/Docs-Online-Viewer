@@ -19,6 +19,11 @@
 
   "author": "Deekshith Allamaneni",
   "homepage_url": "http://www.deekshith.in/p/docs-online-viewer.html",
+  "browser_action": {
+    "default_icon": "images/brand/dov-brand-32.png",
+    "default_popup": "html/popup.html",
+    "default_title": "Docs Online Viewer"
+  },
   "options_ui": {
     "page": "html/options.html",
     "chrome_style": false
