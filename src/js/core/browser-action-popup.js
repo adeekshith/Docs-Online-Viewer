@@ -14,6 +14,16 @@ $(function() {
     })
 })
 
+document.querySelector('#browser-action-preferences').addEventListener('click', function() {
+    if (chrome.runtime.openOptionsPage) {
+        // New way to open options pages, if supported (Chrome 42+).
+        chrome.runtime.openOptionsPage();
+    } else {
+        // Reasonable fallback.
+        window.open(chrome.runtime.getURL('../html/options.html'));
+    }
+});
+
 document.getElementById('browser-action-popup-help').addEventListener('click', function(){
     $('#toggle-enable-dov').bootstrapToggle('off');
     document.getElementById("browser-action-preferences").textContent= "asdfg";
