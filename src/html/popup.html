@@ -17,7 +17,7 @@
             padding-bottom: 0px;
             margin-bottom: 0px;
         }
-        .status {
+        .popup-dimensions {
             /* avoid an excessively wide status text */
             /*
             white-space: pre;
@@ -27,25 +27,27 @@
             max-width: 400px;
             min-width: 300px;
             padding-bottom: 0%;
+            margin-bottom: 0px;
         }
         .after-header { padding:50px 0px; }
     </style>
 </head>
 <body>
-    <div class="panel panel-default" style="margin-bottom: 0px; width: 300px;">
+    <div class="panel panel-default popup-dimensions">
         <div class="panel-heading clearfix">
             <h3 class="panel-title pull-left">Docs Online Viewer</h3>
             <a class="pull-right" href="#">
-                <input type="checkbox" checked data-toggle="toggle" data-on="Enabled" data-off="Disabled" data-size="mini" data-onstyle="success" data-offstyle="warning">
+                <input id="toggle-enable-dov" type="checkbox" checked data-toggle="toggle" data-on="Enabled" data-off="Disabled" data-size="mini" data-onstyle="success" data-offstyle="warning">
             </a>
         </div>
         <div class="panel-body" style="margin: 0px; padding: 0px; padding-bottom: 0px;">
             <div class="list-group" style="margin-bottom: 0px;">
-                <a id="browser-action-preferences" class="list-group-item" href="#">Preferences</a>
-                <button type="button" class="list-group-item">Help</button>
+                <button id="browser-action-preferences" type="button" class="list-group-item">Preferences</button>
+                <button id="browser-action-popup-help" type="button" class="list-group-item">Help</button>
                 <a class="list-group-item" href="popup-about.html">About</a>
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="../js/core/browser-action-popup.js"></script>
 </body>
 </html>
