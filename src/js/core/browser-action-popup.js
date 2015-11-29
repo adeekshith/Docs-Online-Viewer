@@ -40,7 +40,7 @@ $(function() {
             });
         });
     })
-})
+});
 
 document.getElementById('browser-action-preferences').addEventListener('click', function() {
     if (chrome.runtime.openOptionsPage) {

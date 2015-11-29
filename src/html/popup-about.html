@@ -5,11 +5,10 @@
     <link rel="stylesheet" href="../css/bootstrap/3.3.5/bootstrap.min.css">
     <!--<link rel="stylesheet" href="../css/bootstrap/3.3.5/bootstrap-theme.min.css">-->
     <link rel="stylesheet" href="../css/bootstrap-toggle/bootstrap-toggle.min.css">
-    <!--<link rel="stylesheet" href="../css/bootcards/1.1.2/bootcards-desktop.min.css">-->
+    <link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css">
     <script type="text/javascript" src="../js/libs/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="../js/libs/bootstrap/3.3.5/bootstrap.min.js"></script>
     <script type="text/javascript" src="../js/libs/bootstrap-toggle/bootstrap-toggle.min.js"></script>
-    <!--<script type="text/javascript" src="../js/libs/bootcards/bootcards.min.js"></script>-->
     <style>
         body {
             font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
@@ -17,7 +16,7 @@
             padding-bottom: 0px;
             margin-bottom: 0px;
         }
-        .status {
+        .popup-dimensions {
             /* avoid an excessively wide status text */
             /*
             white-space: pre;
@@ -27,18 +26,43 @@
             max-width: 400px;
             min-width: 300px;
             padding-bottom: 0%;
+            margin-bottom: 0px;
         }
         .after-header { padding:50px 0px; }
     </style>
 </head>
 <body>
-<div class="panel panel-default" style="margin-bottom: 0px; width: 300px;">
-    <div class="panel-heading clearfix">
-        <a class="panel-title pull-left" href="popup.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> About</a>
+<div class="panel panel-default popup-dimensions">
+    <div class="list-group status" style="margin-bottom: 0px;">
+        <a href="../html/popup.html" style="font-size: medium;" class="list-group-item"><span class="glyphicon glyphicon-menu-left pull-left" aria-hidden="true"></span> Back</a>
     </div>
-    <div class="panel-body" style="margin: 0px; padding: 0px; padding-bottom: 0px;">
+    <div class="panel-body text-center text-info" style="margin: 0px; padding: 0px; padding-bottom: 0px;">
+        <h4>Docs Online Viewer</h4>
         <p>
-            This is ABOUT panel body.
+            Open any file on the web in your browser.
+        </p>
+        <p>
+            <a href="http://www.deekshith.in/p/docs-online-viewer.html" target="_blank">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-square-o fa-stack-2x"></i>
+                    <i class="fa fa-home fa-stack-1x"></i>
+                </span>
+            </a>
+            <a href="https://github.com/adeekshith/Docs-Online-Viewer" target="_blank">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-square-o fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x"></i>
+                </span>
+            </a>
+        </p>
+        <p>
+            Made with <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> by <a href="https://www.linkedin.com/in/adeekshith" target="_blank">Deekshith</a>
+            <br/>
+            Connect with me on
+            <br/>
+            <a href="https://twitter.com/adeekshith" target="_blank"><i class="fa fa-twitter-square fa-lg"></i></a>
+            <a href="https://www.facebook.com/adeekshith" target="_blank"><i class="fa fa-facebook-square fa-lg"></i></a>
+            <a href="https://www.linkedin.com/in/adeekshith" target="_blank"><i class="fa fa-linkedin-square fa-lg"></i></a>
         </p>
     </div>
 </div>
