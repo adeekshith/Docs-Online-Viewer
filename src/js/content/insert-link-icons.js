@@ -13,7 +13,9 @@ chrome.storage.sync.get({
 }, function (items) {
     var thisUserPreferences = JSON.parse(items.user_config);
     var thisUserConfig = new UserConfig(thisUserPreferences);
-    main_content_script(thisUserConfig);
+    if (thisUserConfig.isIconBesideDocLinksEnabled() === true) {
+        main_content_script(thisUserConfig);
+    }
 });
 
 function main_content_script(thisUserConfig) {
