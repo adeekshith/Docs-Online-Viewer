@@ -94,6 +94,20 @@ const coreInfoJSON =
 function UserConfig (userPreferencesJSON) {
     this.userPreferencesJSON_ = userPreferencesJSON;
 }
+UserConfig.prototype.getuserPrefVersion = function() {
+    return this.userPreferencesJSON_.user_preferences.version;
+};
+UserConfig.prototype.isIconBesideDocLinksEnabled = function() {
+    return this.userPreferencesJSON_.user_preferences.icon_beside_doc_links.enabled;
+};
+UserConfig.prototype.setIconBesideDocLinksEnable = function (userInput) {
+    if(typeof(userInput) === "boolean") {
+        this.userPreferencesJSON_.user_preferences.icon_beside_doc_links.enabled = userInput;
+        return true;
+    }else {
+        return false;
+    }
+};
 UserConfig.prototype.isIconClickNewtab = function() {
     return this.userPreferencesJSON_.user_preferences.icon_beside_doc_links.newtab_on_click;
 };
