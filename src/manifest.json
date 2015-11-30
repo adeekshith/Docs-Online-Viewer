@@ -45,7 +45,8 @@
     }
   ],
   "web_accessible_resources": [
-    "images/beside-link-icon.png"
+    "images/beside-link-icon.png",
+    "images/beside-link-icon.svg"
   ],
   "permissions": [
     "storage"

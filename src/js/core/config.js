@@ -14,7 +14,7 @@ const userPrefJSON_default =
             "version" : "0.1",                                                                              \
             "icon_beside_doc_links" : {                                                                     \
                 "enabled" : true,                                                                           \
-                "icon_path": "images/beside-link-icon.png",                                                 \
+                "icon_path": "images/beside-link-icon.svg",                                                 \
                 "newtab_on_click" : false                                                                   \
             },                                                                                              \
             "file_types" : [                                                                                \
@@ -107,6 +107,9 @@ UserConfig.prototype.setIconBesideDocLinksEnable = function (userInput) {
     }else {
         return false;
     }
+};
+UserConfig.prototype.getBesideDocLinksIconPath = function() {
+    return this.userPreferencesJSON_.user_preferences.icon_beside_doc_links.icon_path;
 };
 UserConfig.prototype.isIconClickNewtab = function() {
     return this.userPreferencesJSON_.user_preferences.icon_beside_doc_links.newtab_on_click;
