@@ -14,7 +14,7 @@ const userPrefJSON_default =
             "version" : "0.1",                                                                              \
             "icon_beside_doc_links" : {                                                                     \
                 "enabled" : true,                                                                           \
-                "icon_path": "images/beside-link-icon.png",                                                 \
+                "icon_path": "images/beside-link-icon.svg",                                                 \
                 "newtab_on_click" : false                                                                   \
             },                                                                                              \
             "file_types" : [                                                                                \
