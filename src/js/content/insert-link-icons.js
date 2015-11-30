@@ -25,7 +25,7 @@ function main_content_script(thisUserConfig) {
     var dov_host_exclude = /(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;
     // Include paths to exclude showing icon
     var dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*|file:\/\/\/.*)/;
-    var dovIconImgPath = "images/beside-link-icon.png";
+    var dovIconImgPath = "images/beside-link-icon.svg";
 
 
     function fileExtension(path) {
