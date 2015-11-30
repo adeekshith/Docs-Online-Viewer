@@ -108,6 +108,9 @@ UserConfig.prototype.setIconBesideDocLinksEnable = function (userInput) {
         return false;
     }
 };
+UserConfig.prototype.getBesideDocLinksIconPath = function() {
+    return this.userPreferencesJSON_.user_preferences.icon_beside_doc_links.icon_path;
+};
 UserConfig.prototype.isIconClickNewtab = function() {
     return this.userPreferencesJSON_.user_preferences.icon_beside_doc_links.newtab_on_click;
 };
