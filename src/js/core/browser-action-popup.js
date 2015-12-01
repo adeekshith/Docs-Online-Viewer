@@ -24,13 +24,14 @@ document.addEventListener('DOMContentLoaded', restorePopupOptions);
 $(function() {
     $('#toggle-enable-dov').change(function() {
         // Code to process toggle button goes here.
+        var userToggleEnableStatus = document.getElementById('toggle-enable-dov').checked;
         chrome.storage.sync.get({
             user_config: userPrefJSON_default
         }, function (items) {
             var thisUserPreferences = JSON.parse(items.user_config);
             var thisUserConfig = new UserConfig(thisUserPreferences);
             //var thisUserIsDovIconEnabled = thisUserConfig.isIconBesideDocLinksEnabled();
-            var currentToggleStatus = document.getElementById('toggle-enable-dov').checked;
+            var currentToggleStatus = userToggleEnableStatus;
             thisUserConfig.setIconBesideDocLinksEnable(currentToggleStatus);
             var thisUserPreferencesStr = JSON.stringify(thisUserConfig.getPreferences());
             chrome.storage.sync.set({
@@ -39,6 +40,11 @@ $(function() {
                 // Update status to let user know options were saved.
             });
         });
+        if (userToggleEnableStatus === true) {
+            chrome.browserAction.setBadgeText({ text: "" });
+        } else {
+            chrome.browserAction.setBadgeText({ text: "OFF" });
+        }
     })
 });
 
