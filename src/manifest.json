@@ -8,6 +8,7 @@
       "id": "{bfb54675-2fd9-4e22-949d-c36333aff6b5}"
     }
   },
+  "minimum_chrome_version": "40.0.2214.94",
 
   "default_locale": "en",
   "description": "Open files online directly in your browser using online services like Google Docs Viewer without need for any additional software.",
