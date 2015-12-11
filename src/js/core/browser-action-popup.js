@@ -48,7 +48,7 @@ $(function() {
     })
 });
 
-document.getElementById('browser-action-preferences').addEventListener('click', function() {
+document.getElementById('browser-action-options').addEventListener('click', function() {
     if (chrome.runtime.openOptionsPage) {
         // New way to open options pages, if supported (Chrome 42+).
         chrome.runtime.openOptionsPage();
