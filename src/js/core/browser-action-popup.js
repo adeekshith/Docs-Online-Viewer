@@ -45,7 +45,7 @@ $(function() {
         } else {
             chrome.browserAction.setBadgeText({ text: "OFF" });
         }
-    })
+    });
 });
 
 document.getElementById('browser-action-options').addEventListener('click', function() {

@@ -101,5 +101,4 @@ function restore_options() {
     });
 }
 document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('dov_save').addEventListener('click',
-    save_options);
+document.getElementById('dov_save').addEventListener('click', save_options);
