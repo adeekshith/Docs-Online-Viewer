@@ -29,6 +29,7 @@
     "page": "html/options.html",
     "chrome_style": false
   },
+  "options_page": "html/options.html",
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
