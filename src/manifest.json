@@ -11,7 +11,7 @@
   "minimum_chrome_version": "40.0.2214.94",
 
   "default_locale": "en",
-  "description": "Open files directly in your browser using free online services without need for any additional software.",
+  "description": "Open any file on the web. Supports almost all major file and document formats. Fast, easy to use, lightweight, and free.",
   "icons": {
     "32": "images/brand/dov-brand-32.png",
     "48": "images/brand/dov-brand-48.png",
@@ -43,6 +43,7 @@
     },
     {
       "matches": ["*://docs.google.com/viewer?*"],
+      "all_frames": true,
       "js": ["js/content/google-docs-viewer-ui.js"]
     }
   ],
