@@ -51,7 +51,7 @@ function main_content_script(thisUserConfig) {
         },
         get iconLink() {
             var viewLink = document.createElement('a');
-            viewLink.href = "https://docs.google.com/viewer?url=" + encodeURI(this.queryStripped) + "&embedded=false&chrome=false&dov=1";
+            viewLink.href = "https://docs.google.com/viewer?url=" + encodeURI(this.queryStripped) + "&embedded=true&chrome=false&dov=1";
             /*
              Parameter description:
              embedded= <true>: to open google docs in embedded mode
