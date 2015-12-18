@@ -39,6 +39,7 @@
                           "*://mail.google.com/*",
                           "*://docs.google.com/*",
                           "*://www.mediafire.com/*"],
+      "all_frames": true,
       "js": ["js/core/config.js", "js/content/insert-link-icons.js"]
     },
     {
