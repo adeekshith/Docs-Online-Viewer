@@ -2,15 +2,16 @@
   "manifest_version": 2,
   "name": "Docs Online Viewer",
   "short_name": "DOV",
-  "version": "6.1.0",
+  "version": "7.3.1",
   "applications": {
     "gecko": {
       "id": "{bfb54675-2fd9-4e22-949d-c36333aff6b5}"
     }
   },
+  "minimum_chrome_version": "40.0.2214.94",
 
   "default_locale": "en",
-  "description": "Open files online directly in your browser using online services like Google Docs Viewer without need for any additional software.",
+  "description": "Open any file on the web. Supports almost all major file and document formats. Fast, easy to use, lightweight, and free.",
   "icons": {
     "32": "images/brand/dov-brand-32.png",
     "48": "images/brand/dov-brand-48.png",
@@ -19,10 +20,16 @@
 
   "author": "Deekshith Allamaneni",
   "homepage_url": "http://www.deekshith.in/p/docs-online-viewer.html",
+  "browser_action": {
+    "default_icon": "images/brand/dov-brand-32.png",
+    "default_popup": "html/popup.html",
+    "default_title": "Docs Online Viewer"
+  },
   "options_ui": {
     "page": "html/options.html",
     "chrome_style": false
   },
+  "options_page": "html/options.html",
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
@@ -32,15 +39,17 @@
                           "*://mail.google.com/*",
                           "*://docs.google.com/*",
                           "*://www.mediafire.com/*"],
+      "all_frames": true,
       "js": ["js/core/config.js", "js/content/insert-link-icons.js"]
     },
     {
       "matches": ["*://docs.google.com/viewer?*"],
+      "all_frames": true,
       "js": ["js/content/google-docs-viewer-ui.js"]
     }
   ],
   "web_accessible_resources": [
-    "images/beside-link-icon.png"
+    "images/beside-link-icon.svg"
   ],
   "permissions": [
     "storage"

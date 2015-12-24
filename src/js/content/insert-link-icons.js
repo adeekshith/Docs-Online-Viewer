@@ -13,7 +13,9 @@ chrome.storage.sync.get({
 }, function (items) {
     var thisUserPreferences = JSON.parse(items.user_config);
     var thisUserConfig = new UserConfig(thisUserPreferences);
-    main_content_script(thisUserConfig);
+    if (thisUserConfig.isIconBesideDocLinksEnabled() === true) {
+        main_content_script(thisUserConfig);
+    }
 });
 
 function main_content_script(thisUserConfig) {
@@ -23,7 +25,6 @@ function main_content_script(thisUserConfig) {
     var dov_host_exclude = /(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;
     // Include paths to exclude showing icon
     var dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*|file:\/\/\/.*)/;
-    var dovIconImgPath = "images/beside-link-icon.png";
 
 
     function fileExtension(path) {
@@ -50,7 +51,7 @@ function main_content_script(thisUserConfig) {
         },
         get iconLink() {
             var viewLink = document.createElement('a');
-            viewLink.href = "https://docs.google.com/viewer?url=" + encodeURI(this.queryStripped) + "&embedded=false&chrome=false&dov=1";
+            viewLink.href = "https://docs.google.com/viewer?url=" + encodeURI(this.queryStripped) + "&embedded=true&chrome=false&dov=1";
             /*
              Parameter description:
              embedded= <true>: to open google docs in embedded mode
@@ -59,7 +60,7 @@ function main_content_script(thisUserConfig) {
             //viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
             viewLink.title = "View this " + fileExtension(this._docLink.pathname) + " file";
             var ico = document.createElement("img");
-            ico.src = chrome.extension.getURL(dovIconImgPath);
+            ico.src = chrome.extension.getURL(thisUserConfig.getBesideDocLinksIconPath());
             // Adjusts the margin of the icon to the given number of pixels (3 to 5px is advisable)
             ico.style.marginLeft = "3px";
             ico.style.width = "16px";
