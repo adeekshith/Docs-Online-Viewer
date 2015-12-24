@@ -1,0 +1,16 @@
+
+html,body {
+    height:100%;
+    background-size: cover;
+}
+
+section {
+    padding-top:70px;
+    padding-bottom:50px;
+    min-height:calc(70% - 1px);
+}
+
+.section-odd {
+    background-color: #F7F7F7;
+    color:#555555;
+}
