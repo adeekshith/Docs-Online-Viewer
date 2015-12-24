@@ -41,11 +41,6 @@
                           "*://www.mediafire.com/*"],
       "all_frames": true,
       "js": ["js/core/config.js", "js/content/insert-link-icons.js"]
-    },
-    {
-      "matches": ["*://docs.google.com/viewer?*"],
-      "all_frames": true,
-      "js": ["js/content/google-docs-viewer-ui.js"]
     }
   ],
   "web_accessible_resources": [
