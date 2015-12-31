@@ -28,7 +28,7 @@ const userPrefJSON_default =
                 {"extension" : "ods",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
                 {"extension" : "odt",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
                 {"extension" : "pages", "is_enabled" : true,  "preferred_service" : "google_docs"},         \
-                {"extension" : "pdf",   "is_enabled" : false, "preferred_service" : "google_docs"},         \
+                {"extension" : "pdf",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
                 {"extension" : "pps",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
                 {"extension" : "ppt",   "is_enabled" : true,  "preferred_service" : "google_docs"},         \
                 {"extension" : "pptx",  "is_enabled" : true,  "preferred_service" : "google_docs"},         \
