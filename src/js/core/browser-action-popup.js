@@ -1,15 +1,15 @@
 /**
  * Created by deekshitha on 11/28/15.
  */
-
+"use strict";
 function restorePopupOptions () {
     // Read from saved preferences and restore options.
     //$('#toggle-enable-dov').bootstrapToggle('off');
     chrome.storage.sync.get({
         user_config: userPrefJSON_default
     }, function (items) {
-        var thisUserPreferences = JSON.parse(items.user_config);
-        var thisUserConfig = new UserConfig(thisUserPreferences);
+        let thisUserPreferences = JSON.parse(items.user_config);
+        let thisUserConfig = new UserConfig(thisUserPreferences);
         //var thisUserIsDovIconEnabled = thisUserConfig.isIconBesideDocLinksEnabled();
         if (thisUserConfig.isIconBesideDocLinksEnabled() === true) {
             $('#toggle-enable-dov').bootstrapToggle('on');
@@ -24,16 +24,16 @@ document.addEventListener('DOMContentLoaded', restorePopupOptions);
 $(function() {
     $('#toggle-enable-dov').change(function() {
         // Code to process toggle button goes here.
-        var userToggleEnableStatus = document.getElementById('toggle-enable-dov').checked;
+        let userToggleEnableStatus = document.getElementById('toggle-enable-dov').checked;
         chrome.storage.sync.get({
             user_config: userPrefJSON_default
         }, function (items) {
-            var thisUserPreferences = JSON.parse(items.user_config);
-            var thisUserConfig = new UserConfig(thisUserPreferences);
+            let thisUserPreferences = JSON.parse(items.user_config);
+            let thisUserConfig = new UserConfig(thisUserPreferences);
             //var thisUserIsDovIconEnabled = thisUserConfig.isIconBesideDocLinksEnabled();
-            var currentToggleStatus = userToggleEnableStatus;
+            let currentToggleStatus = userToggleEnableStatus;
             thisUserConfig.setIconBesideDocLinksEnable(currentToggleStatus);
-            var thisUserPreferencesStr = JSON.stringify(thisUserConfig.getPreferences());
+            let thisUserPreferencesStr = JSON.stringify(thisUserConfig.getPreferences());
             chrome.storage.sync.set({
                 user_config:thisUserPreferencesStr
             }, function () {

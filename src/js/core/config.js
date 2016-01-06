@@ -2,6 +2,7 @@
  * Created by Deekshith Allamaneni on 11/23/15.
  */
 
+"use strict";
 
 const userPrefJSON_default =
     '{                                                                                                      \
@@ -123,8 +124,8 @@ UserConfig.prototype.setIconClickNewtab = function (userInput) {
     }
 };
 UserConfig.prototype.isFiletypeEnabled = function (fileType) {
-    var thisUserPrefJSON = this.userPreferencesJSON_;
-    var thisFiletypeEnabled = thisUserPrefJSON.user_preferences.file_types.some( function (thisFileTypeObj) {
+    let thisUserPrefJSON = this.userPreferencesJSON_;
+    let thisFiletypeEnabled = thisUserPrefJSON.user_preferences.file_types.some( function (thisFileTypeObj) {
         if (thisFileTypeObj.extension === fileType) {
             return thisFileTypeObj.is_enabled;
         }
@@ -132,9 +133,9 @@ UserConfig.prototype.isFiletypeEnabled = function (fileType) {
     return thisFiletypeEnabled;
 };
 UserConfig.prototype.setFiletypeEnable = function (fileType, userInput) {
-    var thisUserPrefJSON = this.userPreferencesJSON_;
+    let thisUserPrefJSON = this.userPreferencesJSON_;
     if(typeof(userInput) === "boolean") {
-        var indexFiletype = 0;
+        let indexFiletype = 0;
         thisUserPrefJSON.user_preferences.file_types.some( function (thisFileTypeObj) {
             if (thisFileTypeObj.extension === fileType) {
                 thisUserPrefJSON.user_preferences.file_types[indexFiletype].is_enabled = userInput;

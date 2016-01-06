@@ -1,7 +1,8 @@
+"use strict";
 
 function flash_options_status(message, time) {
-    var status = document.getElementById('status');
-    var saveButton = document.getElementById('dov_save');
+    let status = document.getElementById('status');
+    let saveButton = document.getElementById('dov_save');
     saveButton.classList.add("disabled");
     status.textContent = message;
     setTimeout(function () {
@@ -13,8 +14,8 @@ function flash_options_status(message, time) {
 
 // Saves options to chrome.storage.sync.
 function save_options() {
-    var thisUserPreferences = JSON.parse(userPrefJSON_default);
-    var thisUserConfig = new UserConfig(thisUserPreferences);
+    let thisUserPreferences = JSON.parse(userPrefJSON_default);
+    let thisUserConfig = new UserConfig(thisUserPreferences);
     // Setting Options / General new tab preference.
     thisUserConfig.setIconClickNewtab(document.getElementById('pref-dov-icon-newtab').checked);
     // Setting Options / Filetype preferences
@@ -47,7 +48,7 @@ function save_options() {
     thisUserConfig.setFiletypeEnable("xps", document.getElementById('pref-filetype-enable-xps').checked);
     // Setting Options / Privacy / Collect stats
     thisUserConfig.setPrivacyCollectStatsStatus(document.getElementById('pref-privacy-collect-stats').checked);
-    var thisUserPreferencesStr = JSON.stringify(thisUserConfig.getPreferences());
+    let thisUserPreferencesStr = JSON.stringify(thisUserConfig.getPreferences());
     chrome.storage.sync.set({
         user_config:thisUserPreferencesStr
     }, function () {
@@ -64,8 +65,8 @@ function restore_options() {
     chrome.storage.sync.get({
         user_config: userPrefJSON_default
     }, function (items) {
-        var thisUserPreferences = JSON.parse(items.user_config);
-        var thisUserConfig = new UserConfig(thisUserPreferences);
+        let thisUserPreferences = JSON.parse(items.user_config);
+        let thisUserConfig = new UserConfig(thisUserPreferences);
         // Restoring General / New tab option
         document.getElementById('pref-dov-icon-newtab').checked = thisUserConfig.isIconClickNewtab();
         // Restoring file extension options
