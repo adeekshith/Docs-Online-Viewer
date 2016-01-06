@@ -7,12 +7,12 @@
  * @author Deekshith Allamaneni
  * @copyright 2015 Docs Online Viewer
  */
-
+"use strict";
 chrome.storage.sync.get({
     user_config: userPrefJSON_default
 }, function (items) {
-    var thisUserPreferences = JSON.parse(items.user_config);
-    var thisUserConfig = new UserConfig(thisUserPreferences);
+    let thisUserPreferences = JSON.parse(items.user_config);
+    let thisUserConfig = new UserConfig(thisUserPreferences);
     if (thisUserConfig.isIconBesideDocLinksEnabled() === true) {
         main_content_script(thisUserConfig);
     }
@@ -20,15 +20,15 @@ chrome.storage.sync.get({
 
 function main_content_script(thisUserConfig) {
     // "use strict";
-    var docLinks = document.links;
-    var doCheck = true;
-    var dov_host_exclude = /(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;
+    let docLinks = document.links;
+    let doCheck = true;
+    const dov_host_exclude = /(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;
     // Include paths to exclude showing icon
-    var dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*|file:\/\/\/.*)/;
+    const dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*|file:\/\/\/.*)/;
 
 
     function fileExtension(path) {
-        var fUrl = path;
+        let fUrl = path;
         fUrl = fUrl.toLowerCase();
         // Returns file extension. Returns "" if no valid extension
         // Ref: http://stackoverflow.com/a/1203361/3439460
@@ -36,7 +36,7 @@ function main_content_script(thisUserConfig) {
     }
 
 
-    var DocLink = function (docLink_param) {
+    let DocLink = function (docLink_param) {
         this._docLink = docLink_param;
     };
     DocLink.prototype = {
@@ -50,7 +50,7 @@ function main_content_script(thisUserConfig) {
             return this._docLink.docView;
         },
         get iconLink() {
-            var viewLink = document.createElement('a');
+            let viewLink = document.createElement('a');
             viewLink.href = "https://docs.google.com/viewer?url=" + encodeURI(this.queryStripped) + "&embedded=true&chrome=false&dov=1";
             /*
              Parameter description:
@@ -59,7 +59,7 @@ function main_content_script(thisUserConfig) {
              */
             //viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
             viewLink.title = "View this " + fileExtension(this._docLink.pathname) + " file";
-            var ico = document.createElement("img");
+            let ico = document.createElement("img");
             ico.src = chrome.extension.getURL(thisUserConfig.getBesideDocLinksIconPath());
             // Adjusts the margin of the icon to the given number of pixels (3 to 5px is advisable)
             ico.style.marginLeft = "3px";
@@ -80,8 +80,8 @@ function main_content_script(thisUserConfig) {
 
 
     function checkLinks() {
-        for (var i = 0; i < docLinks.length; ++i) {
-            var thisDocLink = new DocLink(docLinks[i]);
+        for (let i = 0; i < docLinks.length; ++i) {
+            let thisDocLink = new DocLink(docLinks[i]);
             if (thisDocLink.isSupported && !thisDocLink.isProcessed) {
                 // Append the icon beside the link
                 docLinks[i].parentNode.insertBefore(thisDocLink.iconLink, docLinks[i].nextSibling);
