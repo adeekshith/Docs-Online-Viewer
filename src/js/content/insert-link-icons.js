@@ -16,13 +16,13 @@
 {
     let xhReqUserPrefsDefault = new XMLHttpRequest();
     xhReqUserPrefsDefault.open("GET", chrome.extension.getURL("data/user-preferences-default.json"), true);
+    xhReqUserPrefsDefault.responseType = "json";
     xhReqUserPrefsDefault.onreadystatechange = function () {
         if (xhReqUserPrefsDefault.readyState === 4 && xhReqUserPrefsDefault.status === 200) {
             chrome.storage.sync.get({
-                user_config: xhReqUserPrefsDefault.responseText
+                user_config: xhReqUserPrefsDefault.response
             }, function (items) {
-                let thisUserPreferences = JSON.parse(items.user_config);
-                let thisUserConfig = new UserConfig(thisUserPreferences);
+                let thisUserConfig = new UserConfig(items.user_config);
                 if (thisUserConfig.isIconBesideDocLinksEnabled() === true) {
                     main_content_script(thisUserConfig);
                 }
