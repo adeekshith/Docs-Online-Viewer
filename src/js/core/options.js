@@ -1,5 +1,35 @@
 "use strict";
 
+function textFileLoad(url) {
+    // Create new promise with the Promise() constructor;
+    // This has as its argument a function
+    // with two parameters, resolve and reject
+    return new Promise(function(resolve, reject) {
+        // Standard XHR to load json
+        var request = new XMLHttpRequest();
+        request.open('GET', url, true);
+        request.responseType = 'text';
+        // When the request loads, check whether it was successful
+        request.onload = function() {
+            if (request.status === 200) {
+                // If successful, resolve the promise by passing back the request response
+                resolve(request.responseText);
+            } else {
+                // If it fails, reject the promise with a error message
+                reject(Error('Give file didn\'t load successfully; error code:' + request.statusText));
+            }
+        };
+        request.onerror = function() {
+            // Also deal with the case when the entire request fails to begin with
+            // This is probably a network error, so reject the promise with an appropriate message
+            reject(Error('There was a network error.'));
+        };
+        // Send the request
+        request.send();
+    });
+}
+
+
 function flash_options_status(message, time) {
     let status = document.getElementById('status');
     let saveButton = document.getElementById('dov_save');
@@ -12,9 +42,23 @@ function flash_options_status(message, time) {
 }
 
 
+
+function getDefPrefsSaveOptions () {
+    textFileLoad(chrome.extension.getURL("data/user-preferences-default.json")).then(function(response) {
+        // The first runs when the promise resolves, with the request.reponse
+        // specified within the resolve() method.
+        save_options(response);
+        // The second runs when the promise
+        // is rejected, and logs the Error specified with the reject() method.
+    }, function(Error) {
+        console.log(Error);
+    });
+}
+
+
 // Saves options to chrome.storage.sync.
-function save_options() {
-    let thisUserPreferences = JSON.parse(userPrefJSON_default);
+function save_options(userPrefDefaultJsonStr) {
+    let thisUserPreferences = JSON.parse(userPrefDefaultJsonStr);
     let thisUserConfig = new UserConfig(thisUserPreferences);
     // Setting Options / General new tab preference.
     thisUserConfig.setIconClickNewtab(document.getElementById('pref-dov-icon-newtab').checked);
@@ -58,12 +102,25 @@ function save_options() {
 }
 
 
+function getDefPrefsRestoreOptions () {
+    textFileLoad(chrome.extension.getURL("data/user-preferences-default.json")).then(function(response) {
+        // The first runs when the promise resolves, with the request.reponse
+        // specified within the resolve() method.
+        restore_options(response);
+        // The second runs when the promise
+        // is rejected, and logs the Error specified with the reject() method.
+    }, function(Error) {
+        console.log(Error);
+    });
+}
+
+
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
-function restore_options() {
+function restore_options(userPrefDefaultJsonStr) {
     // Default value of dovIconNewtab = false.
     chrome.storage.sync.get({
-        user_config: userPrefJSON_default
+        user_config: userPrefDefaultJsonStr
     }, function (items) {
         let thisUserPreferences = JSON.parse(items.user_config);
         let thisUserConfig = new UserConfig(thisUserPreferences);
@@ -101,5 +158,7 @@ function restore_options() {
         document.getElementById('pref-privacy-collect-stats').checked = thisUserConfig.getPrivacyCollectStatsStatus();
     });
 }
-document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('dov_save').addEventListener('click', save_options);
+
+
+document.addEventListener('DOMContentLoaded', getDefPrefsRestoreOptions);
+document.getElementById('dov_save').addEventListener('click', getDefPrefsSaveOptions);
