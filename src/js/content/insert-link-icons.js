@@ -95,15 +95,18 @@ function main_content_script(thisUserConfig) {
 
 
     function checkLinks() {
-        for (let i = 0; i < docLinks.length; ++i) {
-            let thisDocLink = new DocLink(docLinks[i]);
+        let docLinkItemsList = new Array(docLinks.length).fill().map(function (_, i) { return docLinks[i]; });
+        docLinkItemsList.forEach(function (docLinkItem){
+            console.log("Item: ", docLinkItem);
+            if (docLinkItem === 'undefined') { return; }
+            let thisDocLink = new DocLink(docLinkItem);
             if (thisDocLink.isSupported && !thisDocLink.isProcessed) {
                 // Append the icon beside the link
-                docLinks[i].parentNode.insertBefore(thisDocLink.iconLink, docLinks[i].nextSibling);
+                docLinkItem.parentNode.insertBefore(thisDocLink.iconLink, docLinkItem.nextSibling);
             }
             // The link which is checked is flagged so that it is not repeatedly checked again.
-            docLinks[i].docView = true;
-        }
+            docLinkItem.docView = true;
+        });
     }
 
 
