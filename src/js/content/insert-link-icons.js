@@ -34,7 +34,7 @@
 
 
 function main_content_script(thisUserConfig) {
-    // "use strict";
+    "use strict";
     let docLinks = document.links;
     let doCheck = true;
     const dov_host_exclude = /(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;
