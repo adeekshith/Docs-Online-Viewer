@@ -5,21 +5,36 @@
  * online services like Google Docs viewer.
  *
  * @author Deekshith Allamaneni
- * @copyright 2015 Docs Online Viewer
+ * @copyright 2016 Docs Online Viewer
  */
 "use strict";
-chrome.storage.sync.get({
-    user_config: userPrefJSON_default
-}, function (items) {
-    let thisUserPreferences = JSON.parse(items.user_config);
-    let thisUserConfig = new UserConfig(thisUserPreferences);
-    if (thisUserConfig.isIconBesideDocLinksEnabled() === true) {
-        main_content_script(thisUserConfig);
-    }
-});
+
+/**
+ * Reading in default options file
+ * @type {XMLHttpRequest}
+ */
+{
+    let xhReqUserPrefsDefault = new XMLHttpRequest();
+    xhReqUserPrefsDefault.open("GET", chrome.extension.getURL("data/user-preferences-default.json"), true);
+    xhReqUserPrefsDefault.responseType = "text";
+    xhReqUserPrefsDefault.onreadystatechange = function () {
+        if (xhReqUserPrefsDefault.readyState === 4 && xhReqUserPrefsDefault.status === 200) {
+            chrome.storage.sync.get({
+                user_config: xhReqUserPrefsDefault.responseText
+            }, function (items) {
+                let thisUserConfig = new UserConfig(JSON.parse(items.user_config));
+                if (thisUserConfig.isIconBesideDocLinksEnabled() === true) {
+                    main_content_script(thisUserConfig);
+                }
+            });
+        }
+    };
+    xhReqUserPrefsDefault.send(null);
+}
+
 
 function main_content_script(thisUserConfig) {
-    // "use strict";
+    "use strict";
     let docLinks = document.links;
     let doCheck = true;
     const dov_host_exclude = /(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;

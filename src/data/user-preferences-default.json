@@ -1,0 +1,47 @@
+{
+  "application" : {
+    "name" : "Docs Online Viewer",
+    "app_id" : "docs-online-viewer@deekshith.in",
+    "version" : "v6.1.0"
+  },
+  "user_preferences" : {
+    "version" : "0.1",
+    "icon_beside_doc_links" : {
+      "enabled" : true,
+      "icon_path": "images/beside-link-icon.svg",
+      "newtab_on_click" : false
+    },
+    "file_types" : [
+      {"extension" : "ai",    "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "csv",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "doc",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "docx",  "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "dxf",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "eps",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "odp",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "ods",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "odt",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "pages", "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "pdf",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "pps",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "ppt",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "pptx",  "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "ps",    "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "psd",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "rtf",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "sxc",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "sxi",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "sxw",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "tif",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "tiff",  "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "ttf",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "wpd",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "xls",   "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "xlsx",  "is_enabled" : true,  "preferred_service" : "google_docs"},
+      {"extension" : "xps",   "is_enabled" : true,  "preferred_service" : "google_docs"}
+    ],
+    "privacy" : {
+      "collect_stats" : false
+    }
+  }
+}
