@@ -88,21 +88,24 @@ function main_content_script(thisUserConfig) {
         get queryStripped() {
             // remove any ?query in the URL
             return this._docLink.protocol + "//" + this._docLink.hostname + this._docLink.pathname;
+        },
+        appendDovIcon () {
+            if (this.isSupported && !this.isProcessed) {
+                // Append the icon beside the link
+                this._docLink.parentNode.insertBefore(this.iconLink, this._docLink.nextSibling);
+            }
+            this._docLink.processed = true; // Flagging to mark as checked
         }
-
     };
 
 
     function checkLinks(docLinks) {
-        new Array(docLinks.length).fill().map((_, i) => docLinks.item(i)).forEach( docLinkItem => {
-            if (docLinkItem === 'undefined') { return; }
-            let thisDocLink = new DocLink(docLinkItem);
-            if (thisDocLink.isSupported && !thisDocLink.isProcessed) {
-                // Append the icon beside the link
-                docLinkItem.parentNode.insertBefore(thisDocLink.iconLink, docLinkItem.nextSibling);
-            }
-            docLinkItem.processed = true; // Flagging to mark as checked
-        });
+        new Array(docLinks.length).fill().map((_, i) => docLinks.item(i))
+            .filter( (docLinkItem) => { // Filtering out invalid objects
+                return !(docLinkItem === "" || typeof docLinkItem == "undefined" || docLinkItem === null);
+            }).forEach( validDocLinkItem => {
+                new DocLink(validDocLinkItem).appendDovIcon();
+            });
     }
 
 
