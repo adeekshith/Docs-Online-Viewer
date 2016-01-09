@@ -37,12 +37,11 @@ UserConfig.prototype.setIconClickNewtab = function (userInput) {
 };
 UserConfig.prototype.isFiletypeEnabled = function (fileType) {
     let thisUserPrefJSON = this.userPreferencesJSON_;
-    let thisFiletypeEnabled = thisUserPrefJSON.user_preferences.file_types.some( function (thisFileTypeObj) {
+    return thisUserPrefJSON.user_preferences.file_types.some( function (thisFileTypeObj) {
         if (thisFileTypeObj.extension === fileType) {
             return thisFileTypeObj.is_enabled;
         }
     });
-    return thisFiletypeEnabled;
 };
 UserConfig.prototype.setFiletypeEnable = function (fileType, userInput) {
     let thisUserPrefJSON = this.userPreferencesJSON_;
