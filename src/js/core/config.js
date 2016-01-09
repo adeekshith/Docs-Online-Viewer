@@ -44,17 +44,10 @@ UserConfig.prototype.isFiletypeEnabled = function (fileType) {
     });
 };
 UserConfig.prototype.setFiletypeEnable = function (fileType, userInput) {
-    let thisUserPrefJSON = this.userPreferencesJSON_;
     if(typeof(userInput) === "boolean") {
-        let indexFiletype = 0;
-        thisUserPrefJSON.user_preferences.file_types.some( function (thisFileTypeObj) {
-            if (thisFileTypeObj.extension === fileType) {
-                thisUserPrefJSON.user_preferences.file_types[indexFiletype].is_enabled = userInput;
-                return thisFileTypeObj.is_enabled;
-            }
-            indexFiletype += 1;
-        });
-        this.userPreferencesJSON_ = thisUserPrefJSON;
+        let indexFiletype = this.userPreferencesJSON_.user_preferences.file_types
+            .findIndex( (thisFileTypeObj) => thisFileTypeObj.extension === fileType );
+        this.userPreferencesJSON_.user_preferences.file_types[indexFiletype].is_enabled = userInput;
     }else {
         return false;
     }
