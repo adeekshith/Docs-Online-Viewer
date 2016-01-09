@@ -93,9 +93,8 @@ function main_content_script(thisUserConfig) {
     };
 
 
-    function checkLinks() {
-        let docLinkItemsList = new Array(document.links.length).fill().map((_, i) => document.links[i]);
-        docLinkItemsList.forEach( docLinkItem => {
+    function checkLinks(docLinks) {
+        new Array(docLinks.length).fill().map((_, i) => docLinks.item(i)).forEach( docLinkItem => {
             if (docLinkItem === 'undefined') { return; }
             let thisDocLink = new DocLink(docLinkItem);
             if (thisDocLink.isSupported && !thisDocLink.isProcessed) {
@@ -122,7 +121,7 @@ function main_content_script(thisUserConfig) {
 // Execute these functions
 // to append icon beside document links and
 // add listener for new nodes
-    checkLinks();
+    checkLinks(document.links);
     setupListener();
 
 }
