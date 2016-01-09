@@ -7,7 +7,7 @@
 function UserConfig (userPreferencesJSON) {
     this.userPreferencesJSON_ = userPreferencesJSON;
 }
-UserConfig.prototype.getuserPrefVersion = function() {
+UserConfig.prototype.getUserPrefVersion = function() {
     return this.userPreferencesJSON_.user_preferences.version;
 };
 UserConfig.prototype.isIconBesideDocLinksEnabled = function() {
@@ -30,12 +30,8 @@ UserConfig.prototype.setIconClickNewtab = function (userInput) {
     return true;
 };
 UserConfig.prototype.isFiletypeEnabled = function (fileType) {
-    let thisUserPrefJSON = this.userPreferencesJSON_;
-    return thisUserPrefJSON.user_preferences.file_types.some( function (thisFileTypeObj) {
-        if (thisFileTypeObj.extension === fileType) {
-            return thisFileTypeObj.is_enabled;
-        }
-    });
+    return (this.userPreferencesJSON_.user_preferences.file_types
+        .findIndex( (thisFileTypeObj) => thisFileTypeObj.extension === fileType && thisFileTypeObj.is_enabled ) !== -1);
 };
 UserConfig.prototype.setFiletypeEnable = function (fileType, userInput) {
     if(typeof(userInput) !== "boolean") {console.log("Invalid input params"); return false;}
