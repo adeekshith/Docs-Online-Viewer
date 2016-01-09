@@ -35,7 +35,6 @@
 
 function main_content_script(thisUserConfig) {
     "use strict";
-    let docLinks = document.links;
     let doCheck = true;
     const dov_host_exclude = /(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;
     // Include paths to exclude showing icon
@@ -95,8 +94,8 @@ function main_content_script(thisUserConfig) {
 
 
     function checkLinks() {
-        let docLinkItemsList = new Array(docLinks.length).fill().map(function (_, i) { return docLinks[i]; });
-        docLinkItemsList.forEach(function (docLinkItem){
+        let docLinkItemsList = new Array(document.links.length).fill().map((_, i) => document.links[i]);
+        docLinkItemsList.forEach( docLinkItem => {
             if (docLinkItem === 'undefined') { return; }
             let thisDocLink = new DocLink(docLinkItem);
             if (thisDocLink.isSupported && !thisDocLink.isProcessed) {
