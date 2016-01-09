@@ -62,7 +62,7 @@ function main_content_script(thisUserConfig) {
             return (!((this._docLink.host).match(dov_host_exclude)) && !((this._docLink.href).match(dov_href_exclude)) && this.hasSupportedExtension && this._docLink.innerText.trim().length > 0); // GitHub Issue #6: No blank innerText. Does not work on Firefox
         },
         get isProcessed() {
-            return this._docLink.docView;
+            return this._docLink.processed;
         },
         get iconLink() {
             let viewLink = document.createElement('a');
@@ -97,15 +97,13 @@ function main_content_script(thisUserConfig) {
     function checkLinks() {
         let docLinkItemsList = new Array(docLinks.length).fill().map(function (_, i) { return docLinks[i]; });
         docLinkItemsList.forEach(function (docLinkItem){
-            console.log("Item: ", docLinkItem);
             if (docLinkItem === 'undefined') { return; }
             let thisDocLink = new DocLink(docLinkItem);
             if (thisDocLink.isSupported && !thisDocLink.isProcessed) {
                 // Append the icon beside the link
                 docLinkItem.parentNode.insertBefore(thisDocLink.iconLink, docLinkItem.nextSibling);
             }
-            // The link which is checked is flagged so that it is not repeatedly checked again.
-            docLinkItem.docView = true;
+            docLinkItem.processed = true; // Flagging to mark as checked
         });
     }
 
