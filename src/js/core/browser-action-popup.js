@@ -89,8 +89,7 @@ function updateToggleOptions(userPrefDefaultJsonStr) {
         let thisUserPreferences = JSON.parse(items.user_config);
         let thisUserConfig = new UserConfig(thisUserPreferences);
         //var thisUserIsDovIconEnabled = thisUserConfig.isIconBesideDocLinksEnabled();
-        let currentToggleStatus = userToggleEnableStatus;
-        thisUserConfig.setIconBesideDocLinksEnable(currentToggleStatus);
+        thisUserConfig.setIconBesideDocLinksEnable(userToggleEnableStatus);
         let thisUserPreferencesStr = JSON.stringify(thisUserConfig.getPreferences());
         chrome.storage.sync.set({
             user_config:thisUserPreferencesStr

@@ -8,7 +8,7 @@
       "id": "{bfb54675-2fd9-4e22-949d-c36333aff6b5}"
     }
   },
-  "minimum_chrome_version": "41.0",
+  "minimum_chrome_version": "45.0",
 
   "default_locale": "en",
   "description": "Open any file on the web. Supports almost all major file and document formats. Fast, easy to use, lightweight, and free.",

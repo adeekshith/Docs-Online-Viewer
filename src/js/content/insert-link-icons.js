@@ -35,7 +35,6 @@
 
 function main_content_script(thisUserConfig) {
     "use strict";
-    let docLinks = document.links;
     let doCheck = true;
     const dov_host_exclude = /(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;
     // Include paths to exclude showing icon
@@ -62,7 +61,7 @@ function main_content_script(thisUserConfig) {
             return (!((this._docLink.host).match(dov_host_exclude)) && !((this._docLink.href).match(dov_href_exclude)) && this.hasSupportedExtension && this._docLink.innerText.trim().length > 0); // GitHub Issue #6: No blank innerText. Does not work on Firefox
         },
         get isProcessed() {
-            return this._docLink.docView;
+            return this._docLink.processed;
         },
         get iconLink() {
             let viewLink = document.createElement('a');
@@ -89,21 +88,24 @@ function main_content_script(thisUserConfig) {
         get queryStripped() {
             // remove any ?query in the URL
             return this._docLink.protocol + "//" + this._docLink.hostname + this._docLink.pathname;
+        },
+        appendDovIcon () {
+            if (this.isSupported && !this.isProcessed) {
+                // Append the icon beside the link
+                this._docLink.parentNode.insertBefore(this.iconLink, this._docLink.nextSibling);
+            }
+            this._docLink.processed = true; // Flagging to mark as checked
         }
-
     };
 
 
-    function checkLinks() {
-        for (let i = 0; i < docLinks.length; ++i) {
-            let thisDocLink = new DocLink(docLinks[i]);
-            if (thisDocLink.isSupported && !thisDocLink.isProcessed) {
-                // Append the icon beside the link
-                docLinks[i].parentNode.insertBefore(thisDocLink.iconLink, docLinks[i].nextSibling);
-            }
-            // The link which is checked is flagged so that it is not repeatedly checked again.
-            docLinks[i].docView = true;
-        }
+    function checkLinks(docLinks) {
+        new Array(docLinks.length).fill().map((_, i) => docLinks.item(i))
+            .filter( (docLinkItem) => { // Filtering out invalid objects
+                return !(docLinkItem === "" || typeof docLinkItem == "undefined" || docLinkItem === null);
+            }).forEach( validDocLinkItem => {
+                new DocLink(validDocLinkItem).appendDovIcon();
+            });
     }
 
 
@@ -122,7 +124,7 @@ function main_content_script(thisUserConfig) {
 // Execute these functions
 // to append icon beside document links and
 // add listener for new nodes
-    checkLinks();
+    checkLinks(document.links);
     setupListener();
 
 }
