@@ -1,8 +1,8 @@
 /**
- * Created by deekshitha on 11/28/15.
+ * Created by Deekshith Allamaneni on 11/28/15.
  */
-"use strict";
 
+"use strict";
 
 function textFileLoad(url) {
     // Create new promise with the Promise() constructor;

@@ -2,13 +2,14 @@
   "manifest_version": 2,
   "name": "Docs Online Viewer",
   "short_name": "DOV",
-  "version": "7.4.3",
+  "version": "7.5.1",
   "applications": {
     "gecko": {
       "id": "{bfb54675-2fd9-4e22-949d-c36333aff6b5}"
     }
   },
   "minimum_chrome_version": "45.0",
+  "minimum_opera_version": "32.0",
 
   "default_locale": "en",
   "description": "Open any file on the web. Supports almost all major file and document formats. Fast, easy to use, lightweight, and free.",
