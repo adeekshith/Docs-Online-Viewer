@@ -99,7 +99,7 @@ function main_content_script(thisUserConfig) {
     };
 
 
-    function checkLinks(docLinks) {
+    function appendDovIconToAllNodes(docLinks) {
         new Array(docLinks.length).fill().map((_, i) => docLinks.item(i))
             .filter( (docLinkItem) => { // Filtering out invalid objects
                 return !(docLinkItem === "" || typeof docLinkItem == "undefined" || docLinkItem === null);
@@ -114,17 +114,16 @@ function main_content_script(thisUserConfig) {
             if (doCheck) {
                 doCheck = false;
                 setTimeout(function () {
-                    checkLinks(document.links);
+                    appendDovIconToAllNodes(document.links);
                     doCheck = true;
                 }, 1000);
             }
         }, false);
     }
 
-// Execute these functions
-// to append icon beside document links and
-// add listener for new nodes
-    checkLinks(document.links);
+    // Execute these functions to append icon beside document links and
+    // add listener for new nodes
+    appendDovIconToAllNodes(document.links);
     setupListener();
 
 }
