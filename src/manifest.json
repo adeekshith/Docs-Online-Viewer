@@ -9,6 +9,7 @@
     }
   },
   "minimum_chrome_version": "45.0",
+  "minimum_opera_version": "32.0",
 
   "default_locale": "en",
   "description": "Open any file on the web. Supports almost all major file and document formats. Fast, easy to use, lightweight, and free.",
