@@ -114,7 +114,7 @@ function main_content_script(thisUserConfig) {
             if (doCheck) {
                 doCheck = false;
                 setTimeout(function () {
-                    checkLinks();
+                    checkLinks(document.links);
                     doCheck = true;
                 }, 1000);
             }
