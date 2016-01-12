@@ -38,7 +38,7 @@ function main_content_script(thisUserConfig) {
     let doCheck = true;
     const dov_host_exclude = /(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;
     // Include paths to exclude showing icon
-    const dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*|file:\/\/\/.*)/;
+    const dov_href_exclude = /(file:\/\/\/.*)/;
 
 
     function fileExtension(path) {
@@ -90,11 +90,22 @@ function main_content_script(thisUserConfig) {
             return this._docLink.protocol + "//" + this._docLink.hostname + this._docLink.pathname;
         },
         appendDovIcon () {
+            var thisNode = this._docLink;
+            var thisIconLink = this.iconLink;
             if (this.isSupported && !this.isProcessed) {
                 // Append the icon beside the link
-                this._docLink.parentNode.insertBefore(this.iconLink, this._docLink.nextSibling);
+                getUrlContentType(this._docLink.href).then(function(thisContentType) {
+                    /*
+                    thisContentType has the Content-Type of the current file URL.
+                     Check if it matches the required file type and then append icon if it matches.
+                     */
+                    console.log("thisContentType: ", thisContentType);
+                    thisNode.parentNode.insertBefore(thisIconLink, thisNode.nextSibling);
+                    thisNode.processed = true; // Flagging to mark as checked
+                }, function(Error) {
+                    console.log(Error);
+                });
             }
-            this._docLink.processed = true; // Flagging to mark as checked
         }
     };
 

@@ -44,7 +44,7 @@
                           "*://docs.google.com/*",
                           "*://www.mediafire.com/*"],
       "all_frames": true,
-      "js": ["js/core/config.js", "js/content/insert-link-icons.js"]
+      "js": ["js/core/config.js", "js/content/insert-link-icons.js", "js/libs/dov-utils.js"]
     }
   ],
   "web_accessible_resources": [
@@ -52,6 +52,9 @@
     "data/user-preferences-default.json"
   ],
   "permissions": [
-    "storage"
+    "storage",
+    "http://*/",
+    "https://*/",
+    "contextMenus"
   ]
 }
