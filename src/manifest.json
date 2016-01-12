@@ -52,6 +52,9 @@
     "data/user-preferences-default.json"
   ],
   "permissions": [
-    "storage"
+    "storage",
+    "http://*/",
+    "https://*/",
+    "contextMenus"
   ]
 }
