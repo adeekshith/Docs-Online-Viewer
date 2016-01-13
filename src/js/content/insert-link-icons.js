@@ -39,6 +39,7 @@ function main_content_script(thisUserConfig) {
     const dov_host_exclude = /(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;
     // Include paths to exclude showing icon
     const dov_href_exclude = /(file:\/\/\/.*)/;
+    var port = chrome.runtime.connect({name: "dov-url-detect-messenger"});
 
 
     function fileExtension(path) {
@@ -65,7 +66,7 @@ function main_content_script(thisUserConfig) {
         },
         get iconLink() {
             let viewLink = document.createElement('a');
-            viewLink.href = "https://docs.google.com/viewer?url=" + encodeURI(this.queryStripped) + "&embedded=true&chrome=false&dov=1";
+            viewLink.href = "https://docs.google.com/viewer?url=" + encodeURI(this._docLink.href) + "&embedded=true&chrome=false&dov=1";
             /*
              Parameter description:
              embedded= <true>: to open google docs in embedded mode
@@ -94,16 +95,14 @@ function main_content_script(thisUserConfig) {
             var thisIconLink = this.iconLink;
             if (this.isSupported && !this.isProcessed) {
                 // Append the icon beside the link
-                getUrlContentType(this._docLink.href).then(function(thisContentType) {
-                    /*
-                    thisContentType has the Content-Type of the current file URL.
-                     Check if it matches the required file type and then append icon if it matches.
-                     */
-                    console.log("thisContentType: ", thisContentType);
-                    thisNode.parentNode.insertBefore(thisIconLink, thisNode.nextSibling);
+                port.postMessage({test_url: thisNode.href});
+                port.onMessage.addListener(function(msg) {
+                    console.log("thisNode.href: ", thisNode.href);
+                    console.log("msg.url_content_type: ", msg.url_content_type);
+                    if(msg.return_url === thisNode.href && msg.url_content_type === "application/msword") {
+                        thisNode.parentNode.insertBefore(thisIconLink, thisNode.nextSibling);
+                    }
                     thisNode.processed = true; // Flagging to mark as checked
-                }, function(Error) {
-                    console.log(Error);
                 });
             }
         }
