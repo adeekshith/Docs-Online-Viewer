@@ -1,0 +1,17 @@
+{
+  "content-types": {
+    "application/msword": ["doc"],
+    "application/pdf": ["pdf"],
+    "application/vnd.oasis.opendocument.presentation": ["odp"],
+    "application/vnd.oasis.opendocument.spreadsheet": ["ods"]
+    "application/vnd.oasis.opendocument.text": ["odt"],
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation": ["pptx"],
+    "application/vnd.openxmlformats-officedocument.wordprocessingml": ["docx"],
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document": ["docx"],
+    "application/x-iwork-numbers-sffnumbers": ["numbers"],
+    "application/x-iwork-pages-sffpages": ["pages"],
+    "text/plain": ["dxf"],
+    "application/postscript": ["ai", "eps"],
+    "text/html": ["html"]
+  }
+}
