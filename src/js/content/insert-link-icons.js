@@ -35,10 +35,12 @@
 
 function main_content_script(thisUserConfig) {
     "use strict";
+    let dovIconIdArr = [];
     let doCheck = true;
     const dov_host_exclude = /(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;
     // Include paths to exclude showing icon
-    const dov_href_exclude = /(https:\/\/github.com\/.*\/.*\/blob\/.*|file:\/\/\/.*)/;
+    const dov_href_exclude = /(file:\/\/\/.*)/;
+    var port = chrome.runtime.connect({name: "dov-url-detect-messenger"});
 
 
     function fileExtension(path) {
@@ -65,7 +67,7 @@ function main_content_script(thisUserConfig) {
         },
         get iconLink() {
             let viewLink = document.createElement('a');
-            viewLink.href = "https://docs.google.com/viewer?url=" + encodeURI(this.queryStripped) + "&embedded=true&chrome=false&dov=1";
+            viewLink.href = "https://docs.google.com/viewer?url=" + encodeURI(this._docLink.href) + "&embedded=true&chrome=false&dov=1";
             /*
              Parameter description:
              embedded= <true>: to open google docs in embedded mode
@@ -92,11 +94,37 @@ function main_content_script(thisUserConfig) {
         appendDovIcon () {
             if (this.isSupported && !this.isProcessed) {
                 // Append the icon beside the link
-                this._docLink.parentNode.insertBefore(this.iconLink, this._docLink.nextSibling);
+                let thisNode = this._docLink;
+                let thisIconLink = this.iconLink;
+                let thisDovIconUuid = generateUuid();
+                dovIconIdArr.push(thisDovIconUuid);
+                thisIconLink.setAttribute("id", thisDovIconUuid);
+                thisIconLink.setAttribute("original-url", thisNode.href);
+                thisNode.parentNode.insertBefore(thisIconLink, thisNode.nextSibling);
+                thisNode.processed = true; // Flagging to mark as checked
             }
-            this._docLink.processed = true; // Flagging to mark as checked
         }
     };
+
+
+    function removeDovIconForLinksWithHtmlContent(dovIconIds) {
+        dovIconIds.forEach((id) => {
+            let thisIconBesideLinkElement = document.getElementById(id);
+            if(!(thisIconBesideLinkElement === "" || typeof thisIconBesideLinkElement == "undefined" || thisIconBesideLinkElement === null)) {
+                let thisOriginalUrl = thisIconBesideLinkElement.getAttribute("original-url");
+                port.postMessage({test_url: thisOriginalUrl});
+                port.onMessage.addListener(function(msg) {
+                    console.log("Link: ", msg.url);
+                    console.log("ContentType: ", msg.content_type);
+                    console.log("Link Status: ", msg.status);
+                    if(msg.url !== thisOriginalUrl) {return;}
+                    if(msg.status !== 200 || msg.content_type == undefined || msg.content_type.startsWith("text/html")) {
+                        thisIconBesideLinkElement.parentNode.removeChild(thisIconBesideLinkElement);
+                    }
+                });
+            }
+        });
+    }
 
 
     function appendDovIconToAllNodes(docLinks) {
@@ -106,6 +134,10 @@ function main_content_script(thisUserConfig) {
             }).forEach( validDocLinkItem => {
                 new DocLink(validDocLinkItem).appendDovIcon();
             });
+        // Determine file types by reading Content-Type and remove icon beside invalid links
+        removeDovIconForLinksWithHtmlContent(dovIconIdArr);
+        // Reset/Empty the Ids array
+        dovIconIdArr = [];
     }
 
 
