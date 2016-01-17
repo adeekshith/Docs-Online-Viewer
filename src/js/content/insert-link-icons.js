@@ -97,9 +97,10 @@ function main_content_script(thisUserConfig) {
                 // Append the icon beside the link
                 port.postMessage({test_url: thisNode.href});
                 port.onMessage.addListener(function(msg) {
-                    console.log("thisNode.href: ", thisNode.href);
-                    console.log("msg.url_content_type: ", msg.url_content_type);
-                    if(msg.return_url === thisNode.href && msg.url_content_type === "application/msword") {
+                    console.log("Link: ", msg.url);
+                    console.log("ContentType: ", msg.content_type);
+                    console.log("Link Status: ", msg.status);
+                    if(msg.url === thisNode.href && msg.content_type === "application/msword") {
                         thisNode.parentNode.insertBefore(thisIconLink, thisNode.nextSibling);
                     }
                     thisNode.processed = true; // Flagging to mark as checked

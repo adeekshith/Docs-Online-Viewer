@@ -13,7 +13,13 @@ function getUrlContentType(url) {
         let request = new XMLHttpRequest();
         request.onreadystatechange = function() {
             if (request.readyState == 2) {
-                resolve(request.getResponseHeader("Content-Type"));
+                resolve(
+                    {
+                        url: url,
+                        content_type: request.getResponseHeader("Content-Type"),
+                        status: request.status
+                    }
+                );
             }
         };
         request.onerror = function() {
@@ -36,8 +42,7 @@ chrome.runtime.onConnect.addListener(function(port) {
              thisContentType has the Content-Type of the current file URL.
              Check if it matches the required file type and then append icon if it matches.
              */
-            console.log("thisContentType: ", thisContentType);
-            port.postMessage({return_url: msg.test_url, url_content_type: thisContentType});
+            port.postMessage(thisContentType);
         }, function(Error) {
             console.log(Error);
         });
