@@ -27,6 +27,9 @@ function getUrlContentType(url) {
             // This is probably a network error, so reject the promise with an appropriate message
             reject(Error('Network error reading Content-Type.'));
         };
+        request.ontimeout = function () {
+            reject(Error('Request timeout'));
+        };
         request.open("GET", url, true);
         request.timeout = 4000; // Timeout in ms
         request.send(null);
