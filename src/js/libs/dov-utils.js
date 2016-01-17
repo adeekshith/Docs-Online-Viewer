@@ -33,28 +33,6 @@ function textFileLoad(url) {
     });
 }
 
-function getUrlContentType(url) {
-    // Create new promise with the Promise() constructor;
-    // This has as its argument a function
-    // with two parameters, resolve and reject
-    return new Promise(function(resolve, reject) {
-        // Standard XHR
-        let request = new XMLHttpRequest();
-        request.onreadystatechange = function() {
-            if (request.readyState == 2) {
-                resolve(request.getResponseHeader("Content-Type"));
-            }
-        };
-        request.onerror = function() {
-            // Also deal with the case when the entire request fails to begin with
-            // This is probably a network error, so reject the promise with an appropriate message
-            reject(Error('Network error reading Content-Type.'));
-        };
-        request.open("GET", url, true);
-        request.timeout = 4000; // Timeout in ms
-        request.send(null);
-    });
-}
 
 function generateUuid() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -62,3 +40,8 @@ function generateUuid() {
         return v.toString(16);
     });
 }
+
+String.prototype.hashCode = function () {
+    return this.split('').reduce((prevHash, currVal) =>
+    ((prevHash << 5) - prevHash) + currVal.charCodeAt(0), 0);
+};
