@@ -45,6 +45,13 @@ chrome.runtime.onConnect.addListener(function(port) {
             port.postMessage(thisContentType);
         }, function(Error) {
             console.log(Error);
+            port.postMessage(
+                {
+                    url: msg.test_url,
+                    content_type: undefined,
+                    status: undefined
+                }
+            );
         });
     });
 });
