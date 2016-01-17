@@ -35,6 +35,7 @@
 
 function main_content_script(thisUserConfig) {
     "use strict";
+    let dovIconIdArr = [];
     let doCheck = true;
     const dov_host_exclude = /(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;
     // Include paths to exclude showing icon
@@ -91,23 +92,39 @@ function main_content_script(thisUserConfig) {
             return this._docLink.protocol + "//" + this._docLink.hostname + this._docLink.pathname;
         },
         appendDovIcon () {
-            var thisNode = this._docLink;
-            var thisIconLink = this.iconLink;
             if (this.isSupported && !this.isProcessed) {
                 // Append the icon beside the link
-                port.postMessage({test_url: thisNode.href});
+                let thisNode = this._docLink;
+                let thisIconLink = this.iconLink;
+                let thisDovIconUuid = generateUuid();
+                dovIconIdArr.push(thisDovIconUuid);
+                thisIconLink.setAttribute("id", thisDovIconUuid);
+                thisIconLink.setAttribute("original-url", thisNode.href);
+                thisNode.parentNode.insertBefore(thisIconLink, thisNode.nextSibling);
+                thisNode.processed = true; // Flagging to mark as checked
+            }
+        }
+    };
+
+
+    function removeDovIconForLinksWithHtmlContent(dovIconIds) {
+        dovIconIds.forEach((id) => {
+            let thisIconBesideLinkElement = document.getElementById(id);
+            if(!(thisIconBesideLinkElement === "" || typeof thisIconBesideLinkElement == "undefined" || thisIconBesideLinkElement === null)) {
+                let thisOriginalUrl = thisIconBesideLinkElement.getAttribute("original-url");
+                port.postMessage({test_url: thisOriginalUrl});
                 port.onMessage.addListener(function(msg) {
                     console.log("Link: ", msg.url);
                     console.log("ContentType: ", msg.content_type);
                     console.log("Link Status: ", msg.status);
-                    if(msg.url === thisNode.href && msg.content_type === "application/msword") {
-                        thisNode.parentNode.insertBefore(thisIconLink, thisNode.nextSibling);
+                    if(msg.url !== thisOriginalUrl) {return;}
+                    if(msg.status !== 200 || msg.content_type == undefined || msg.content_type.startsWith("text/html")) {
+                        thisIconBesideLinkElement.parentNode.removeChild(thisIconBesideLinkElement);
                     }
-                    thisNode.processed = true; // Flagging to mark as checked
                 });
             }
-        }
-    };
+        });
+    }
 
 
     function appendDovIconToAllNodes(docLinks) {
@@ -117,6 +134,10 @@ function main_content_script(thisUserConfig) {
             }).forEach( validDocLinkItem => {
                 new DocLink(validDocLinkItem).appendDovIcon();
             });
+        // Determine file types by reading Content-Type and remove icon beside invalid links
+        removeDovIconForLinksWithHtmlContent(dovIconIdArr);
+        // Reset/Empty the Ids array
+        dovIconIdArr = [];
     }
 
 
