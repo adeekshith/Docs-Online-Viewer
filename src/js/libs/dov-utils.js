@@ -62,3 +62,8 @@ function generateUuid() {
         return v.toString(16);
     });
 }
+
+String.prototype.hashCode = function () {
+    return this.split('').reduce((prevHash, currVal) =>
+    ((prevHash << 5) - prevHash) + currVal.charCodeAt(0), 0);
+};
