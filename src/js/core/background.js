@@ -31,7 +31,7 @@ function getUrlContentType(url) {
             reject(Error('Request timeout'));
         };
         request.open("GET", url, true);
-        request.timeout = 4000; // Timeout in ms
+        request.timeout = 2000; // Timeout in ms
         request.send(null);
     });
 }
