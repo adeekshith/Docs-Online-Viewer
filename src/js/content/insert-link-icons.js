@@ -114,9 +114,6 @@ function main_content_script(thisUserConfig) {
                 let thisOriginalUrl = thisIconBesideLinkElement.getAttribute("original-url");
                 port.postMessage({test_url: thisOriginalUrl});
                 port.onMessage.addListener(function(msg) {
-                    console.log("Link: ", msg.url);
-                    console.log("ContentType: ", msg.content_type);
-                    console.log("Link Status: ", msg.status);
                     if(msg.url !== thisOriginalUrl) {return;}
                     if(msg.status !== 200 || msg.content_type == undefined || msg.content_type.startsWith("text/html")) {
                         thisIconBesideLinkElement.parentNode.removeChild(thisIconBesideLinkElement);
