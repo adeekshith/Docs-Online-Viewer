@@ -110,16 +110,15 @@ function main_content_script(thisUserConfig) {
         let port = chrome.runtime.connect({name: "dov-url-detect-messenger"});
         dovIconIds.forEach((id) => {
             let thisIconBesideLinkElement = document.getElementById(id);
-            if(!(thisIconBesideLinkElement === "" || typeof thisIconBesideLinkElement == "undefined" || thisIconBesideLinkElement === null)) {
-                let thisOriginalUrl = thisIconBesideLinkElement.getAttribute("original-url");
-                port.postMessage({test_url: thisOriginalUrl});
-                port.onMessage.addListener(function(msg) {
-                    if(msg.url !== thisOriginalUrl) {return;}
-                    if(msg.status !== 200 || msg.content_type == undefined || msg.content_type.startsWith("text/html")) {
-                        thisIconBesideLinkElement.parentNode.removeChild(thisIconBesideLinkElement);
-                    }
-                });
-            }
+            if(thisIconBesideLinkElement === null || typeof(thisIconBesideLinkElement) === "undefined" || thisIconBesideLinkElement === "") { return;}
+            let thisOriginalUrl = thisIconBesideLinkElement.getAttribute("original-url");
+            port.postMessage({test_url: thisOriginalUrl});
+            port.onMessage.addListener(function(msg) {
+                if(msg.url !== thisOriginalUrl) {return;}
+                if(msg.status !== 200 || msg.content_type == undefined || msg.content_type.startsWith("text/html")) {
+                    thisIconBesideLinkElement.remove();
+                }
+            });
         });
         setTimeout(function(){ port.disconnect(); }, 4000); // Disconnect port after some delay to avoid missing messages
     }
