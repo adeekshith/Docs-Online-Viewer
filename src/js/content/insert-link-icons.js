@@ -40,7 +40,6 @@ function main_content_script(thisUserConfig) {
     const dov_host_exclude = /(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;
     // Include paths to exclude showing icon
     const dov_href_exclude = /(file:\/\/\/.*)/;
-    var port = chrome.runtime.connect({name: "dov-url-detect-messenger"});
 
 
     function fileExtension(path) {
@@ -108,6 +107,7 @@ function main_content_script(thisUserConfig) {
 
 
     function removeDovIconForLinksWithHtmlContent(dovIconIds) {
+        let port = chrome.runtime.connect({name: "dov-url-detect-messenger"});
         dovIconIds.forEach((id) => {
             let thisIconBesideLinkElement = document.getElementById(id);
             if(!(thisIconBesideLinkElement === "" || typeof thisIconBesideLinkElement == "undefined" || thisIconBesideLinkElement === null)) {
@@ -121,6 +121,7 @@ function main_content_script(thisUserConfig) {
                 });
             }
         });
+        setTimeout(function(){ port.disconnect(); }, 4000); // Disconnect port after some delay to avoid missing messages
     }
 
 
