@@ -107,20 +107,30 @@ function main_content_script(thisUserConfig) {
 
 
     function removeDovIconForLinksWithHtmlContent(dovIconIds) {
+        let dovUrlBgMsgCounter = 0; // Keeps track of number of pending responses
         let port = chrome.runtime.connect({name: "dov-url-detect-messenger"});
+        console.log("bg port opened");
         dovIconIds.forEach((id) => {
             let thisIconBesideLinkElement = document.getElementById(id);
             if(thisIconBesideLinkElement === null || typeof(thisIconBesideLinkElement) === "undefined" || thisIconBesideLinkElement === "") { return;}
             let thisOriginalUrl = thisIconBesideLinkElement.getAttribute("original-url");
             port.postMessage({test_url: thisOriginalUrl});
+            dovUrlBgMsgCounter += 1; // Increment counter when a background request is posted
             port.onMessage.addListener(function(msg) {
-                if(msg.url !== thisOriginalUrl) {return;}
+                // Filter out already removed or mismatching elements
+                if(document.getElementById(id) === null || msg.url !== thisOriginalUrl) {return;}
+                console.log("msg.url: ", document.getElementById(id).getAttribute("original-url"));
+                dovUrlBgMsgCounter -= 1; // Decrement counter when a background response is received
+                console.log("# pending msg: ", dovUrlBgMsgCounter);
+                if(dovUrlBgMsgCounter === 0){ // Close connection with bg script when all requests are returned
+                    console.log("bg port disconnected");
+                    port.disconnect();
+                }
                 if(msg.status !== 200 || msg.content_type == undefined || msg.content_type.startsWith("text/html")) {
                     thisIconBesideLinkElement.remove();
                 }
             });
         });
-        setTimeout(function(){ port.disconnect(); }, 4000); // Disconnect port after some delay to avoid missing messages
     }
 
 
