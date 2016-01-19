@@ -108,7 +108,7 @@ function main_content_script(thisUserConfig) {
 
     function removeDovIconForLinksWithHtmlContent(dovIconIds) {
         console.log("dovIconIds.length: ", dovIconIds.length);
-        if(dovIconIds.length === 0) { return;} // Return if id's array is empty
+        if(dovIconIds === null || dovIconIds.length === 0) { return;} // Return if id's array is empty
             // which otherwise may connect to bg script and keep the port open unnecessarily.
         let dovUrlBgMsgCounter = 0; // Keeps track of number of pending responses
         let portIsOpen = false;
@@ -137,12 +137,19 @@ function main_content_script(thisUserConfig) {
                 }
             });
         });
+        /*
+        Closing id port is found open after given timeout.
+        Ideally, this is not needed and port should be closed as soon as all the messages are received.
+        In fact, closing after timeout like this may also lead to side effects.
+        But this will help to keep the port closed after timeout if in any case not closed properly.
+         */
         setTimeout(function() {
             if(portIsOpen){
                 port.disconnect();
+                console.log("bg port disconnected after timeout");
                 portIsOpen = false;
             }
-        }, 10000); // Disconnect port after some delay to avoid missing messages
+        }, 10000); // Disconnect port after specified delay to avoid missing messages
     }
 
 
