@@ -107,8 +107,13 @@ function main_content_script(thisUserConfig) {
 
 
     function removeDovIconForLinksWithHtmlContent(dovIconIds) {
+        console.log("dovIconIds.length: ", dovIconIds.length);
+        if(dovIconIds.length === 0) { return;} // Return if id's array is empty
+            // which otherwise may connect to bg script and keep the port open unnecessarily.
         let dovUrlBgMsgCounter = 0; // Keeps track of number of pending responses
+        let portIsOpen = false;
         let port = chrome.runtime.connect({name: "dov-url-detect-messenger"});
+        portIsOpen = true;
         console.log("bg port opened");
         dovIconIds.forEach((id) => {
             let thisIconBesideLinkElement = document.getElementById(id);
@@ -125,12 +130,19 @@ function main_content_script(thisUserConfig) {
                 if(dovUrlBgMsgCounter === 0){ // Close connection with bg script when all requests are returned
                     console.log("bg port disconnected");
                     port.disconnect();
+                    portIsOpen = false;
                 }
                 if(msg.status !== 200 || msg.content_type == undefined || msg.content_type.startsWith("text/html")) {
                     thisIconBesideLinkElement.remove();
                 }
             });
         });
+        setTimeout(function() {
+            if(portIsOpen){
+                port.disconnect();
+                portIsOpen = false;
+            }
+        }, 10000); // Disconnect port after some delay to avoid missing messages
     }
 
 
