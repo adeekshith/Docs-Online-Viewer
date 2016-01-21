@@ -149,8 +149,7 @@ function main_content_script(thisUserConfig) {
 
 
     function appendDovIconToAllNodes(docLinks) {
-        new Array(docLinks.length).fill().map((_, i) => docLinks.item(i))
-            .filter( (docLinkItem) => { // Filtering out invalid objects
+        Array.apply(null, docLinks).filter( (docLinkItem) => { // Filtering out invalid objects
                 return !(docLinkItem === "" || typeof docLinkItem == "undefined" || docLinkItem === null);
             }).forEach( validDocLinkItem => {
                 new DocLink(validDocLinkItem).appendDovIcon();
