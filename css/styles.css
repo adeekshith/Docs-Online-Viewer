@@ -5,12 +5,25 @@ html,body {
 }
 
 section {
+    padding-top:20px;
+    padding-bottom:50px;
+    /*
     padding-top:70px;
     padding-bottom:50px;
     min-height:calc(70% - 1px);
+    */
+}
+
+.section-fullpage {
+    min-height:calc(100% - 1px);
 }
 
 .section-odd {
     background-color: #F7F7F7;
     color:#555555;
+}
+
+.section-even {
+    background-color: #E7E7E7;
+    color:#454545;
 }
