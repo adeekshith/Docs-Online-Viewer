@@ -1,5 +1,6 @@
 /**
- * Created by deekshitha on 1/12/16.
+ * Created by Deekshith Allamaneni on 1/12/16.
+ * Copyright 2016 Deekshith Allamaneni
  */
 "use strict";
 
