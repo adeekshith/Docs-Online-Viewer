@@ -35,7 +35,6 @@
 
 function main_content_script(thisUserConfig) {
     "use strict";
-    let dovIconIdArr = [];
     let doCheck = true;
     const dov_host_exclude = /(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;
     // Include paths to exclude showing icon
@@ -96,11 +95,13 @@ function main_content_script(thisUserConfig) {
                 let thisNode = this._docLink;
                 let thisIconLink = this.iconLink;
                 let thisDovIconUuid = generateUuid();
-                dovIconIdArr.push(thisDovIconUuid);
                 thisIconLink.setAttribute("id", thisDovIconUuid);
                 thisIconLink.setAttribute("original-url", thisNode.href);
                 thisNode.parentNode.insertBefore(thisIconLink, thisNode.nextSibling);
                 thisNode.processed = true; // Flagging to mark as checked
+                return thisDovIconUuid;
+            }else {
+                return null;
             }
         }
     };
@@ -149,15 +150,11 @@ function main_content_script(thisUserConfig) {
 
 
     function appendDovIconToAllNodes(docLinks) {
-        Array.apply(null, docLinks).filter( (docLinkItem) => { // Filtering out invalid objects
-                return !(docLinkItem === "" || typeof docLinkItem == "undefined" || docLinkItem === null);
-            }).forEach( validDocLinkItem => {
-                new DocLink(validDocLinkItem).appendDovIcon();
-            });
+        let dovIconIdArrLocal = Array.apply(null, docLinks)
+            .filter( docLinkItem => !(docLinkItem === "" || typeof(docLinkItem) === "undefined" || docLinkItem === null))
+            .map( validDocLinkItem => new DocLink(validDocLinkItem).appendDovIcon());
         // Determine file types by reading Content-Type and remove icon beside invalid links
-        removeDovIconForLinksWithHtmlContent(dovIconIdArr);
-        // Reset/Empty the Ids array
-        dovIconIdArr = [];
+        removeDovIconForLinksWithHtmlContent(dovIconIdArrLocal);
     }
 
 
