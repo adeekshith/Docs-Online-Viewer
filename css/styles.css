@@ -30,3 +30,7 @@ section {
     background-color: #E7E7E7;
     color:#454545;
 }
+
+.supported-browsers-group {
+    padding-top:10px;
+}
