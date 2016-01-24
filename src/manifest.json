@@ -44,7 +44,11 @@
                           "*://docs.google.com/*",
                           "*://www.mediafire.com/*"],
       "all_frames": true,
-      "js": ["js/core/config.js", "js/content/insert-link-icons.js", "js/libs/dov-utils.js", "js/content/announce-dov-info.js"]
+      "js": ["js/core/config.js", "js/content/insert-link-icons.js", "js/libs/dov-utils.js"]
+    },
+    {
+      "matches": ["*://dov.parishod.com/*"],
+      "js": ["js/content/announce-dov-info.js"]
     }
   ],
   "background": {
