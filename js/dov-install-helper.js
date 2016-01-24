@@ -22,10 +22,15 @@ function getDovUrlForBrowser(browserName) {
 
 function changeDovInstallButton() {
     let thisBrowserName = detectBrowser(navigator.userAgent).browser_name;
-    if(thisBrowserName === null) { return;}
     let thisBrowserUrl = getDovUrlForBrowser(thisBrowserName);
-    document.getElementById("dov-install-button").href = thisBrowserUrl;
-    document.getElementById("dov-install-button").innerHTML = "Install for ".concat(thisBrowserName);
+    let installButtonElement = document.getElementById("dov-install-button");
+    if(thisBrowserName === null || thisBrowserUrl === null) {
+        installButtonElement.href = "#";
+        installButtonElement.innerHTML = "Browser not Supported";
+        return;
+    }
+    installButtonElement.href = thisBrowserUrl;
+    installButtonElement.innerHTML = "Install for ".concat(thisBrowserName);
 }
 
 changeDovInstallButton();
