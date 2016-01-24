@@ -13,4 +13,11 @@ function changeHomepageDovInstallBtnSuccess(homepageInstallBtnId) {
     homepageInstallBtnElement.classList.add("btn-success");
 }
 
+function changeHomepageSupportedBrowserIcons() {
+    document.getElementById("supported-browser-icon-chrome").classList.add("text-muted");
+    document.getElementById("supported-browser-icon-firefox").classList.add("text-muted");
+    document.getElementById("supported-browser-icon-opera").classList.add("text-muted");
+}
+
 changeHomepageDovInstallBtnSuccess(homepageInstallBtnId);
+changeHomepageSupportedBrowserIcons();
