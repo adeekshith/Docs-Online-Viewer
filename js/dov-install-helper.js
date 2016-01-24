@@ -16,6 +16,8 @@ function getDovUrlForBrowser(browserName) {
         case "Firefox":
             browserUrl = "https://addons.mozilla.org/en-US/firefox/addon/docs-online-viewer/";
             break;
+        default:
+            browserUrl = null;
     }
     return browserUrl;
 }
@@ -29,6 +31,7 @@ function changeDovInstallButton() {
         installButtonElement.innerHTML = "Browser not Supported";
         return;
     }
+    installButtonElement.classList.remove("disabled");
     installButtonElement.href = thisBrowserUrl;
     installButtonElement.innerHTML = "Install for ".concat(thisBrowserName);
 }
