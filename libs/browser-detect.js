@@ -14,6 +14,5 @@ function detectBrowser(userAgent) {
     let browserInfo = userAgentMatches.length >= 0
         ? userAgentMatches[0].toString() // Ex: Firefox/45.02
         : null;
-    let [browserName, browserVersion] = browserInfo.split("/");
-    return {browser_name: browserName, browser_version: browserVersion};
+    return {browser_name: browserInfo.split("/")[0], browser_version: browserInfo.split("/")[1]};
 }
