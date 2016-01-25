@@ -47,7 +47,7 @@ function changeDovInstallButton() {
     }
     installButtonElement.classList.remove("disabled");
     installButtonElement.href = thisBrowserUrl;
-    installButtonElement.innerHTML = "Install for ".concat(thisBrowserName);
+    installButtonElement.innerHTML = "<i class=\"fa fa-plus fa-fw\"></i> Add to ".concat(thisBrowserName);
     enableSupportedBrowserIcon(thisBrowserName);
 }
 
