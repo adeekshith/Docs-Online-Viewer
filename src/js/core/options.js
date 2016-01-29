@@ -17,7 +17,6 @@ function flash_options_status(message, time) {
 }
 
 
-
 function getDefPrefsSaveOptions () {
     textFileLoad(chrome.extension.getURL("data/user-preferences-default.json")).then(function(response) {
         // The first runs when the promise resolves, with the request.reponse
@@ -134,6 +133,20 @@ function restore_options(userPrefDefaultJsonStr) {
     });
 }
 
+function userLikesDOVView() {
+    document.getElementById('dov-options-feedback').innerHTML =
+        "<div class=\"row container\">\
+            <div class=\"col-xs-5 col-sm-5 col-md-5 col-lg-5\">\
+        <a class=\"btn btn-success\" href=\"https://chrome.google.com/webstore/detail/docs-online-viewer/gmpljdlgcdkljlppaekciacdmdlhfeon/reviews\" target=\"_blank\">    \
+        <i class=\"fa fa-thumbs-up fa-2x pull-left\"></i> Rate me<br/>please</a> \
+        </div>\
+        <div class=\"col-xs-7 col-sm-7 col-md-7 col-lg-7\">\
+        We are happy you liked it. We are continuously working hard to improve this \
+        extension. Your encouragement will push it forward.\
+            </div>\
+        </div>";
+}
 
 document.addEventListener('DOMContentLoaded', getDefPrefsRestoreOptions);
 document.getElementById('dov_save').addEventListener('click', getDefPrefsSaveOptions);
+document.getElementById('user-liked-dov-options-feedback').addEventListener('click', userLikesDOVView);
