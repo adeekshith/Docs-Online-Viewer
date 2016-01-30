@@ -141,7 +141,7 @@ function main_content_script(thisUserConfig) {
          */
         setTimeout(function() {
             if(portIsOpen){
-                console.log("Disconnecting port... Background script is found connected after timeout.");
+                // console.log("Disconnecting port... Background script is found connected after timeout."); // Debug
                 port.disconnect();
                 portIsOpen = false;
             }
