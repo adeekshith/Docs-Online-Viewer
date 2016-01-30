@@ -23,7 +23,7 @@
   },
 
   "author": "Deekshith Allamaneni",
-  "homepage_url": "http://www.deekshith.in/p/docs-online-viewer.html",
+  "homepage_url": "http://dov.parishod.com/",
   "browser_action": {
     "default_icon": "images/brand/dov-brand-128.png",
     "default_popup": "html/popup.html",
