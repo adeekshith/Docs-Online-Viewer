@@ -138,7 +138,7 @@ function userLikesDOVView() {
         "<div class=\"row container text-center\">\
             <div class=\"col-xs-6 col-sm-6 col-md-6 col-lg-6\">\
                 <a class=\"btn btn-success\" href=\"https://chrome.google.com/webstore/detail/docs-online-viewer/gmpljdlgcdkljlppaekciacdmdlhfeon/reviews\" target=\"_blank\">    \
-                    <i class=\"fa fa-thumbs-up fa-2x pull-left\"></i> &nbsp;&nbsp;Rate it&nbsp;&nbsp;&nbsp;<br/>\
+                    <i class=\"fa fa-thumbs-up fa-2x pull-left\"></i> &nbsp;&nbsp;&nbsp;Rate it&nbsp;&nbsp;&nbsp;<br/>\
                     <i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i>\
                     </a> \
             </div>\
@@ -163,12 +163,12 @@ function userLikesDOVView() {
 function userDislikesDOVView() {
     document.getElementById('dov-options-feedback').innerHTML =
         "<h4>Report Issues</h4>\
-        <p>\
+        <div class=\"text-center\">\
             <a class=\"btn btn-warning\" href=\"https://github.com/adeekshith/Docs-Online-Viewer/issues\" target=\"_blank\">    \
                     <i class=\"fa fa-bug fa-2x pull-left\"></i> Report<br/>issues</a> \
-            Sorry to know you have issues with Docs Online Viewer. We are working continuously to make it better.\
+            <br/>Sorry to know you have issues with Docs Online Viewer. We are continuously working to make it better.\
             Please report your issues or suggestions so that we can fix them as soon as possible. Thank you.\
-        </p>";
+        </div>";
 }
 
 
