@@ -135,18 +135,45 @@ function restore_options(userPrefDefaultJsonStr) {
 
 function userLikesDOVView() {
     document.getElementById('dov-options-feedback').innerHTML =
-        "<div class=\"row container\">\
-            <div class=\"col-xs-5 col-sm-5 col-md-5 col-lg-5\">\
-        <a class=\"btn btn-success\" href=\"https://chrome.google.com/webstore/detail/docs-online-viewer/gmpljdlgcdkljlppaekciacdmdlhfeon/reviews\" target=\"_blank\">    \
-        <i class=\"fa fa-thumbs-up fa-2x pull-left\"></i> Rate me<br/>please</a> \
-        </div>\
-        <div class=\"col-xs-7 col-sm-7 col-md-7 col-lg-7\">\
-        We are happy you liked it. We are continuously working hard to improve this \
-        extension. Your encouragement will push it forward.\
+        "<div class=\"row container text-center\">\
+            <div class=\"col-xs-6 col-sm-6 col-md-6 col-lg-6\">\
+                <a class=\"btn btn-success\" href=\"https://chrome.google.com/webstore/detail/docs-online-viewer/gmpljdlgcdkljlppaekciacdmdlhfeon/reviews\" target=\"_blank\">    \
+                    <i class=\"fa fa-thumbs-up fa-2x pull-left\"></i> &nbsp;&nbsp;Rate it&nbsp;&nbsp;&nbsp;<br/>\
+                    <i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i>\
+                    </a> \
+            </div>\
+            <div class=\"col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center\">\
+                <h4>Share it</h4>\
+                <div class=\"row\">\
+                    <div class=\"col-xs-2 col-xs-offset-2 col-sm-2 col-sm-offset-2 col-md-2 col-md-offset-2 col-lg-2 col-lg-offset-2\">\
+                        <a style=\"color: #3b5998\" href=\"https://www.facebook.com/sharer/sharer.php?u=http://dov.parishod.com/\"><i class=\"fa fa-facebook-square fa-2x\"></i></a>\
+                    </div>\
+                    <div class=\"col-xs-2 col-sm-2 col-md-2 col-lg-2\">\
+                        <a style=\"color: #55acee\" href=\"https://twitter.com/share?text=Open%20any%20file%20in%20your%20browser%20with%20Docs%20Online%20Viewer.&url=http://dov.parishod.com/\"><i class=\"fa fa-twitter-square fa-2x\"></i></a>\
+                    </div>\
+                    <div class=\"col-xs-2 col-sm-2 col-md-2 col-lg-2\">\
+                        <a style=\"color: #d34836\" href=\"https://plus.google.com/share?url=http://dov.parishod.com/\"><i class=\"fa fa-google-plus-square fa-2x\"></i></a>\
+                    </div>\
+                </div>\
             </div>\
         </div>";
 }
 
+
+function userDislikesDOVView() {
+    document.getElementById('dov-options-feedback').innerHTML =
+        "<h4>Report Issues</h4>\
+        <p>\
+            <a class=\"btn btn-warning\" href=\"https://github.com/adeekshith/Docs-Online-Viewer/issues\" target=\"_blank\">    \
+                    <i class=\"fa fa-bug fa-2x pull-left\"></i> Report<br/>issues</a> \
+            Sorry to know you have issues with Docs Online Viewer. We are working continuously to make it better.\
+            Please report your issues or suggestions so that we can fix them as soon as possible. Thank you.\
+        </p>";
+}
+
+
 document.addEventListener('DOMContentLoaded', getDefPrefsRestoreOptions);
 document.getElementById('dov_save').addEventListener('click', getDefPrefsSaveOptions);
+
 document.getElementById('user-liked-dov-options-feedback').addEventListener('click', userLikesDOVView);
+document.getElementById('user-disliked-dov-options-feedback').addEventListener('click', userDislikesDOVView);
