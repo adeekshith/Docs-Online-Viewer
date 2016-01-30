@@ -136,26 +136,17 @@ function restore_options(userPrefDefaultJsonStr) {
 function userLikesDOVView() {
     document.getElementById('dov-options-feedback').innerHTML =
         "<div class=\"row container text-center\">\
-            <div class=\"col-xs-6 col-sm-6 col-md-6 col-lg-6\">\
-                <a class=\"btn btn-success\" href=\"https://chrome.google.com/webstore/detail/docs-online-viewer/gmpljdlgcdkljlppaekciacdmdlhfeon/reviews\" target=\"_blank\">    \
-                    <i class=\"fa fa-thumbs-up fa-2x pull-left\"></i> &nbsp;&nbsp;&nbsp;Rate it&nbsp;&nbsp;&nbsp;<br/>\
-                    <i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i>\
-                    </a> \
-            </div>\
-            <div class=\"col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center\">\
-                <h4>Share it</h4>\
-                <div class=\"row\">\
-                    <div class=\"col-xs-2 col-xs-offset-2 col-sm-2 col-sm-offset-2 col-md-2 col-md-offset-2 col-lg-2 col-lg-offset-2\">\
-                        <a style=\"color: #3b5998\" href=\"https://www.facebook.com/sharer/sharer.php?u=http://dov.parishod.com/\"><i class=\"fa fa-facebook-square fa-2x\"></i></a>\
-                    </div>\
-                    <div class=\"col-xs-2 col-sm-2 col-md-2 col-lg-2\">\
-                        <a style=\"color: #55acee\" href=\"https://twitter.com/share?text=Open%20any%20file%20in%20your%20browser%20with%20Docs%20Online%20Viewer.&url=http://dov.parishod.com/\"><i class=\"fa fa-twitter-square fa-2x\"></i></a>\
-                    </div>\
-                    <div class=\"col-xs-2 col-sm-2 col-md-2 col-lg-2\">\
-                        <a style=\"color: #d34836\" href=\"https://plus.google.com/share?url=http://dov.parishod.com/\"><i class=\"fa fa-google-plus-square fa-2x\"></i></a>\
-                    </div>\
-                </div>\
-            </div>\
+            <a class=\"btn btn-success\" href=\"https://chrome.google.com/webstore/detail/docs-online-viewer/gmpljdlgcdkljlppaekciacdmdlhfeon/reviews\" target=\"_blank\">    \
+                <i class=\"fa fa-thumbs-up fa-2x pull-left\"></i> &nbsp;&nbsp;&nbsp;Rate it&nbsp;&nbsp;&nbsp;<br/>\
+                <i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i>\
+            </a> \
+        </div>\
+        <br/>\
+        <div class=\"row\">\
+            <div class=\"text-muted\">Share it</div>\
+            <a style=\"color: #3b5998\" href=\"https://www.facebook.com/sharer/sharer.php?u=http://dov.parishod.com/\"><i class=\"fa fa-facebook-square fa-2x\"></i></a>\
+            <a style=\"color: #55acee\" href=\"https://twitter.com/share?text=View%20any%20file%20in%20your%20browser%20with%20Docs%20Online%20Viewer.&url=http://dov.parishod.com/\"><i class=\"fa fa-twitter-square fa-2x\"></i></a>\
+            <a style=\"color: #d34836\" href=\"https://plus.google.com/share?url=http://dov.parishod.com/\"><i class=\"fa fa-google-plus-square fa-2x\"></i></a>\
         </div>";
 }
 
