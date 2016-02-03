@@ -136,10 +136,12 @@ function restore_options(userPrefDefaultJsonStr) {
 function userLikesDOVView() {
     document.getElementById('dov-options-feedback').innerHTML =
         "<div class=\"row container text-center\">\
+            <span class=\"hint--top\" data-hint=\"Encourage us and help others discover it by sharing your experience.\">\
             <a class=\"btn btn-success\" href=\"https://chrome.google.com/webstore/detail/docs-online-viewer/gmpljdlgcdkljlppaekciacdmdlhfeon/reviews\" target=\"_blank\">    \
                 <i class=\"fa fa-thumbs-up fa-2x pull-left\"></i> &nbsp;&nbsp;&nbsp;Rate it&nbsp;&nbsp;&nbsp;<br/>\
                 <i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i>\
             </a> \
+            </span>\
         </div>\
         <br/>\
         <div class=\"row\">\
@@ -157,8 +159,7 @@ function userDislikesDOVView() {
         <div class=\"text-center\">\
             <a class=\"btn btn-warning\" href=\"https://github.com/adeekshith/Docs-Online-Viewer/issues\" target=\"_blank\">    \
                     <i class=\"fa fa-bug fa-2x pull-left\"></i> Report<br/>issues</a> \
-            <br/>Sorry to know you have issues with Docs Online Viewer. We are continuously working to make it better.\
-            Please report your issues or suggestions so that we can fix them as soon as possible. Thank you.\
+            <br/>Sorry to know you have issues with it. Report them and we will try to resolve them as soon as possible. Thank you.\
         </div>";
 }
 
