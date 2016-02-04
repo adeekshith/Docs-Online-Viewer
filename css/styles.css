@@ -34,3 +34,17 @@ section {
 .supported-browsers-group {
     padding-top:10px;
 }
+
+
+/* Social Brand Colors*/
+.facebook-brand-color {
+    color: #3b5998;
+}
+
+.twitter-brand-color {
+    color: #55ACEE;
+}
+
+.googleplus-brand-color {
+    color: #DD4B39;
+}
