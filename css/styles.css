@@ -7,6 +7,14 @@ html,body {
     background-size: cover;
 }
 
+/* Navbar Custom*/
+.navbar-social-buttons {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 5px;
+    line-height: 20px;
+}
+
 section {
     padding-top:50px;
     padding-bottom:50px;

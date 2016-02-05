@@ -22,6 +22,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
 <body>
+<!-- Social Share Facebook like button script -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- End Social Share Facebook like button script -->
 <div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -43,19 +53,21 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=http://dov.parishod.com/" title="Share Docs online Viewer on Facebook">
-                        <i class="fa fa-facebook-square fa-lg fa-fw facebook-brand-color"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://twitter.com/share?text=View%20any%20file%20in%20your%20browser%20with%20Docs%20Online%20Viewer.&url=http://dov.parishod.com/" title="Share Docs online Viewer on Twitter">
+                    <div class="navbar-social-buttons">
+                    <a href="https://twitter.com/share?text=View%20any%20file%20in%20your%20browser%20with%20Docs%20Online%20Viewer.&url=http://dov.parishod.com/"
+                       class="twitter-share-button" data-url="http://dov.parishod.com/"
+                       data-text="View any file online using this browser extension for Chrome, Firefox and Opera"
+                       data-via="adeekshith" data-hashtags="DocsOnlineViewer">
                         <i class="fa fa-twitter-square fa-lg fa-fw twitter-brand-color"></i>
                     </a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    </div>
                 </li>
-                <li>
-                    <a>
-                        <div class="g-plusone" data-size="medium" data-href="http://dov.parishod.com/"></div>
-                    </a>
+                <li class="navbar-social-buttons">
+                    <div class="fb-share-button" data-href="http://dov.parishod.com/" data-layout="button_count"></div>
+                </li>
+                <li class="navbar-social-buttons">
+                    <div class="g-plusone" data-size="medium" data-href="http://dov.parishod.com/"></div>
                 </li>
             </ul>
         </div><!--/.nav-collapse -->
