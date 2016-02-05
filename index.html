@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="http://schema.org/Product">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -10,6 +10,11 @@
           content="open in google docs, open document, Google Docs, document, view, browser extension, addon, extension,
            chrome, firefox, opera, safari, vivaldi, userscript, software, open source">
     <meta name="author" content="Deekshith Allamaneni">
+    <!-- ItemProps SchemaOrg Product tags -->
+    <meta itemprop="name" content="Docs Online Viewer">
+    <meta itemprop="description" content="Open any file in your browser with Docs Online Viewer browser extension. Works in Chrome, Firefox, Opera and other browsers.">    <!-- End ItemProps SchemaOrg Product tags -->
+    <meta itemprop="image" content="http://dov.parishod.com/assets/images/dov-icon-beside-link-screenshot.png">
+    <!-- End ItemProps SchemaOrg Product tags -->
     <title>Docs Online Viewer</title>
     <link rel="icon"
           type="image/png"
@@ -38,9 +43,6 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a >Share via</a>
-                </li>
-                <li>
                     <a href="https://www.facebook.com/sharer/sharer.php?u=http://dov.parishod.com/" title="Share Docs online Viewer on Facebook">
                         <i class="fa fa-facebook-square fa-lg fa-fw facebook-brand-color"></i>
                     </a>
@@ -51,8 +53,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="https://plus.google.com/share?url=http://dov.parishod.com/" title="Share Docs online Viewer on Google plus">
-                        <i class="fa fa-google-plus-square fa-lg fa-fw googleplus-brand-color"></i>
+                    <a>
+                        <div class="g-plusone" data-size="medium" data-href="http://dov.parishod.com/"></div>
                     </a>
                 </li>
             </ul>
@@ -234,5 +236,7 @@
         integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
         crossorigin="anonymous"></script>
 <script src="libs/lightbox/js/lightbox.min.js"></script>
+<!-- Required for Google Plus Share button -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 </html>
