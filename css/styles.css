@@ -53,6 +53,15 @@ section {
     color: #55ACEE;
 }
 
+.btn-twitter-brand {
+    background: #1b95e0;
+    color: #FFFFFF;
+}
+.btn-twitter-brand:hover {
+    background: #0c7abf;
+    color: #FFFFFF;
+}
+
 .googleplus-brand-color {
     color: #DD4B39;
 }
