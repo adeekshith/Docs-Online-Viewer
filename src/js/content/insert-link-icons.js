@@ -68,12 +68,12 @@ function main_content_script(thisUserConfig) {
             // Google Docs Not working. Trying to fix it temporarily.
 
             // MS Office Openable fIles
-            const msOfficeSuportedFormats = /(doc|docx|ppt|pptx|xls|xlsx|pps)/;
+            const msOfficeSuportedFormats = /(doc|docx|ppt|pptx|xls|xlsx|pps|odf|odt|odp|ods)/;
             //viewLink.href = "https://docs.google.com/viewer?url=" + encodeURIComponent(this._docLink.href) + "&embedded=true&chrome=false&dov=1";
             if(fileExtension(this._docLink.pathname) === "pdf") {
                 viewLink.href = this._docLink.href;
             }else if(msOfficeSuportedFormats.test(fileExtension(this._docLink.pathname))){
-                viewLink.href = "https://view.officeapps.live.com/op/view.aspx?src=" + encodeURIComponent(this._docLink.href);
+                viewLink.href = "https://view.officeapps.live.com/op/embed.aspx?src=" + encodeURIComponent(this._docLink.href)+"&wdStartOn=1";
             }else {
                 viewLink.href = "https://www.rollapp.com/api/apps/open?file_url="+ encodeURIComponent(this._docLink.href);
             }

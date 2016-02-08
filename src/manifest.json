@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Docs Online Viewer",
   "short_name": "DOV",
-  "version": "8.0.6",
+  "version": "8.0.7",
   "applications": {
     "gecko": {
       "id": "{bfb54675-2fd9-4e22-949d-c36333aff6b5}"
@@ -49,6 +49,12 @@
     {
       "matches": ["*://dov.parishod.com/*"],
       "js": ["js/content/announce-dov-info.js"]
+    },
+    {
+      "matches": ["*://view.officeapps.live.com/op/*"],
+      "all_frames": true,
+      "js": ["js/content/ms-office-online-content.js"],
+      "run_at": "document_end"
     }
   ],
   "background": {
