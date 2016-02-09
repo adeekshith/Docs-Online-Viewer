@@ -65,16 +65,18 @@ function main_content_script(thisUserConfig) {
         },
         get iconLink() {
             let viewLink = document.createElement('a');
-            // Google Docs Not working. Trying to fix it temporarily.
-
-            // MS Office Openable fIles
+            // Open with Google Docs Viewer
+            viewLink.href = "https://docs.google.com/viewer?url=" + encodeURIComponent(this._docLink.href) + "&embedded=true&chrome=false&dov=1";
+            /*
+            // Activate this code in case Google Docs Viewer fails.
+             // MS Office Openable files
             const msOfficeSuportedFormats = /(doc|docx|ppt|pptx|xls|xlsx|pps|odf|odt|odp|ods)/;
-            //viewLink.href = "https://docs.google.com/viewer?url=" + encodeURIComponent(this._docLink.href) + "&embedded=true&chrome=false&dov=1";
             if(msOfficeSuportedFormats.test(fileExtension(this._docLink.pathname))){
                 viewLink.href = "https://view.officeapps.live.com/op/embed.aspx?src=" + encodeURIComponent(this._docLink.href)+"&wdStartOn=1";
             }else {
                 viewLink.href = "https://www.rollapp.com/api/apps/open?file_url="+ encodeURIComponent(this._docLink.href);
             }
+            */
             /*
              Parameter description:
              embedded= <true>: to open google docs in embedded mode
