@@ -59,3 +59,16 @@ chrome.runtime.onConnect.addListener(function(port) {
         });
     });
 });
+
+
+/*
+Open Getting Started page on extension install
+ */
+chrome.runtime.onInstalled.addListener(function(details) {
+    if (details.reason == "install") {
+        chrome.tabs.create({
+            "url": "http://dov.parishod.com/#getting-started"
+        });
+    };
+
+});
