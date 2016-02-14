@@ -58,7 +58,10 @@
     }
   ],
   "background": {
-    "scripts": ["js/core/background.js"],
+    "scripts": [
+      "js/core/background.js",
+      "js/libs/dov-utils.js"
+    ],
     "persistent": false
   },
   "web_accessible_resources": [
