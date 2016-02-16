@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message":"డాక్స్ ఆన్లైన్ వ్యువర్",
+    "description":"Extension name"
+  },
+  "extDescription": {
+    "message":"ఎలాంటి ఫైల్స్ లేక డాక్యుమెంట్ అయినా సునాయాసంగా వీక్షించండి",
+    "description":"Extension description"
+  }
+}
