@@ -56,10 +56,12 @@ changeDovInstallButton();
 // User Feedback Section
 function userLikesDOVView() {
     document.getElementById('dov-options-feedback').innerHTML =
-        `<a class=\"btn btn-success\" href=${getDovUrlForBrowser(detectBrowser(navigator.userAgent).browser_name)} target=\"_blank\">
-            <i class=\"fa fa-thumbs-up fa-2x pull-left\"></i> &nbsp;&nbsp;&nbsp;Rate it&nbsp;&nbsp;&nbsp;<br/>
-            <i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i>
-        </a>
+        `<span class="hint--top" data-hint="Encourage us and help others discover it by sharing your experience.">
+            <a class=\"btn btn-success\" href=${getDovUrlForBrowser(detectBrowser(navigator.userAgent).browser_name)} target=\"_blank\">
+                <i class=\"fa fa-thumbs-up fa-2x pull-left\"></i> &nbsp;&nbsp;&nbsp;Rate it&nbsp;&nbsp;&nbsp;<br/>
+                <i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i>
+            </a>
+        </span>
         <br/>
         <div class=\"text-muted\">Share it</div>
         <a style=\"color: #3b5998\" href=\"https://www.facebook.com/sharer/sharer.php?u=http://dov.parishod.com/\"><i class=\"fa fa-facebook-square fa-2x\"></i></a>
