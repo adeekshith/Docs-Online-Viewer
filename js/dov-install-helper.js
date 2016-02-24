@@ -79,5 +79,9 @@ function userDislikesDOVView() {
         </div>";
 }
 
+if(getUrlParameterByName("firstrun", document.location.href)=== "true") {
+    document.getElementById("dov-first-run-feedback").style.display = "initial";
+}
+
 document.getElementById('user-liked-dov-options-feedback').addEventListener('click', userLikesDOVView);
 document.getElementById('user-disliked-dov-options-feedback').addEventListener('click', userDislikesDOVView);
