@@ -35,7 +35,7 @@ chrome.runtime.onInstalled.addListener(function(details) {
     if (details.reason === "install") {
         // Open getting started page on extension install
         chrome.tabs.create({
-            "url": "http://dov.parishod.com/#getting-started"+"?locale="+chrome.i18n.getMessage("@@ui_locale")
+            "url": "http://dov.parishod.com/?firstrun=true#getting-started"
         });
 
         // Save default options to storage sync
