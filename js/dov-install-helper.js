@@ -3,15 +3,20 @@
  */
 "use strict";
 
-function getDovUrlForBrowser(browserName) {
+function getDovUrlForBrowser(browserName, purpose) {
     "use strict";
+    if(typeof purpose === "undefined") { purpose = null;}
     let browserUrl = null;
     switch (browserName) {
         case "Chrome":
-            browserUrl = "https://chrome.google.com/webstore/detail/docs-online-viewer/gmpljdlgcdkljlppaekciacdmdlhfeon";
+            browserUrl = (purpose === "reviews")
+                ? "https://chrome.google.com/webstore/detail/docs-online-viewer/gmpljdlgcdkljlppaekciacdmdlhfeon/reviews"
+                : "https://chrome.google.com/webstore/detail/docs-online-viewer/gmpljdlgcdkljlppaekciacdmdlhfeon";
             break;
         case "Firefox":
-            browserUrl = "https://addons.mozilla.org/en-US/firefox/addon/docs-online-viewer/";
+            browserUrl = (purpose === "reviews")
+                ? "https://addons.mozilla.org/en-US/firefox/addon/docs-online-viewer/reviews/add"
+                :"https://addons.mozilla.org/en-US/firefox/addon/docs-online-viewer/";
             break;
         case "Opera":
             browserUrl = "https://addons.opera.com/en/extensions/details/docs-online-viewer/";
