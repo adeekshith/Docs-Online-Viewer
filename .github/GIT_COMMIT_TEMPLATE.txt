@@ -1,0 +1,30 @@
+# <type>: (If applied, this commit will...) <subject> (Max 50 char)
+
+
+# Explain why this change is being made
+
+# Provide links or keys to any relevant tickets, articles or other resources
+# Example: Github issue #23
+
+# --- COMMIT END ---
+# Type can be 
+#    feat (new feature)
+#    fix (bug fix)
+#    docs (changes to documentation)
+#    style (formatting, missing semi colons, etc; no code change)
+#    refactor (refactoring production code)
+#    test (adding missing tests, refactoring tests; no production code change)
+#    chore (updating grunt tasks etc; no production code change)
+# --------------------
+# Remember to
+#    Separate subject from body with a blank line
+#    Limit the subject line to 50 characters
+#    Capitalize the subject line
+#    Do not end the subject line with a period
+#    Use the imperative mood in the subject line
+#    Wrap the body at 72 characters
+#    Use the body to explain what and why vs. how
+#    Can use multiple lines with "-" for bullet points in body
+# --------------------
+# For a full example of how to write a good commit message, check out
+# https://github.com/sparkbox/how_to/tree/master/style/git
