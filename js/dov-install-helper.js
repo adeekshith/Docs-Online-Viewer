@@ -61,9 +61,10 @@ changeDovInstallButton();
 // User Feedback Section
 function userLikesDOVView() {
     document.getElementById('dov-options-feedback').innerHTML =
-        `<h3>Got a minute?</h3>
+        `<h3>I am glad you liked it!</h3>
         <p class="lead">
-            Encourage us and help others discover it by sharing your experience.
+            One thing that motivates me to keep improving this and make other awesome products is your encouragement.
+            Kindly take a minute to cheer me up by rating it and sharing with your friends. :)
         </p>
         <a class=\"btn btn-success\" href=${getDovUrlForBrowser(detectBrowser(navigator.userAgent).browser_name, "reviews")} target=\"_blank\">
             <i class=\"fa fa-thumbs-up fa-2x pull-left\"></i> &nbsp;&nbsp;&nbsp;Rate it&nbsp;&nbsp;&nbsp;<br/>
