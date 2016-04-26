@@ -63,8 +63,9 @@ function userLikesDOVView() {
     document.getElementById('dov-options-feedback').innerHTML =
         `<h3>I am glad you liked it!</h3>
         <p class="lead">
-            One thing that motivates me to keep improving this and make other awesome products is your encouragement.
-            Kindly take a minute to cheer me up by rating it and sharing with your friends. :)
+            It took at-least about 300 hours in the past 6 months to develop this and I am continuously working to improve it.
+            Would you mind to take a minute to review it and share with your friends?
+            It encourages me to put in more effort and take it to the next level. Thanks! 😃
         </p>
         <a class=\"btn btn-success\" href=${getDovUrlForBrowser(detectBrowser(navigator.userAgent).browser_name, "reviews")} target=\"_blank\">
             <i class=\"fa fa-thumbs-up fa-2x pull-left\"></i> &nbsp;&nbsp;&nbsp;Rate it&nbsp;&nbsp;&nbsp;<br/>
