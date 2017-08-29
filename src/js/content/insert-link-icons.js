@@ -35,6 +35,14 @@
 
 function main_content_script(thisUserConfig) {
     "use strict";
+
+    // Exclude running on domains
+    // * Disabled on Youtube: GH Bug#25
+    const dov_domain_exclude = /(www\.youtube\.com$)/;
+    if(window.location.hostname.match(dov_domain_exclude)) {
+        return;
+    }
+
     let doCheck = true;
     const dov_host_exclude = /(docs\.google\.com|sourceforge\.net|adf\.ly|mediafire\.com|springerlink\.com|ziddu\.com|ieee\.org|issuu\.com|asaha\.com|office\.live\.com)$/;
     // Include paths to exclude showing icon
