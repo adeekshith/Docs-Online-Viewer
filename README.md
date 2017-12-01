@@ -1,6 +1,11 @@
 # [Docs Online Viewer](http://dov.parishod.com/) - Open files in your browser
 
-Open and view any online file in your browser. Supports almost all major file and document formats. Fast, easy to use and free. [Read more and install](http://dov.parishod.com/)
+Open and view any publicly available file in your browser. Supports almost all major file and document formats. Its fast, easy to use and free.
+[...Read more](http://dov.parishod.com/)
+
+### ✚ Add to [Chrome](https://chrome.google.com/webstore/detail/docs-online-viewer/gmpljdlgcdkljlppaekciacdmdlhfeon)/[Firefox](https://addons.mozilla.org/en-US/firefox/addon/docs-online-viewer/)/[Opera](https://addons.opera.com/en/extensions/details/docs-online-viewer/)
+
+Follow [**@adeekshith**](http://twitter.com/adeekshith) for updates.
 
 ### On the web
 - [ **CNET:** Open nearly any file type right in Chrome with Docs Online Viewer](https://www.cnet.com/how-to/open-nearly-any-file-type-right-in-chrome-with-docs-online-viewer/)
