@@ -63,9 +63,16 @@ function userLikesDOVView() {
     document.getElementById('dov-options-feedback').innerHTML =
         `<h3>I am glad you liked it!</h3>
         <p class="lead">
+            Yayy!!! 🎉 Docs Online Viewer is 6 years old! I released the first version six years ago and spent
+            hundreds of hours every year to keep making it better and that effort still continues. It was kept completely
+            free from the beginning and never even accepted any donations. It encourages me a lot if you can take a minute
+            to <a href=${getDovUrlForBrowser(detectBrowser(navigator.userAgent).browser_name, "reviews")}>
+            write a review</a> and share it with your friends. Thanks!
+            <!--
             It took at-least about 300 hours in the past 6 months to develop this and I am continuously working to improve it.
             Would you mind to take a minute to review it and share with your friends?
             It encourages me to put in more effort and take it to the next level. Thanks! 😃
+            -->
         </p>
         <a class=\"btn btn-success\" href=${getDovUrlForBrowser(detectBrowser(navigator.userAgent).browser_name, "reviews")} target=\"_blank\">
             <i class=\"fa fa-thumbs-up fa-2x pull-left\"></i> &nbsp;&nbsp;&nbsp;Rate it&nbsp;&nbsp;&nbsp;<br/>
