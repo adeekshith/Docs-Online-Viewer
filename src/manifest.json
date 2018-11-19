@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_extName__",
   "short_name": "__MSG_extShortName__",
-  "version": "8.1.2",
+  "version": "8.1.3",
   "applications": {
     "gecko": {
       "id": "{bfb54675-2fd9-4e22-949d-c36333aff6b5}"
@@ -71,7 +71,6 @@
   ],
   "permissions": [
     "storage",
-    "*://*/*",
-    "contextMenus"
+    "*://*/*"
   ]
 }
