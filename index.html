@@ -3,24 +3,29 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <meta name="description" content="Browser extension to open any file on the web. Fast, user friendly and free. Works in Chrome, Firefox, Opera and other browsers. Supports all major file formats">
-    <meta name="keywords" content="open in google docs, open document, Google Docs, document, view, browser extension, addon, extension, chrome, firefox, opera, safari, vivaldi, userscript, software, open source">
+    <meta name="description"
+          content="Browser extension to open any file on the web. Fast, user friendly and free. Works in Chrome, Firefox, Opera and other browsers. Supports all major file formats">
+    <meta name="keywords"
+          content="open in google docs, open document, Google Docs, document, view, browser extension, addon, extension, chrome, firefox, opera, safari, vivaldi, userscript, software, open source">
     <meta name="author" content="Deekshith Allamaneni">
 
-    <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/docs-online-viewer/gmpljdlgcdkljlppaekciacdmdlhfeon">
+    <link rel="chrome-webstore-item"
+          href="https://chrome.google.com/webstore/detail/docs-online-viewer/gmpljdlgcdkljlppaekciacdmdlhfeon">
 
     <!-- Open Graph Protocol Markup -->
-    <meta property="og:title" content="Docs Online Viewer" />
+    <meta property="og:title" content="Docs Online Viewer"/>
     <meta property="og:type" content="product">
-    <meta property="og:image" content="http://dov.parishod.com/assets/images/dov-icon-beside-link-screenshot.png">
-    <meta property="og:url" content="http://dov.parishod.com/">
-    <meta property="og:description" content="Open and view any online file in your browser. Supports almost all major file and document formats. Fast, easy to use and free.">
+    <meta property="og:image" content="https://dov.parishod.com/assets/images/dov-icon-beside-link-screenshot.png">
+    <meta property="og:url" content="https://dov.parishod.com/">
+    <meta property="og:description"
+          content="Open and view any online file in your browser. Supports almost all major file and document formats. Fast, easy to use and free.">
     <!-- End Open Graph Protocol Markup -->
 
     <!-- ItemProps SchemaOrg Product tags -->
     <meta itemprop="name" content="Docs Online Viewer">
-    <meta itemprop="description" content="Open any file in your browser with Docs Online Viewer browser extension. Works in Chrome, Firefox, Opera and other browsers.">
-    <meta itemprop="image" content="http://dov.parishod.com/assets/images/dov-icon-beside-link-screenshot.png">
+    <meta itemprop="description"
+          content="Open any file in your browser with Docs Online Viewer browser extension. Works in Chrome, Firefox, Opera and other browsers.">
+    <meta itemprop="image" content="https://dov.parishod.com/assets/images/dov-icon-beside-link-screenshot.png">
     <!-- End ItemProps SchemaOrg Product tags -->
 
     <title>Docs Online Viewer</title>
@@ -29,21 +34,33 @@
           href="assets/images/dov-brand-favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
+<script>
+    const navbar = document.getElementsByClassName("navbar-collapse");
+    const changeNavbar = () => {
+        console.log("changeNavbar");
+        if (navbar[0].classList.contains("collapse")) {
+            navbar[0].classList.remove("collapse");
+        } else {
+            navbar[0].classList.add("collapse");
+        }
+    };
+</script>
 <body>
 <div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
-                <img src="assets/images/navbar-brand-icon.svg" alt="DOV Brand Icon" class="pull-left" width="22px" height="22px">
+                <img src="assets/images/navbar-brand-icon.svg" alt="DOV Brand Icon" class="pull-left" width="22px"
+                     height="22px">
                 &nbsp;Docs Online Viewer
             </a>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" onclick="changeNavbar()">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
         </div>
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="#install">Install</a></li>
                 <li><a href="#reviews">Reviews</a></li>
@@ -52,13 +69,14 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <div class="navbar-social-buttons">
-                    <a href="https://twitter.com/share?text=View%20any%20file%20in%20your%20browser%20with%20Docs%20Online%20Viewer.&url=http://dov.parishod.com/"
-                       target="_blank"
-                       class="twitter-share-button btn btn-twitter-brand btn-xs" data-url="http://dov.parishod.com/"
-                       data-text="View any file online using this browser extension for Chrome, Firefox and Opera"
-                       data-via="adeekshith" data-hashtags="DocsOnlineViewer">
-                        <i class="fa fa-twitter fa-lg fa-fw"></i> Tweet
-                    </a>
+                        <a href="https://twitter.com/share?text=View%20any%20file%20in%20your%20browser%20with%20Docs%20Online%20Viewer.&url=http://dov.parishod.com/"
+                           target="_blank"
+                           class="twitter-share-button btn btn-twitter-brand btn-xs"
+                           data-url="httpw://dov.parishod.com/"
+                           data-text="View any file online using this browser extension for Chrome, Firefox and Opera"
+                           data-via="adeekshith" data-hashtags="DocsOnlineViewer">
+                            <i class="fa fa-twitter fa-lg fa-fw"></i> Tweet
+                        </a>
                     </div>
                 </li>
                 <li class="navbar-social-buttons">
@@ -71,7 +89,7 @@
                     </div>
                 </li>
                 <li class="navbar-social-buttons">
-                    <div class="g-plusone" data-size="medium" data-href="http://dov.parishod.com/"></div>
+                    <div class="g-plusone" data-size="medium" data-href="https://dov.parishod.com/"></div>
                 </li>
             </ul>
         </div><!--/.nav-collapse -->
@@ -96,13 +114,16 @@
     </div>
     <div class="row supported-browsers-group">
         <div class="col-xs-12 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
-            <a id="supported-browser-icon-chrome" class="text-muted" href="https://chrome.google.com/webstore/detail/docs-online-viewer/gmpljdlgcdkljlppaekciacdmdlhfeon">
+            <a id="supported-browser-icon-chrome" class="text-muted"
+               href="https://chrome.google.com/webstore/detail/docs-online-viewer/gmpljdlgcdkljlppaekciacdmdlhfeon">
                 <i class="fa fa-chrome fa-2x"></i>
             </a>
-            <a id="supported-browser-icon-firefox" class="text-muted" href="https://addons.mozilla.org/en-US/firefox/addon/docs-online-viewer/">
+            <a id="supported-browser-icon-firefox" class="text-muted"
+               href="https://addons.mozilla.org/en-US/firefox/addon/docs-online-viewer/">
                 <i class="fa fa-firefox fa-2x"></i>
             </a>
-            <a id="supported-browser-icon-opera" class="text-muted" href="https://addons.opera.com/en/extensions/details/docs-online-viewer/">
+            <a id="supported-browser-icon-opera" class="text-muted"
+               href="https://addons.opera.com/en/extensions/details/docs-online-viewer/">
                 <i class="fa fa-opera fa-2x"></i>
             </a>
         </div>
@@ -123,7 +144,7 @@
                     most major file formats you come across right in Chrome.
                 </p>
                 <footer>
-                    <a href="http://lifehacker.com/docs-online-viewer-opens-up-most-major-file-formats-dir-1755202427"
+                    <a href="https://lifehacker.com/docs-online-viewer-opens-up-most-major-file-formats-dir-1755202427"
                        target="_blank">Lifehacker.com <i class="text-muted">(Thorin Klosowski)</i></a>
                 </footer>
             </blockquote>
@@ -135,7 +156,7 @@
                     clutter because I am downloading fewer files.
                 </p>
                 <footer>
-                    <a href="http://www.cnet.com/how-to/open-nearly-any-file-type-right-in-chrome-with-docs-online-viewer/"
+                    <a href="https://www.cnet.com/how-to/open-nearly-any-file-type-right-in-chrome-with-docs-online-viewer/"
                        rel="nofollow" target="_blank">CNET.com <i class="text-muted">(Matt Elliott)</i></a>
                 </footer>
             </blockquote>
@@ -147,7 +168,7 @@
                     Web browser, without the need to download the document.
                 </p>
                 <footer>
-                    <a href="http://www.zdnet.com/search-ninja-part-5-must-have-productivity-boosting-firefox-add-ons-7000004803/"
+                    <a href="https://www.zdnet.com/search-ninja-part-5-must-have-productivity-boosting-firefox-add-ons-7000004803/"
                        target="_blank">ZDNet.com <i class="text-muted">(Stephen Chapman)</i></a>
                 </footer>
             </blockquote>
@@ -250,7 +271,8 @@
         <p class="text-muted">
             Made by Deekshith
             <br/>
-            <a href="https://twitter.com/adeekshith" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false" title="Deekshith's Twitter Profile">Follow @adeekshith</a>
+            <a href="https://twitter.com/adeekshith" class="twitter-follow-button" data-show-count="false"
+               data-show-screen-name="false" title="Deekshith's Twitter Profile">Follow @adeekshith</a>
             <br/>
             <a href="./privacy/index.html">Privacy Policy</a>
         </p>
@@ -262,48 +284,13 @@
       integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <link href="css/styles.css" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="libs/lightbox/css/lightbox.min.css">
 
 <!-- Loading Required Scripts -->
 <script src="libs/dk-utils.js"></script>
 <script src="libs/browser-detect.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
         integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
         crossorigin="anonymous"></script>
 <script src="js/dov-install-helper.js"></script>
-<script src="libs/lightbox/js/lightbox.min.js"></script>
-<!-- Required for Google Plus Share button -->
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-
-<!-- Base hint.css. CSS Tooltip library -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.0.0/hint.base.min.css">
-
-<!-- Twitter Social Share and Follow Button Script -->
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
-<!-- Social Share Facebook like button script -->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.async=true;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<!-- End Social Share Facebook like button script -->
-
-<!-- Google Analytics -->
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-73607622-1', 'auto');
-    ga('send', 'pageview');
-
-</script>
 </body>
 </html>
