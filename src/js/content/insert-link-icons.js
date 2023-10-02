@@ -178,7 +178,13 @@ function main_content_script(thisUserConfig) {
 
 
     function setupListener() {
-        document.addEventListener('DOMNodeInserted', function (e) {
+        let observer = new MutationObserver((mutations) => {
+
+            // Only if new nodes are added
+            if (!mutations.some((mutation) => mutation.addedNodes.length > 0)) {
+                return;
+            }
+
             if (doCheck) {
                 doCheck = false;
                 setTimeout(function () {
@@ -186,7 +192,8 @@ function main_content_script(thisUserConfig) {
                     doCheck = true;
                 }, 1000);
             }
-        }, false);
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
     }
 
     // Execute these functions to append icon beside document links and
