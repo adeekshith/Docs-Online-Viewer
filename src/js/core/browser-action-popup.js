@@ -6,7 +6,7 @@
 "use strict";
 
 function getDefPrefsRestorePopupOptions () {
-    textFileLoad(chrome.extension.getURL("data/user-preferences-default.json")).then(function(response) {
+    textFileLoad(chrome.runtime.getURL("data/user-preferences-default.json")).then(function(response) {
         // The first runs when the promise resolves, with the request.reponse
         // specified within the resolve() method.
         restorePopupOptions(response);
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', getDefPrefsRestorePopupOptions);
 
 
 function getDefPrefsUpdateToggleOptions () {
-    textFileLoad(chrome.extension.getURL("data/user-preferences-default.json")).then(function(response) {
+    textFileLoad(chrome.runtime.getURL("data/user-preferences-default.json")).then(function(response) {
         // The first runs when the promise resolves, with the request.reponse
         // specified within the resolve() method.
         updateToggleOptions(response);
