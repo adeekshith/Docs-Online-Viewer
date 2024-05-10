@@ -65,7 +65,7 @@ function save_options(userPrefDefaultJsonStr) {
     thisUserConfig.setFiletypeEnable("xlsx", document.getElementById('pref-filetype-enable-xlsx').checked);
     thisUserConfig.setFiletypeEnable("xps", document.getElementById('pref-filetype-enable-xps').checked);
     // Setting Options / Privacy / Collect stats
-    thisUserConfig.setPrivacyCollectStatsStatus(document.getElementById('pref-privacy-collect-stats').checked);
+    //thisUserConfig.setPrivacyCollectStatsStatus(document.getElementById('pref-privacy-collect-stats').checked);
     let thisUserPreferencesStr = JSON.stringify(thisUserConfig.getPreferences());
     chrome.storage.sync.set({
         user_config:thisUserPreferencesStr
@@ -129,7 +129,7 @@ function restore_options(userPrefDefaultJsonStr) {
         document.getElementById('pref-filetype-enable-xlsx').checked = thisUserConfig.isFiletypeEnabled("xlsx");
         document.getElementById('pref-filetype-enable-xps').checked = thisUserConfig.isFiletypeEnabled("xps");
         // Restoring Privacy Options
-        document.getElementById('pref-privacy-collect-stats').checked = thisUserConfig.getPrivacyCollectStatsStatus();
+        //document.getElementById('pref-privacy-collect-stats').checked = thisUserConfig.getPrivacyCollectStatsStatus();
     });
 }
 
