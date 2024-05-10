@@ -2,14 +2,13 @@
   "manifest_version": 3,
   "name": "__MSG_extName__",
   "short_name": "__MSG_extShortName__",
-  "version": "8.1.3",
+  "version": "9.0.1",
   "applications": {
     "gecko": {
       "id": "{bfb54675-2fd9-4e22-949d-c36333aff6b5}"
     }
   },
   "minimum_chrome_version": "45.0",
-  "minimum_opera_version": "32.0",
 
   "default_locale": "en",
   "description": "__MSG_extDescription__",
@@ -57,12 +56,7 @@
     }
   ],
   "background": {
-    "service_worker": "js/core/service_worker.js",
-    "scripts": [
-      "js/libs/dov-utils.js",
-      "js/core/config.js",
-      "js/core/background.js"
-    ]
+    "service_worker": "js/core/service_worker.js"
   },
   "web_accessible_resources": [
     {
