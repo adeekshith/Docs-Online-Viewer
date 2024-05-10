@@ -178,15 +178,25 @@ function main_content_script(thisUserConfig) {
 
 
     function setupListener() {
-        document.addEventListener('DOMNodeInserted', function (e) {
-            if (doCheck) {
-                doCheck = false;
-                setTimeout(function () {
-                    appendDovIconToAllNodes(document.links);
-                    doCheck = true;
-                }, 1000);
-            }
-        }, false);
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach((mutation) => {
+                if (mutation.addedNodes.length) { // Check if there are new nodes added
+                    if (doCheck) {
+                        doCheck = false;
+                        setTimeout(function() {
+                            appendDovIconToAllNodes(document.links);
+                            doCheck = true;
+                        }, 1000);
+                    }
+                }
+            });
+        });
+
+        // Configuration of the observer:
+        const config = { childList: true, subtree: true };
+
+        // Pass in the target node, as well as the observer options
+        observer.observe(document.body, config);
     }
 
     // Execute these functions to append icon beside document links and
