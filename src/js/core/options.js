@@ -18,7 +18,7 @@ function flash_options_status(message, time) {
 
 
 function getDefPrefsSaveOptions () {
-    textFileLoad(chrome.extension.getURL("data/user-preferences-default.json")).then(function(response) {
+    textFileLoad(chrome.runtime.getURL("data/user-preferences-default.json")).then(function(response) {
         // The first runs when the promise resolves, with the request.reponse
         // specified within the resolve() method.
         save_options(response);
@@ -77,7 +77,7 @@ function save_options(userPrefDefaultJsonStr) {
 
 
 function getDefPrefsRestoreOptions () {
-    textFileLoad(chrome.extension.getURL("data/user-preferences-default.json")).then(function(response) {
+    textFileLoad(chrome.runtime.getURL("data/user-preferences-default.json")).then(function(response) {
         // The first runs when the promise resolves, with the request.reponse
         // specified within the resolve() method.
         restore_options(response);

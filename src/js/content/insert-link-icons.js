@@ -15,7 +15,7 @@
  */
 {
     let xhReqUserPrefsDefault = new XMLHttpRequest();
-    xhReqUserPrefsDefault.open("GET", chrome.extension.getURL("data/user-preferences-default.json"), true);
+    xhReqUserPrefsDefault.open("GET", chrome.runtime.getURL("data/user-preferences-default.json"), true);
     xhReqUserPrefsDefault.responseType = "text";
     xhReqUserPrefsDefault.onreadystatechange = function () {
         if (xhReqUserPrefsDefault.readyState === 4 && xhReqUserPrefsDefault.status === 200) {
@@ -93,7 +93,7 @@ function main_content_script(thisUserConfig) {
             //viewLink.docView=true; -> This line is removed in this version but still doubt if it can really be removed.
             viewLink.title = "View this " + fileExtension(this._docLink.pathname) + " file";
             let ico = document.createElement("img");
-            ico.src = chrome.extension.getURL(thisUserConfig.getBesideDocLinksIconPath());
+            ico.src = chrome.runtime.getURL(thisUserConfig.getBesideDocLinksIconPath());
             // Adjusts the margin of the icon to the given number of pixels (3 to 5px is advisable)
             ico.style.marginLeft = "3px";
             ico.style.width = "16px";

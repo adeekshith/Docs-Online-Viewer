@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "__MSG_extName__",
   "short_name": "__MSG_extShortName__",
   "version": "8.1.3",
@@ -24,14 +24,13 @@
 
   "author": "Deekshith Allamaneni",
   "homepage_url": "http://dov.parishod.com/",
-  "browser_action": {
+  "action": {
     "default_icon": "images/brand/dov-brand-128.png",
     "default_popup": "html/popup.html",
     "default_title": "Docs Online Viewer"
   },
   "options_ui": {
-    "page": "html/options.html",
-    "chrome_style": false
+    "page": "html/options.html"
   },
   "options_page": "html/options.html",
   "content_scripts": [
@@ -58,19 +57,23 @@
     }
   ],
   "background": {
+    "service_worker": "js/core/service_worker.js",
     "scripts": [
       "js/libs/dov-utils.js",
       "js/core/config.js",
       "js/core/background.js"
-    ],
-    "persistent": false
+    ]
   },
   "web_accessible_resources": [
-    "images/beside-link-icon.svg",
-    "data/user-preferences-default.json"
+    {
+      "resources": ["images/beside-link-icon.svg", "data/user-preferences-default.json"],
+      "matches": ["<all_urls>"]
+    }
   ],
   "permissions": [
-    "storage",
-    "*://*/*"
+    "storage"
+  ],
+  "host_permissions": [
+  "*://*/*"
   ]
 }
