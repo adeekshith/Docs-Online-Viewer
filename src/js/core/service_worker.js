@@ -39,7 +39,7 @@ chrome.runtime.onInstalled.addListener(function(details) {
         });
 
         // Save default options to storage sync
-        textFileLoad(chrome.extension.getURL("data/user-preferences-default.json"))
+        textFileLoad(chrome.runtime.getURL("data/user-preferences-default.json"))
             .then(function(defaultUserPreferencesStr) {
                 chrome.storage.sync.set({
                     user_config:defaultUserPreferencesStr
