@@ -69,9 +69,9 @@ function updateToggleOptions(userPrefDefaultJsonStr) {
         });
     });
     if (userToggleEnableStatus === true) {
-        chrome.browserAction.setBadgeText({ text: "" });
+        chrome.action.setBadgeText({ text: "" });
     } else {
-        chrome.browserAction.setBadgeText({ text: "OFF" });
+        chrome.action.setBadgeText({ text: "OFF" });
     }
 }
 
