@@ -5,67 +5,33 @@
 "use strict";
 
 function getUrlContentType(url) {
-    // Create new promise with the Promise() constructor;
-    // This has as its argument a function
-    // with two parameters, resolve and reject
-    return new Promise(function(resolve, reject) {
-        // Standard XHR
-        let request = new XMLHttpRequest();
-        request.onreadystatechange = function() {
-            if (request.readyState == 2) {
-                resolve(
-                    {
-                        url: url,
-                        content_type: request.getResponseHeader("Content-Type"),
-                        status: request.status
-                    }
-                );
-            }
+    return fetch(url, {
+        method: 'HEAD'  // Use HEAD to get headers only, no need to download the whole content
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok.');
+        }
+        return {
+            url: url,
+            content_type: response.headers.get("Content-Type"),
+            status: response.status
         };
-        request.onerror = function() {
-            // Also deal with the case when the entire request fails to begin with
-            // This is probably a network error, so reject the promise with an appropriate message
-            reject(Error('Network error reading Content-Type.'));
-        };
-        request.ontimeout = function () {
-            reject(Error('Request timeout'));
-        };
-        request.open("GET", url, true);
-        request.timeout = 2000; // Timeout in ms
-        request.send(null);
+    }).catch(error => {
+        throw new Error('Network error reading Content-Type: ' + error.message);
     });
 }
-
 
 function textFileLoad(url) {
-    // Create new promise with the Promise() constructor;
-    // This has as its argument a function
-    // with two parameters, resolve and reject
-    return new Promise(function(resolve, reject) {
-        // Standard XHR to load json
-        var request = new XMLHttpRequest();
-        request.open('GET', url, true);
-        request.responseType = 'text';
-        // When the request loads, check whether it was successful
-        request.onload = function() {
-            if (request.status === 200) {
-                // If successful, resolve the promise by passing back the request response
-                resolve(request.responseText);
-            } else {
-                // If it fails, reject the promise with a error message
-                reject(Error('Give file didn\'t load successfully; error code:' + request.statusText));
-            }
-        };
-        request.onerror = function() {
-            // Also deal with the case when the entire request fails to begin with
-            // This is probably a network error, so reject the promise with an appropriate message
-            reject(Error('There was a network error.'));
-        };
-        // Send the request
-        request.send();
+    return fetch(url).then(response => {
+        if (response.ok) {
+            return response.text();
+        } else {
+            throw new Error('File didn\'t load successfully; error code:' + response.statusText);
+        }
+    }).catch(error => {
+        throw new Error('There was a network error: ' + error.message);
     });
 }
-
 
 function generateUuid() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -78,7 +44,6 @@ function hashCode(string) {
     return string.split('').reduce((prevHash, currVal) =>
     ((prevHash << 5) - prevHash) + currVal.charCodeAt(0), 0);
 };
-
 
 chrome.runtime.onConnect.addListener(function(port) {
     console.assert(port.name == "dov-url-detect-messenger");
